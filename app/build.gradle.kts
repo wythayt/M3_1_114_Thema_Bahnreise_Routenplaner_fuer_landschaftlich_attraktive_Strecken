@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace =
-        "com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken"
+        "com.example.m3_app"
     compileSdk = 35
 
     defaultConfig {
         applicationId =
-            "com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken"
+            "com.example.m3_app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

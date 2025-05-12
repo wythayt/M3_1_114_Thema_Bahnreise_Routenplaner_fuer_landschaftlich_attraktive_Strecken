@@ -1,4 +1,4 @@
-package com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken;
+package com.example.m3_app;
 
 import org.junit.Test;
 

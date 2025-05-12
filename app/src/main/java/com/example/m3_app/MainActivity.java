@@ -1,4 +1,4 @@
-package com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken;
+package com.example.m3_app;
 
 import android.os.Bundle;
 
@@ -10,7 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken.databinding.ActivityMainBinding;
+import com.example.m3_app.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
