@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">M3_1_114_Thema_Bahnreise_Routenplaner_fuer_landschaftlich_attraktive_Strecken</string>
+    <string name="app_name">M3_App</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>

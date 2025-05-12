@@ -1,4 +1,4 @@
-package com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken.ui.dashboard;
+package com.example.m3_app.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken.databinding.FragmentDashboardBinding;
+import com.example.m3_app.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
 

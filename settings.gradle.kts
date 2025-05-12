@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "M3_1_114_Thema_Bahnreise_Routenplaner_fuer_landschaftlich_attraktive_Strecken"
+rootProject.name = "M3_App"
 include(":app")

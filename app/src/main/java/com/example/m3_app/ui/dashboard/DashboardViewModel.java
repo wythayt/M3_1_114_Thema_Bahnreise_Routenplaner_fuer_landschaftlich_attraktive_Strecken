@@ -1,4 +1,4 @@
-package com.example.m3_1_114_thema_bahnreise_routenplaner_fuer_landschaftlich_attraktive_strecken.ui.dashboard;
+package com.example.m3_app.ui.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
