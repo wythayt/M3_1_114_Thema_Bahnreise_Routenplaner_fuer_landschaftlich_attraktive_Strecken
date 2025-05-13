@@ -1,4 +1,4 @@
-package com.example.m3_app.ui.home;
+package com.example.m3_app.ui.activity_center;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.m3_app.databinding.FragmentHomeBinding;
+import com.example.m3_app.databinding.FragmentActivityCenterBinding;
 
-public class HomeFragment extends Fragment {
-
-    private FragmentHomeBinding binding;
+public class ActivityCenterFragment extends Fragment {
+    private FragmentActivityCenterBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        ActivityCenterViewModel homeViewModel =
+                new ViewModelProvider(this).get(ActivityCenterViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentActivityCenterBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+        final TextView textView = binding.textActivityCenter;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
