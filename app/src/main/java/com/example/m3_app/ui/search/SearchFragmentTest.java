@@ -1,4 +1,4 @@
-package com.example.m3_app.ui.home;
+package com.example.m3_app.ui.search;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,15 +10,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.m3_app.databinding.FragmentSearchBinding;
+import com.example.m3_app.databinding.FragmentSearchTestBinding;
 import com.example.m3_app.R;
 
 public class SearchFragmentTest extends Fragment {
-    private FragmentSearchBinding binding;
+    private FragmentSearchTestBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentSearchBinding.inflate(inflater, container, false);
+        binding = FragmentSearchTestBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         binding.radioGroup1.setOnCheckedChangeListener((group, checkedId) -> {
