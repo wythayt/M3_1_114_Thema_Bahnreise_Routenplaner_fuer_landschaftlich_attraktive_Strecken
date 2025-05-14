@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff9f3"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageButton
+                android:id="@+id/buttonClose"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/close_45dp"
+                android:background="@null"
+                android:contentDescription="Close Button"
+                />
+
+            <TextView
+                android:id="@+id/titleTripDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trip details"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true" />
+
+            <ImageButton
+                android:id="@+id/buttonHelp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/info_45dp"
+                android:background="@null"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="Info"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageMap"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+             />
+<!--        android:src="@drawable/placeholder"-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="Trip Information">
+
+            <LinearLayout
+                android:id="@+id/containerTripSegments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp" />
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
