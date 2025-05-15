@@ -34,7 +34,7 @@ public class InfoDialogFragment extends DialogFragment {
                 .create();
 
         ivClose.setOnClickListener(v -> dialog.dismiss());
-        gotIt   .setOnClickListener(v -> dialog.dismiss());
+        gotIt.setOnClickListener(v -> dialog.dismiss());
         dontShow.setOnClickListener(v -> {
             // TODO: implement “don’t show again”
             dialog.dismiss();
