@@ -1,27 +1,19 @@
 package com.example.m3_app.ui.activity_center;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
 import com.example.m3_app.databinding.FragmentActivityCenterBinding;
-import com.example.m3_app.databinding.FragmentMapSpecifiedBinding;
-import com.example.m3_app.ui.route_card.RouteCard;
-import com.example.m3_app.ui.route_card.RouteCardAdapter;
 import com.example.m3_app.ui.route_map.RouteMapAdapter;
 import com.example.m3_app.ui.route_map.RouteMapCard;
 

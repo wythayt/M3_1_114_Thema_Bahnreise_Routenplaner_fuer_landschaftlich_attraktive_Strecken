@@ -12,6 +12,7 @@
         android:id="@+id/imageMap"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:contentDescription="Map"
         android:scaleType="centerCrop" />
 
     <RelativeLayout
@@ -59,6 +60,7 @@
             android:background="@drawable/bg_circle"
             android:src="@drawable/baseline_arrow_right_alt_24"
             android:layout_alignParentEnd="true"
+            android:contentDescription="Get-in Button"
             />
     </RelativeLayout>
 </LinearLayout>
