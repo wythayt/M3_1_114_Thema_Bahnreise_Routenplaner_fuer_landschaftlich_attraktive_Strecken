@@ -27,6 +27,10 @@ public class SuggestionsFragment extends Fragment {
 
     private FragmentSuggestionsBinding binding;
 
+    public SuggestionsFragment() {
+        super(R.layout.fragment_suggestions);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,

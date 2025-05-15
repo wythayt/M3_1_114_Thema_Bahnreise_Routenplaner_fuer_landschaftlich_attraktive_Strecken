@@ -28,6 +28,10 @@ import java.util.Objects;
 public class SearchFragmentTest extends Fragment {
     private FragmentSearchTestBinding binding;
 
+    public SearchFragmentTest() {
+        super(R.layout.fragment_search_test);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSearchTestBinding.inflate(inflater, container, false);

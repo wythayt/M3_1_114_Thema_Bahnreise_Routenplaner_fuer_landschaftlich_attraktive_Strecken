@@ -26,6 +26,10 @@ import java.util.Objects;
 public class MapNotSpecifiedFragment extends Fragment {
     private FragmentMapNotSpecifiedBinding binding;
 
+    public MapNotSpecifiedFragment() {
+        super(R.layout.fragment_map_not_specified);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,

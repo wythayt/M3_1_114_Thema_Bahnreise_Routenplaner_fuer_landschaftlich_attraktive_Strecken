@@ -25,6 +25,10 @@ public class SearchResultsFragment extends Fragment {
 
     private FragmentSearchResultsBinding binding;
 
+    public SearchResultsFragment() {
+        super(R.layout.fragment_search_results);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
