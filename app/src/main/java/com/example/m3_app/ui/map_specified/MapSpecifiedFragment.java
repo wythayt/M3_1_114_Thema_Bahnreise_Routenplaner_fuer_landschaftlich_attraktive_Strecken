@@ -47,6 +47,11 @@ public class MapSpecifiedFragment extends Fragment {
             navController.navigate(R.id.searchFragmentTest);
         });
 
+        binding.button5.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.searchResultsFragment);
+        });
+
         return view;
     }
 

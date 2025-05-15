@@ -23,4 +23,9 @@
         android:name="com.example.m3_app.ui.suggestions.SuggestionsFragment"
         android:label="Suggestions" />
 
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.example.m3_app.ui.search_results.SearchResultsFragment"
+        android:label="Search Results" />
+
 </navigation>
