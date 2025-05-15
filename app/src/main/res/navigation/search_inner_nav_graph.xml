@@ -1,0 +1,21 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_inner_nav_graph"
+    app:startDestination="@id/searchFragmentTest">
+
+    <fragment
+        android:id="@+id/searchFragmentTest"
+        android:name="com.example.m3_app.ui.search_test.SearchFragmentTest"
+        android:label="Search Test" />
+
+    <fragment
+        android:id="@+id/mapSpecifiedFragment"
+        android:name="com.example.m3_app.ui.map_specified.MapSpecifiedFragment"
+        android:label="Map Specified" />
+
+    <fragment
+        android:id="@+id/mapNotSpecifiedFragment"
+        android:name="com.example.m3_app.ui.map_not_specified.MapNotSpecifiedFragment"
+        android:label="Map Not Specified" />
+
+</navigation>
