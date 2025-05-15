@@ -59,9 +59,6 @@ public class MapNotSpecifiedFragment extends Fragment {
 
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
 
-        assert activity.getSupportActionBar() != null;
-        activity.getSupportActionBar().show();
-
         View navBar = activity.findViewById(R.id.nav_view);
         assert navBar != null;
         navBar.setVisibility(View.VISIBLE);
