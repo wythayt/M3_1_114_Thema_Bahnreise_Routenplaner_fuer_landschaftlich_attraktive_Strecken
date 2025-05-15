@@ -14,10 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.databinding.FragmentSearchTestBinding;
 import com.example.m3_app.R;
+import com.example.m3_app.ui.route_card.RouteCard;
+import com.example.m3_app.ui.route_card.RouteCardAdapter;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class SearchFragmentTest extends Fragment {
@@ -58,6 +63,14 @@ public class SearchFragmentTest extends Fragment {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.suggestionsFragment);
         });
+        List<RouteCard> cards = Arrays.asList(
+                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
+                new RouteCard("Through Forests", R.drawable.placeholder)
+        );
+
+        binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        RouteCardAdapter adapter = new RouteCardAdapter(cards);
+        binding.routeCardsRecycler.setAdapter(adapter);
 
         return root;
     }
