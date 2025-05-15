@@ -1,4 +1,4 @@
-package com.example.m3_app.ui.search;
+package com.example.m3_app.ui.search_test;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.m3_app.databinding.FragmentSearchTestBinding;
 import com.example.m3_app.R;
@@ -34,6 +36,17 @@ public class SearchFragmentTest extends Fragment {
             String to = binding.editTextTo2.getText().toString();
 
             Toast.makeText(getContext(), "From: " + from + ", To: " + to, Toast.LENGTH_SHORT).show();
+
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.mapSpecifiedFragment);
+
+            int checkedId = binding.radioGroup1.getCheckedRadioButtonId();
+
+            if (checkedId == R.id.radio_specific) {
+                navController.navigate(R.id.mapSpecifiedFragment);
+            } else {
+                navController.navigate(R.id.mapNotSpecifiedFragment);
+            }
         });
 
         return root;

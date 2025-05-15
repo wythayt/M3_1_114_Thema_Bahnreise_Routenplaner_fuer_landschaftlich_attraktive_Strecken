@@ -1,164 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff9f3">
+    tools:context=".ui.search.SearchFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/search_inner_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:navGraph="@navigation/search_inner_nav_graph"
+        app:defaultNavHost="false"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:background="#C4C4C4"
-            android:src="@drawable/placeholder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.028">
-
-            <RadioButton
-                android:id="@+id/radio_specific"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Specific Destination"
-                android:textSize="20sp"
-                tools:layout_editor_absoluteY="184dp" />
-
-            <RadioButton
-                android:id="@+id/radio_inspire"
-                android:layout_width="321dp"
-                android:layout_height="wrap_content"
-                android:text="Inspire me from here"
-                android:textSize="20sp"
-                tools:layout_editor_absoluteY="249dp" />
-
-        </RadioGroup>
-
-        <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
-
-            <EditText
-                android:id="@+id/editTextFrom1"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/searchbox_background"
-                android:ems="10"
-                android:hint="From"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textAlignment="gravity"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup1"
-                app:layout_constraintVertical_bias="0.029" />
-
-            <EditText
-                android:id="@+id/editTextTo2"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/searchbox_background"
-                android:ems="10"
-                android:hint="To"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextFrom1"
-                app:layout_constraintVertical_bias="0.055" />
-
-
-            <Button
-                android:id="@+id/searchButton"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_gravity="end"
-                android:backgroundTint="#f04b4b"
-                android:text="Search"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Suggestions"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See all ->"
-                android:textColor="@color/red"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingTop="10dp">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="164dp"
-                android:layout_height="101dp"
-                android:background="@drawable/searchbox_background"
-                app:srcCompat="@drawable/placeholder" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="164dp"
-                android:layout_height="101dp"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/searchbox_background"
-                app:srcCompat="@drawable/placeholder" />
-        </LinearLayout>
-    </LinearLayout>
-
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
