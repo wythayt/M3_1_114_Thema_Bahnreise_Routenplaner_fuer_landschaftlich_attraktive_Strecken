@@ -1,5 +1,6 @@
 package com.example.m3_app.ui.map_specified;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
 import com.example.m3_app.databinding.FragmentMapSpecifiedBinding;
+import com.example.m3_app.ui.filter.FiltersBottomSheet;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.Arrays;
 import java.util.List;
@@ -83,5 +86,22 @@ public class MapSpecifiedFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
+
+        MaterialButton filtersBtn = binding.button4;
+        ColorStateList defaultTint = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
+        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
+
+        filtersBtn.setOnClickListener(v -> {
+            new FiltersBottomSheet()
+                    .show(getParentFragmentManager(), "filters");
+            filtersBtn.setBackgroundTintList(highlightTint);
+        });
+
+        getParentFragmentManager().addOnBackStackChangedListener(() -> {
+            boolean sheetVisible = getParentFragmentManager().findFragmentByTag("filters") != null;
+            if (!sheetVisible) {
+                filtersBtn.setBackgroundTintList(defaultTint);
+            }
+        });
     }
 }
