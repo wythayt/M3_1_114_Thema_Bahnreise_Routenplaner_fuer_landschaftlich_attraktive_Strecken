@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="190dp"
             android:background="#C4C4C4"
+            android:contentDescription="Header Image"
             android:src="@drawable/placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +30,12 @@
 
         <RadioGroup
             android:id="@+id/radioGroup1"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingTop="18dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +54,7 @@
 
             <RadioButton
                 android:id="@+id/radio_inspire"
-                android:layout_width="321dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Inspire me from here"
                 android:textSize="20sp"
@@ -60,12 +63,11 @@
         </RadioGroup>
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:padding="18dp">
 
             <EditText
                 android:id="@+id/editTextFrom1"
@@ -73,6 +75,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
+                android:autofillHints="Vienna"
                 android:background="@drawable/searchbox_background"
                 android:ems="10"
                 android:hint="From"
@@ -92,6 +95,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="12dp"
+                android:autofillHints=""
                 android:background="@drawable/searchbox_background"
                 android:ems="10"
                 android:hint="To"
@@ -116,10 +120,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:paddingEnd="18dp"
+            android:paddingStart="18dp">
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="0dp"
@@ -138,17 +144,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:padding="18dp">
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="164dp"
                 android:layout_height="101dp"
                 android:background="@drawable/searchbox_background"
+                android:contentDescription="Route Image"
                 app:srcCompat="@drawable/placeholder" />
 
             <ImageView
@@ -157,6 +164,7 @@
                 android:layout_height="101dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/searchbox_background"
+                android:contentDescription="Route Image"
                 app:srcCompat="@drawable/placeholder" />
         </LinearLayout>
     </LinearLayout>
