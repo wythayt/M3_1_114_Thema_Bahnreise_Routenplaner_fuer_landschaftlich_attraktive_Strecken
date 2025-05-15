@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="12dp"
-    android:background="#e3efdd"
+    android:background="@drawable/card_backgroud"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -60,6 +60,5 @@
             android:src="@drawable/baseline_arrow_right_alt_24"
             android:layout_alignParentEnd="true"
             />
-        <!--            android:visibility="gone"-->
     </RelativeLayout>
 </LinearLayout>
