@@ -8,7 +8,7 @@
     android:background="#fff9f3">
 
     <LinearLayout
-        android:id="@+id/linearLayotSearch"
+        android:id="@+id/linearLayoutSearchSub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -151,7 +151,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/routeCardsRecycler"
         android:layout_width="match_parent"
-        android:layout_height="176dp"
+        android:layout_height="185dp"
         android:contentDescription="Suggestions list"
         android:orientation="horizontal"
         android:padding="0dp"
@@ -160,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayotSearch"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearchSub"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_route_card" />
 

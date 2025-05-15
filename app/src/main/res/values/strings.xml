@@ -5,4 +5,5 @@
     <string name="title_activity_center">Activity Center</string>
     <string name="title_search">Search</string>
     <string name="button_book_ticket">Book Tickets</string>
+    <string name="title_ratings">Ratings</string>
 </resources>

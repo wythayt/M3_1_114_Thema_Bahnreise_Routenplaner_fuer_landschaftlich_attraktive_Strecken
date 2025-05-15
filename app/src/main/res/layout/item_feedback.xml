@@ -79,20 +79,30 @@
                 android:id="@+id/textViewType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scenery type"
+                android:text="User's photos:"
+                android:layout_marginVertical="10dp"
                 android:textColor="#666"
                 android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/searchbox_background"
+                    android:src="@drawable/placeholder" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/searchbox_background"
+                    android:src="@drawable/placeholder"/>
+            </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/buttonBook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:backgroundTint="#f04b4b"
-            android:text="Book Ticket"
-            android:visibility="gone" />
-
 
     </RelativeLayout>
 
