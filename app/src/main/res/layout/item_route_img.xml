@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="12dp"
-    android:background="#e3efdd"
+    android:background="@drawable/card_background"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -15,14 +15,16 @@
             android:id="@+id/imageRoute"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="image"
             android:scaleType="centerCrop" />
 
         <ImageButton
             android:id="@+id/buttonLike"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_margin="5dp"
             android:background="@null"
+            android:contentDescription="like"
             android:src="@drawable/ic_favorite_24dp" />
 
     </FrameLayout>
@@ -59,11 +61,10 @@
             android:id="@+id/buttonBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book Ticket"
             android:layout_alignParentEnd="true"
             android:backgroundTint="#f04b4b"
-            />
-        <!--            android:visibility="gone"-->
+            android:text="Book Ticket"
+            android:visibility="gone" />
 
 
     </RelativeLayout>

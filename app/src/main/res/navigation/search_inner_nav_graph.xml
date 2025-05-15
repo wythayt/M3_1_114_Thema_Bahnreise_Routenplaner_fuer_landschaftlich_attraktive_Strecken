@@ -18,4 +18,9 @@
         android:name="com.example.m3_app.ui.map_not_specified.MapNotSpecifiedFragment"
         android:label="Map Not Specified" />
 
+    <fragment
+        android:id="@+id/suggestionsFragment"
+        android:name="com.example.m3_app.ui.suggestions.SuggestionsFragment"
+        android:label="Suggestions" />
+
 </navigation>
