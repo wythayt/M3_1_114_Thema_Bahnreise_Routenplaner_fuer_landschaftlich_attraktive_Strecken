@@ -26,6 +26,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
+
 public class MapSpecifiedFragment extends Fragment {
     private FragmentMapSpecifiedBinding binding;
 
@@ -48,6 +50,20 @@ public class MapSpecifiedFragment extends Fragment {
         binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         RouteCardAdapter adapter = new RouteCardAdapter(cards);
         binding.routeCardsRecycler.setAdapter(adapter);
+
+        MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
+        String startLocation = args.getFrom();
+        String endLocation = args.getTo();
+
+        if (startLocation == null || startLocation.isEmpty()) {
+            startLocation = "Start Location";
+        }
+        if (endLocation == null || endLocation.isEmpty()) {
+            endLocation = "End Destination";
+        }
+
+        binding.textView2.setText(startLocation);
+        binding.textView3.setText(endLocation);
 
         binding.button3.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);

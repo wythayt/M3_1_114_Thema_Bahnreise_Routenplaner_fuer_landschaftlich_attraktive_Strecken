@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
 import com.example.m3_app.databinding.FragmentMapNotSpecifiedBinding;
+import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
 
@@ -45,6 +46,20 @@ public class MapNotSpecifiedFragment extends Fragment {
         binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         RouteCardAdapter adapter = new RouteCardAdapter(cards);
         binding.routeCardsRecycler.setAdapter(adapter);
+
+        MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
+        String startLocation = args.getFrom();
+        String endLocation = args.getTo();
+
+        if (startLocation == null || startLocation.isEmpty()) {
+            startLocation = "Start Location";
+        }
+        if (endLocation == null || endLocation.isEmpty()) {
+            endLocation = "End Destination";
+        }
+
+        binding.textView2.setText(startLocation);
+        binding.textView3.setText(endLocation);
 
         binding.button3.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);

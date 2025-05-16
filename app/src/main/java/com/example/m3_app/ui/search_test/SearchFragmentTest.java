@@ -20,6 +20,7 @@ import com.example.m3_app.databinding.FragmentSearchTestBinding;
 import com.example.m3_app.R;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
+import com.example.m3_app.ui.search_test.SearchFragmentTestDirections;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,14 +53,23 @@ public class SearchFragmentTest extends Fragment {
             Toast.makeText(getContext(), "From: " + from + ", To: " + to, Toast.LENGTH_SHORT).show();
 
             NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.mapSpecifiedFragment);
 
             int checkedId = binding.radioGroup1.getCheckedRadioButtonId();
 
+            //TODO: error popup-window + retry
             if (checkedId == R.id.radio_specific) {
-                navController.navigate(R.id.mapSpecifiedFragment);
+                SearchFragmentTestDirections.ActionSearchFragmentTestToMapSpecifiedFragment action =
+                        SearchFragmentTestDirections
+                                .actionSearchFragmentTestToMapSpecifiedFragment(from, to);
+
+                navController.navigate(action);
+                //navController.navigate(R.id.mapSpecifiedFragment);
             } else {
-                navController.navigate(R.id.mapNotSpecifiedFragment);
+                SearchFragmentTestDirections.ActionSearchFragmentTestToMapNotSpecifiedFragment action =
+                        SearchFragmentTestDirections
+                                .actionSearchFragmentTestToMapNotSpecifiedFragment(from, to);
+                navController.navigate(action);
+                //navController.navigate(R.id.mapNotSpecifiedFragment);
             }
         });
 

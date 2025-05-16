@@ -6,17 +6,39 @@
     <fragment
         android:id="@+id/searchFragmentTest"
         android:name="com.example.m3_app.ui.search_test.SearchFragmentTest"
-        android:label="Search Test" />
+        android:label="Search Test">
+
+        <action
+            android:id="@+id/action_searchFragmentTest_to_mapSpecifiedFragment"
+            app:destination="@id/mapSpecifiedFragment">
+            <argument android:name="from" app:argType="string" />
+            <argument android:name="to" app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_searchFragmentTest_to_mapNotSpecifiedFragment"
+            app:destination="@id/mapNotSpecifiedFragment">
+            <argument android:name="from" app:argType="string" />
+            <argument android:name="to" app:argType="string" />
+        </action>
+
+    </fragment>
 
     <fragment
         android:id="@+id/mapSpecifiedFragment"
         android:name="com.example.m3_app.ui.map_specified.MapSpecifiedFragment"
-        android:label="Map Specified" />
+        android:label="Map Specified">
+        <argument android:name="from" app:argType="string" />
+        <argument android:name="to" app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/mapNotSpecifiedFragment"
         android:name="com.example.m3_app.ui.map_not_specified.MapNotSpecifiedFragment"
-        android:label="Map Not Specified" />
+        android:label="Map Not Specified">
+        <argument android:name="from" app:argType="string" />
+        <argument android:name="to" app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/suggestionsFragment"
