@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
@@ -33,16 +36,33 @@ public class SearchResultsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requireActivity()
+                .getOnBackPressedDispatcher()
+                .addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+                    @Override
+                    public void handleOnBackPressed() {
+                        NavController navController = NavHostFragment.findNavController(requireParentFragment());
+                        navController.navigateUp();
+                    }
+                });
         binding = FragmentSearchResultsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         List<RouteImgCard> cards = Arrays.asList(
                 new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river"),
-                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest")
+                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest"),
+                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river")
+
         );
 
         binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.RecyclerView.setAdapter(new RouteImgAdapter(cards));
+
+        binding.back.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(requireParentFragment());
+            navController.navigateUp();
+        });
 
         return view;
     }
