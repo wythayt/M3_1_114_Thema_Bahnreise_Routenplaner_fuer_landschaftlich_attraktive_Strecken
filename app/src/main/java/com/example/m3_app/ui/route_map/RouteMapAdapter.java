@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_app.R;
+import com.example.m3_app.ui.route_img.RouteImgAdapter;
+import com.example.m3_app.ui.route_img.RouteImgCard;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,11 +25,17 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class RouteMapAdapter extends RecyclerView.Adapter<com.example.m3_app.ui.route_map.RouteMapAdapter.ViewHolder> {
+    public interface OnRouteClickListener {
+        void onRouteClick(RouteMapCard card);
+    }
 
     private final List<RouteMapCard> routeMapCards;
+    private final OnRouteClickListener listener;
 
-    public RouteMapAdapter(List<RouteMapCard> routeMapCards) {
+
+    public RouteMapAdapter(List<RouteMapCard> routeMapCards, OnRouteClickListener listener) {
         this.routeMapCards = routeMapCards;
+        this.listener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -35,9 +43,11 @@ public class RouteMapAdapter extends RecyclerView.Adapter<com.example.m3_app.ui.
         TextView titleView, dateView;
         Button pastButton;
         ImageButton upcomingButton;
+        View view;
 
         public ViewHolder(View view) {
             super(view);
+            this.view = view;
             imageView = view.findViewById(R.id.imageMap);
             titleView = view.findViewById(R.id.textTitle);
             dateView = view.findViewById(R.id.textDate);
@@ -66,13 +76,25 @@ public class RouteMapAdapter extends RecyclerView.Adapter<com.example.m3_app.ui.
         LocalDate today = LocalDate.now();
         LocalDate cardDate = LocalDate.parse(card.date, formatter);
 
-        if(cardDate.isBefore(today)) {
+        if (!cardDate.isBefore(today)) {
             holder.upcomingButton.setVisibility(View.VISIBLE);
             holder.pastButton.setVisibility(View.GONE);
         } else {
             holder.upcomingButton.setVisibility(View.GONE);
             holder.pastButton.setVisibility(View.VISIBLE);
         }
+
+        holder.upcomingButton.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onRouteClick(card);
+            }
+        });
+
+        holder.pastButton.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onRouteClick(card);
+            }
+        });
     }
 
     @Override

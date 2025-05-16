@@ -29,4 +29,9 @@
         android:label="@string/title_help"
         tools:layout="@layout/fragment_help" />
 
+    <fragment
+        android:id="@+id/tripDetailsFragment"
+        android:name="com.example.m3_app.ui.trip_details.TripDetailsFragment"
+        android:label="Trip Details" />
+
 </navigation>

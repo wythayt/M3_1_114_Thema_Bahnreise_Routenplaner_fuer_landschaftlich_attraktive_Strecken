@@ -17,13 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
-import com.example.m3_app.databinding.FragmentSearchResultsBinding;
 import com.example.m3_app.databinding.FragmentTripDetailsBinding;
-import com.example.m3_app.ui.route_img.RouteImgAdapter;
-import com.example.m3_app.ui.route_img.RouteImgCard;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +36,10 @@ public class TripDetailsFragment extends Fragment {
     private ImageButton buttonClose;
     private ImageButton buttonHelp;
     private ImageView imageMap;
+    private TextView endStop;
     private LinearLayout containerTripSegments;
+
+    private boolean isFirstSegment = true;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -63,6 +62,7 @@ public class TripDetailsFragment extends Fragment {
         buttonHelp = view.findViewById(R.id.buttonHelp);
         imageMap = view.findViewById(R.id.imageMap);
         containerTripSegments = view.findViewById(R.id.containerTripSegments);
+        endStop = view.findViewById(R.id.endStop);
 
         imageMap.setImageResource(R.drawable.placeholder);
 
@@ -73,12 +73,22 @@ public class TripDetailsFragment extends Fragment {
         addSegment("Vienna Hbf", "Railjet RJX 160", Arrays.asList("St. Pölten Hbf", "Amstetten"));
         addSegment("Amstetten", "EC 62", Arrays.asList("Linz", "Salzburg", "Innsbruck"));
 
+        endStop.setText("Innsbruck");
 
         return view;
     }
 
     private void addSegment(String stationName, String trainName, List<String> stops) {
-        View segmentView = getLayoutInflater().inflate(R.layout.route_segment, containerTripSegments, false);
+        LayoutInflater inflater = getLayoutInflater();
+
+        if (!isFirstSegment) {
+            View connectionView = inflater.inflate(R.layout.route_connection, containerTripSegments, false);
+            TextView connectionText = (TextView) connectionView;
+            connectionText.setText("Layover: 13 min\nTransfer to the connecting Railjet");
+            containerTripSegments.addView(connectionText);
+        }
+
+        View segmentView = inflater.inflate(R.layout.route_segment, containerTripSegments, false);
 
         TextView stationNameView = segmentView.findViewById(R.id.textStationName);
         TextView trainNameView = segmentView.findViewById(R.id.textTrainName);
@@ -109,6 +119,7 @@ public class TripDetailsFragment extends Fragment {
         });
 
         containerTripSegments.addView(segmentView);
+        isFirstSegment = false;
     }
 
     @Override

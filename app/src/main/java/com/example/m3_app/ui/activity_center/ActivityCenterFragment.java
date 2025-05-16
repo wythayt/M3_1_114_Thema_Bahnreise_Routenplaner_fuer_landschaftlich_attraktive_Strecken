@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
@@ -64,10 +66,16 @@ public class ActivityCenterFragment extends Fragment {
         }
 
         binding.RecyclerViewUpcoming.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.RecyclerViewUpcoming.setAdapter(new RouteMapAdapter(upcomingCards));
+        binding.RecyclerViewUpcoming.setAdapter(new RouteMapAdapter(upcomingCards, card -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.tripDetailsFragment);
+        }));
 
         binding.RecyclerViewPast.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.RecyclerViewPast.setAdapter(new RouteMapAdapter(pastCards));
+        binding.RecyclerViewPast.setAdapter(new RouteMapAdapter(pastCards, card -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.tripDetailsFragment);
+        }));
 
         return view;
     }
