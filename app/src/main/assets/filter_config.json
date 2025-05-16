@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "imageResource": "sample_3_selected",
+      "fromDestination": "Vienna",
+      "toDestination": "Zurich",
+      "filter": {
+        "familyFun": false,
+        "historyHeritage": false,
+        "artCulture": false
+      }
+    },
+
+    {
+      "imageResource": "sample_2_selected",
+      "fromDestination": "Vienna",
+      "toDestination": "Zurich",
+      "filter": {
+        "familyFun": true,
+        "historyHeritage": false,
+        "artCulture": false
+      }
+    },
+
+    {
+      "imageResource": "sample_1_selected",
+      "fromDestination": "Vienna",
+      "toDestination": "Zurich",
+      "filter": {
+        "familyFun": true,
+        "historyHeritage": true,
+        "artCulture": true
+      }
+    }
+  ]
+}

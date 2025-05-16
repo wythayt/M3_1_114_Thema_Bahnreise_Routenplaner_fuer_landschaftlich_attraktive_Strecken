@@ -54,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Family Fun"
+            android:tag="familyFun"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -62,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="History/heritage"
+            android:tag="historyHeritage"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -70,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Art and Culture"
+            android:tag="artCulture"
             app:checkedIconVisible="false"/>
     </com.google.android.material.chip.ChipGroup>
 
@@ -93,6 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Audio Guide"
+            android:tag="audioGuide"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -101,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Transfers"
+            android:tag="noTransfers"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -109,6 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="With Sights"
+            android:tag="withSights"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -117,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Top Rated"
+            android:tag="topRated"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -125,6 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Barrier Free"
+            android:tag="barrierFree"
             app:checkedIconVisible="false"/>
     </com.google.android.material.chip.ChipGroup>
 
@@ -148,6 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Along the river"
+            android:tag="alongTheRiver"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -156,6 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forest"
+            android:tag="forest"
             app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
@@ -164,6 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mountains"
+            android:tag="mountains"
             app:checkedIconVisible="false"/>
     </com.google.android.material.chip.ChipGroup>
 </LinearLayout>

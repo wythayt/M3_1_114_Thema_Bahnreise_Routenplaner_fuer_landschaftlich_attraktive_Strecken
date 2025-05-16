@@ -1,6 +1,7 @@
 package com.example.m3_app.ui.map_specified;
 
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,19 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
+import com.example.m3_app.backend.RouteConfig;
+import com.example.m3_app.backend.utility.RouteFilterUtil;
 import com.example.m3_app.databinding.FragmentMapSpecifiedBinding;
+import com.example.m3_app.ui.filter.FilterViewModel;
 import com.example.m3_app.ui.filter.FiltersBottomSheet;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
@@ -90,6 +96,7 @@ public class MapSpecifiedFragment extends Fragment {
         navBar.setVisibility(View.VISIBLE);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.VANILLA_ICE_CREAM)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -123,5 +130,34 @@ public class MapSpecifiedFragment extends Fragment {
                 filtersBtn.setBackgroundTintList(defaultTint);
             }
         });
+
+        MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
+        String startLocation = args.getFrom();
+        String endLocation = args.getTo();
+
+        FilterViewModel filterVm = new ViewModelProvider(requireActivity())
+                .get(FilterViewModel.class);
+
+        MapSpecifiedViewModel mapVm = new ViewModelProvider(this,
+                new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication()))
+                .get(MapSpecifiedViewModel.class);
+
+        filterVm.getSelectedChips().observe(getViewLifecycleOwner(), selectedChips -> {
+            List<RouteConfig.Route> allRoutes = mapVm.getAllRoutes().getValue();
+            if (allRoutes == null) return;
+
+            List<RouteConfig.Route> matches =
+                    RouteFilterUtil.filterByChips(allRoutes, selectedChips, startLocation, endLocation);
+
+            if (!matches.isEmpty()) {
+                RouteConfig.Route chosenRoute = matches.isEmpty() ? allRoutes.get(0) : matches.get(0);
+                int resId = requireContext().getResources()
+                        .getIdentifier(chosenRoute.imageResource, "drawable", requireContext().getPackageName());
+                binding.imageView7.setImageResource(resId);
+            } else {
+                binding.imageView7.setImageResource(R.drawable.placeholder);
+            }
+        });
+
     }
 }

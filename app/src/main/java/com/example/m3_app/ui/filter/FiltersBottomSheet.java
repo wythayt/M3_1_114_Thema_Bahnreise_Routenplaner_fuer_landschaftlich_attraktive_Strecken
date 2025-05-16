@@ -41,12 +41,12 @@ public class FiltersBottomSheet extends BottomSheetDialogFragment {
                 .map(child -> (Chip) child)
                 .collect(Collectors.toList());
 
-        viewModel.getSelectedChips().observe(getViewLifecycleOwner(), selected -> allChips.forEach(chip
-                -> chip.setChecked(selected.contains(chip.getText().toString()))));
+        viewModel.getSelectedChips().observe(getViewLifecycleOwner(), selected ->
+                allChips.forEach(chip -> chip.setChecked(selected.contains(chip.getTag().toString()))));
 
         allChips.forEach(chip ->
-                chip.setOnCheckedChangeListener((c, checked) -> viewModel.updateChip(c.getText().toString(), checked)));
-
+                chip.setOnCheckedChangeListener((c, checked) ->
+                        viewModel.updateChip(c.getTag().toString(), checked)));
         return binding.getRoot();
     }
 
