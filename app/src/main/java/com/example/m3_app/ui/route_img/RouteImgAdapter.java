@@ -9,15 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_app.R;
 
 import java.util.List;
-import java.util.Objects;
 
 public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHolder> {
 
@@ -39,7 +35,7 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
         ImageButton likeButton;
         View cardView;
 
-        //        Button pastButton;
+        Button pastButton;
         public ViewHolder(View view) {
             super(view);
             cardView = view;
@@ -47,6 +43,7 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
             titleView = view.findViewById(R.id.textTitle);
             categoryView = view.findViewById(R.id.textViewType);
             likeButton = view.findViewById(R.id.buttonLike);
+            pastButton = view.findViewById(R.id.buttonBook);
         }
     }
 
@@ -56,6 +53,15 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
         holder.titleView.setText(card.title);
         holder.categoryView.setText(card.category);
         holder.imageView.setImageResource(card.imageId);
+
+        if (card.favourite) {
+            holder.likeButton.setImageResource(R.drawable.baseline_favorite_24);
+            holder.pastButton.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.likeButton.setImageResource(R.drawable.ic_favorite_24dp);
+            holder.pastButton.setVisibility(View.GONE);
+        }
 
 //        holder.likeButton.setOnClickListener(v -> {
 //            // Handle like logic here

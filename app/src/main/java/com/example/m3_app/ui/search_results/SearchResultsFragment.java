@@ -50,9 +50,9 @@ public class SearchResultsFragment extends Fragment {
         View view = binding.getRoot();
 
         List<RouteImgCard> cards = Arrays.asList(
-                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river"),
-                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest"),
-                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river")
+                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", false),
+                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest", false),
+                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", false)
 
         );
 

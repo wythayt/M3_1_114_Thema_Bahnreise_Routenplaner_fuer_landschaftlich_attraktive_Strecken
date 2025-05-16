@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.account.FavouritesFragment">
+    tools:context=".ui.favourites.FavouritesFragment">
 
     <ScrollView
         android:id="@+id/scroll_search_results"
@@ -22,18 +22,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#fffcf9"
                 android:orientation="vertical"
-                android:padding="16dp">
+                app:layout_constraintGuide_percent="0.95" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Back" />
-            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/back"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_text_bold"
+                android:text="Back"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:icon="@drawable/arrow_back_ios_24px"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Favourites"
-                    android:textSize="30sp" />
+                    android:textSize="50sp" />
 
                 <ImageButton
                     android:layout_width="48dp"

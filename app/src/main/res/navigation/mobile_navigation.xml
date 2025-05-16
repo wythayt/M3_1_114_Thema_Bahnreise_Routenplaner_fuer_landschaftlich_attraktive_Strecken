@@ -34,4 +34,19 @@
         android:name="com.example.m3_app.ui.trip_details.TripDetailsFragment"
         android:label="Trip Details" />
 
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.m3_app.ui.favourites.FavouritesFragment"
+        android:label="Favourites" />
+
+    <fragment
+        android:id="@+id/ratingsFragment"
+        android:name="com.example.m3_app.ui.ratings.RatingsFragment"
+        android:label="Ratings"/>
+
+    <fragment
+        android:id="@+id/routeDetailsFragment"
+        android:name="com.example.m3_app.ui.route_details.RouteDetailsFragment"
+        android:label="Route Details" />
+
 </navigation>

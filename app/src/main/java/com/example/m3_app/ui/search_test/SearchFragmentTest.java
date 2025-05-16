@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +20,6 @@ import com.example.m3_app.databinding.FragmentSearchTestBinding;
 import com.example.m3_app.R;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
-import com.example.m3_app.ui.search_test.SearchFragmentTestDirections;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.m3_app.ui.suggestions;
+package com.example.m3_app.ui.favourites;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
-import com.example.m3_app.databinding.FragmentSuggestionsBinding;
+import com.example.m3_app.databinding.FragmentFavouritesBinding;
 import com.example.m3_app.ui.route_img.RouteImgAdapter;
 import com.example.m3_app.ui.route_img.RouteImgCard;
 
@@ -24,11 +24,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class SuggestionsFragment extends Fragment {
+public class FavouritesFragment extends Fragment {
 
-    private FragmentSuggestionsBinding binding;
+    private FragmentFavouritesBinding binding;
 
-    public SuggestionsFragment() {
+    public FavouritesFragment() {
         super(R.layout.fragment_suggestions);
     }
 
@@ -46,13 +46,13 @@ public class SuggestionsFragment extends Fragment {
                         navController.navigateUp();
                     }
                 });
-        binding = FragmentSuggestionsBinding.inflate(inflater, container, false);
+        binding = FragmentFavouritesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
 
         List<RouteImgCard> cards = Arrays.asList(
-                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", false),
-                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest", false)
+                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", true),
+                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest", true)
         );
 
         binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
