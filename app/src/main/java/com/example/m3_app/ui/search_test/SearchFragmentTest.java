@@ -1,5 +1,6 @@
 package com.example.m3_app.ui.search_test;
 
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -50,14 +51,19 @@ public class SearchFragmentTest extends Fragment {
             String from = binding.editTextFrom1.getText().toString();
             String to = binding.editTextTo2.getText().toString();
 
-            Toast.makeText(getContext(), "From: " + from + ", To: " + to, Toast.LENGTH_SHORT).show();
-
             NavController navController = NavHostFragment.findNavController(this);
 
             int checkedId = binding.radioGroup1.getCheckedRadioButtonId();
 
+
             //TODO: error popup-window + retry
             if (checkedId == R.id.radio_specific) {
+                if (from.isEmpty() || to.isEmpty()) {
+                    new AlertDialog.Builder(requireContext()).setTitle("Missing Input")
+                            .setMessage("Please enter both 'From' and 'End' stations")
+                            .setPositiveButton("OK", null).show();
+                    return;
+                }
                 SearchFragmentTestDirections.ActionSearchFragmentTestToMapSpecifiedFragment action =
                         SearchFragmentTestDirections
                                 .actionSearchFragmentTestToMapSpecifiedFragment(from, to);
@@ -65,6 +71,12 @@ public class SearchFragmentTest extends Fragment {
                 navController.navigate(action);
                 //navController.navigate(R.id.mapSpecifiedFragment);
             } else {
+                if (from.isEmpty()) {
+                    new AlertDialog.Builder(requireContext()).setTitle("Missing Input")
+                            .setMessage("Please enter 'From' station")
+                            .setPositiveButton("OK", null).show();
+                    return;
+                }
                 SearchFragmentTestDirections.ActionSearchFragmentTestToMapNotSpecifiedFragment action =
                         SearchFragmentTestDirections
                                 .actionSearchFragmentTestToMapNotSpecifiedFragment(from, to);
