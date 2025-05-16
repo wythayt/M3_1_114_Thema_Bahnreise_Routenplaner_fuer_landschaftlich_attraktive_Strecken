@@ -2,34 +2,92 @@
   "routes": [
     {
       "imageResource": "sample_3_selected",
+      "title": "Through Alps",
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
+      "stations": [
+        "St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
+        "Leichtenstein"
+      ],
+      "journeyTime": "8h 23min",
+      "cost": "135",
+      "distance": "780 km",
+      "transportOperator": [
+        "ÖBB"
+      ],
+      "rating": "4.9",
       "filter": {
         "familyFun": false,
         "historyHeritage": false,
-        "artCulture": false
+        "artCulture": false,
+        "noTransfer": false,
+        "audioGuide": false,
+        "withSights": false,
+        "topRated": false,
+        "barrierFree": true,
+        "alongTheRiver": false,
+        "forest": false,
+        "mountains": true
       }
     },
 
     {
       "imageResource": "sample_2_selected",
+      "title": "Bavarian Bliss",
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
+      "stations": [
+        "Linz", "Munich", "Memmingen", "Lindau"
+      ],
+      "journeyTime": "8h 30min",
+      "cost": "168",
+      "distance": "810 km",
+      "transportOperator": [
+        "DB"
+      ],
+      "rating": "4.7",
       "filter": {
         "familyFun": true,
         "historyHeritage": false,
-        "artCulture": false
+        "artCulture": false,
+        "noTransfer": true,
+        "audioGuide": false,
+        "withSights": true,
+        "topRated": false,
+        "barrierFree": true,
+        "alongTheRiver": false,
+        "forest": false,
+        "mountains": true
       }
     },
 
     {
       "imageResource": "sample_1_selected",
+      "title": "To Graz Through Tunnels",
       "fromDestination": "Vienna",
-      "toDestination": "Zurich",
+      "toDestination": "Graz",
+      "stations": [
+        "Wr.Neustadt", "Mürzzuschlag", "Kapfenberg", "Bruck/Mur"
+      ],
+      "journeyTime": "2h 54min",
+      "cost": "42",
+      "distance": "168 km",
+      "transportOperator": [
+        "ÖBB"
+      ],
+      "rating": "5.0",
       "filter": {
         "familyFun": true,
         "historyHeritage": true,
-        "artCulture": true
+        "artCulture": false,
+        "noTransfer": true,
+        "audioGuide": false,
+        "withSights": false,
+        "topRated": true,
+        "barrierFree": true,
+        "alongTheRiver": false,
+        "forest": true,
+        "mountains": true
       }
     }
   ]
