@@ -1,4 +1,4 @@
-package com.example.m3_app.ui.suggestions;
+package com.example.m3_app.ui.route_details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,24 +13,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
-import com.example.m3_app.databinding.FragmentSuggestionsBinding;
-import com.example.m3_app.ui.route_img.RouteImgAdapter;
-import com.example.m3_app.ui.route_img.RouteImgCard;
+import com.example.m3_app.databinding.FragmentDetailsBinding;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
-public class SuggestionsFragment extends Fragment {
+public class RouteDetailsFragment extends Fragment {
 
-    private FragmentSuggestionsBinding binding;
+    private FragmentDetailsBinding binding;
 
-    public SuggestionsFragment() {
-        super(R.layout.fragment_suggestions);
+    public RouteDetailsFragment() {
+        super(R.layout.fragment_details);
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,25 +42,8 @@ public class SuggestionsFragment extends Fragment {
                         navController.navigateUp();
                     }
                 });
-        binding = FragmentSuggestionsBinding.inflate(inflater, container, false);
+        binding = FragmentDetailsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-
-        List<RouteImgCard> cards = Arrays.asList(
-                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river"),
-                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest")
-        );
-
-        binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.RecyclerView.setAdapter(new RouteImgAdapter(cards, card -> {
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.routeDetailsFragment);
-        }));
-
-        binding.back.setOnClickListener(v -> {
-            NavController navController = NavHostFragment.findNavController(requireParentFragment());
-            navController.navigateUp();
-        });
 
         return view;
     }

@@ -55,4 +55,14 @@
         android:name="com.example.m3_app.ui.trip_details.TripDetailsFragment"
         android:label="Trip Details" />
 
+    <fragment
+        android:id="@+id/routeDetailsFragment"
+        android:name="com.example.m3_app.ui.route_details.RouteDetailsFragment"
+        android:label="Route Details" />
+
+    <fragment
+        android:id="@+id/activityCenterFragment"
+        android:name="com.example.m3_app.ui.activity_center.ActivityCenterFragment"
+        android:label="Activity Center" />
+
 </navigation>

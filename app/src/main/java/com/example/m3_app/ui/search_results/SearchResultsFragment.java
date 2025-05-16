@@ -59,7 +59,7 @@ public class SearchResultsFragment extends Fragment {
         binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.RecyclerView.setAdapter(new RouteImgAdapter(cards, card -> {
             NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.tripDetailsFragment);
+            navController.navigate(R.id.routeDetailsFragment);
         }));
 
         binding.back.setOnClickListener(v -> {
