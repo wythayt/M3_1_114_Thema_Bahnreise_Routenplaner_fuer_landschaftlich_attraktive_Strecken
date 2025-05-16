@@ -1,5 +1,6 @@
 package com.example.m3_app.ui.ratings;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -29,6 +30,16 @@ public class RatingsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requireActivity()
+                .getOnBackPressedDispatcher()
+                .addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+                    @Override
+                    public void handleOnBackPressed() {
+                        NavController navController = NavHostFragment.findNavController(requireParentFragment());
+                        navController.navigateUp();
+                    }
+                });
         RatingsViewModel ratingsViewModel = new ViewModelProvider(this).get(RatingsViewModel.class);
 
         binding = FragmentRatingsBinding.inflate(inflater, container, false);
