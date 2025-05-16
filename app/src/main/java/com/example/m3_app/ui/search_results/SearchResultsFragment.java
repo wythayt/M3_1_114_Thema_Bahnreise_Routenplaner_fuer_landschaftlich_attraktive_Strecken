@@ -57,12 +57,20 @@ public class SearchResultsFragment extends Fragment {
         );
 
         binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.RecyclerView.setAdapter(new RouteImgAdapter(cards));
+        binding.RecyclerView.setAdapter(new RouteImgAdapter(cards, card -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.tripDetailsFragment);
+        }));
 
         binding.back.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(requireParentFragment());
             navController.navigateUp();
         });
+
+//        binding.RecyclerView.findViewById(R.id.cardRoute).setOnClickListener(v -> {
+//            NavController navController = NavHostFragment.findNavController(this);
+//            navController.navigate(R.id.tripDetailsFragment);
+//        });
 
         return view;
     }
