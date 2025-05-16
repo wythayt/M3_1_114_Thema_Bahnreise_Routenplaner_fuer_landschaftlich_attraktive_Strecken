@@ -131,6 +131,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4.0" />
@@ -221,6 +222,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/routeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
@@ -246,6 +248,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/journeyTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
@@ -282,6 +285,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/cost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
@@ -307,6 +311,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
@@ -339,6 +344,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/operators"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="4dp"
@@ -369,6 +375,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/stations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="4dp"
