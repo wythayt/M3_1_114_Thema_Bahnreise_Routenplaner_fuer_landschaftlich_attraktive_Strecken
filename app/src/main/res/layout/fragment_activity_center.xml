@@ -25,11 +25,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Activity Center"
-                android:textSize="50sp"
-                android:paddingHorizontal="16dp"
                 android:layout_marginTop="24dp"
-                />
+                android:paddingHorizontal="16dp"
+                android:text="Activity Center"
+                android:textSize="50sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

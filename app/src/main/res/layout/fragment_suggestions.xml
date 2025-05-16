@@ -41,10 +41,7 @@
                 android:textSize="15sp"
                 app:icon="@drawable/arrow_back_ios_24px"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline3"
-                app:layout_constraintStart_toStartOf="@+id/guideline4"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:iconPadding="0dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,7 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp" />
-            <!--android:visibility="gone"-->
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

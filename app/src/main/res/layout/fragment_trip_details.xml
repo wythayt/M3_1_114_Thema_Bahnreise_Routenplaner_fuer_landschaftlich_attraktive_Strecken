@@ -18,37 +18,35 @@
                 android:id="@+id/buttonClose"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/close_45dp"
                 android:background="@null"
                 android:contentDescription="Close Button"
-                />
+                android:src="@drawable/close_45dp" />
 
             <TextView
                 android:id="@+id/titleTripDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="Trip details"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_centerInParent="true" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/buttonHelp"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/info_45dp"
-                android:background="@null"
                 android:layout_alignParentEnd="true"
-                android:contentDescription="Info"/>
+                android:background="@null"
+                android:contentDescription="Info"
+                android:src="@drawable/info_45dp" />
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/imageMap"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"
-             />
-<!--        android:src="@drawable/placeholder"-->
+            android:scaleType="centerCrop" />
+        <!--        android:src="@drawable/placeholder"-->
 
         <ScrollView
             android:layout_width="match_parent"
