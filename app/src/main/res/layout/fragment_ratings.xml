@@ -115,12 +115,12 @@
                 android:layout_gravity="end"/>
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/FeedbackRecycler"
+                android:id="@+id/FeedbackRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="176dp"
+                android:layout_height="wrap_content"
                 android:contentDescription="Suggestions list"
                 android:orientation="horizontal"
-                android:padding="0dp"
+                android:paddingVertical="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_feedback" />
         </LinearLayout>

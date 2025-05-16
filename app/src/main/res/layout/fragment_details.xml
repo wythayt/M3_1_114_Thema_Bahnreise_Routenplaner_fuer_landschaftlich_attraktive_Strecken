@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/imageRoute">
 
                 <ImageView
@@ -170,6 +170,18 @@
                     android:contentDescription="Star"
                     android:src="@drawable/star_24px" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingHorizontal="20dp">
+            <TextView
+                android:id="@+id/seeMoreFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="See more ->"
+                android:textColor="@color/red"/>
+        </LinearLayout>
 
             <TextView
                 android:id="@+id/textView2"

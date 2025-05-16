@@ -44,6 +44,15 @@ public class RouteDetailsFragment extends Fragment {
                 });
         binding = FragmentDetailsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        binding.seeMoreFeedback.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.ratingsFragment);
+        });
+
+        binding.backText.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(requireParentFragment());
+            navController.navigateUp();
+        });
 
         return view;
     }

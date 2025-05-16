@@ -54,6 +54,10 @@
         android:id="@+id/tripDetailsFragment"
         android:name="com.example.m3_app.ui.trip_details.TripDetailsFragment"
         android:label="Trip Details" />
+    <fragment
+        android:id="@+id/ratingsFragment"
+        android:name="com.example.m3_app.ui.ratings.RatingsFragment"
+        android:label="Ratings"/>
 
     <fragment
         android:id="@+id/routeDetailsFragment"
