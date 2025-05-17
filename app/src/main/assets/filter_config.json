@@ -9,6 +9,7 @@
         "St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
         "Leichtenstein"
       ],
+      "transferTime" : null,
       "journeyTime": "8h 23min",
       "cost": "135",
       "distance": "780 km",
@@ -21,7 +22,7 @@
         "familyFun": false,
         "historyHeritage": false,
         "artCulture": false,
-        "noTransfer": false,
+        "noTransfer": true,
         "audioGuide": false,
         "withSights": false,
         "topRated": false,
@@ -38,13 +39,19 @@
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
       "stations": [
-        "Linz", "Munich", "Memmingen", "Lindau"
+        [
+          "St.Pölten","Linz", "Salzburg"
+        ],
+        [
+          "Munich", "Memmingen", "Lindau", "Bregenz", "Winterhtur"
+        ]
       ],
+      "transferTime" : "27 min",
       "journeyTime": "8h 30min",
       "cost": "168",
       "distance": "810 km",
       "transportOperator": [
-        "DB"
+        "ÖBB","DB"
       ],
       "rating": "4.7",
       "mainCategory": "Sightseeing",
@@ -52,7 +59,7 @@
         "familyFun": true,
         "historyHeritage": false,
         "artCulture": false,
-        "noTransfer": true,
+        "noTransfer": false,
         "audioGuide": false,
         "withSights": true,
         "topRated": false,
@@ -71,6 +78,7 @@
       "stations": [
         "Wr.Neustadt", "Mürzzuschlag", "Kapfenberg", "Bruck/Mur"
       ],
+      "transferTime" : null,
       "journeyTime": "2h 54min",
       "cost": "42",
       "distance": "168 km",
@@ -91,6 +99,71 @@
         "alongTheRiver": false,
         "forest": true,
         "mountains": true
+      }
+    },
+    {
+      "imageResource": "sample_1_selected",
+      "title": "Along The Donau",
+      "fromDestination": "Vienna",
+      "toDestination": "Krems/Donau",
+      "stations": [
+        "Tulln/Donau", "Absdorf-Hippersdorf", "Kirchberg am Wagram",
+        "Fels am Wagram","Wagram am Wagram-Grafenegg", "Etsdorf/Kamp-Straß im Straßertale",
+        "Hadersdorf/Kamp"
+      ],
+      "transferTime" : null,
+      "journeyTime": "1h 08min",
+      "cost": "16",
+      "distance": "59 km",
+      "transportOperator": [
+        "ÖBB"
+      ],
+      "rating": "5.0",
+      "mainCategory": "Along The River",
+      "filter": {
+        "familyFun": true,
+        "historyHeritage": false,
+        "artCulture": false,
+        "noTransfer": true,
+        "audioGuide": false,
+        "withSights": true,
+        "topRated": true,
+        "barrierFree": true,
+        "alongTheRiver": true,
+        "forest": false,
+        "mountains": false
+      }
+    },
+    {
+      "imageResource": "sample_1_selected",
+      "title": "Explore Germany",
+      "fromDestination": "Vienna",
+      "toDestination": "Berlin",
+      "stations": [
+        ["St.Pölten", "Linz", "Passau","Plattling", "Regensburg", "Nürnberg"],
+        ["Erfurt", "Halle(Saale)"]
+      ],
+      "transferTime" : "34 min",
+      "journeyTime": "8h 17min",
+      "cost": "279",
+      "distance": "875 km",
+      "transportOperator": [
+        "ÖBB","DB"
+      ],
+      "rating": "4.2",
+      "mainCategory": "Sightseeing",
+      "filter": {
+        "familyFun": true,
+        "historyHeritage": true,
+        "artCulture": true,
+        "noTransfer": false,
+        "audioGuide": false,
+        "withSights": true,
+        "topRated": false,
+        "barrierFree": false,
+        "alongTheRiver": false,
+        "forest": true,
+        "mountains": false
       }
     }
   ]
