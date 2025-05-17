@@ -54,6 +54,11 @@ public class RouteDetailsFragment extends Fragment {
             navController.navigateUp();
         });
 
+        binding.floatingButton.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.tripDetailsFragment);
+        });
+
         return view;
     }
 
