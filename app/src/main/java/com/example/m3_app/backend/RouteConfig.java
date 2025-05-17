@@ -11,7 +11,7 @@ public class RouteConfig {
         // + in item_route_img in textTitle(TextView) + in item_route_card  routeTitle(TextView)
         public String fromDestination; //fragment_search_results/from
         public String toDestination; //fragment_search_results/to
-        public List<String> stations; //fragment_details/stations(TextView) + also in route_segment
+        public List<List<String>> stations; //fragment_details/stations(TextView) + also in route_segment
         public String transferTime; //route_connection time???
         public String journeyTime; //fragment_details/journeyTime(TextView)
         public String cost;//fragment_details/cost(TextView)

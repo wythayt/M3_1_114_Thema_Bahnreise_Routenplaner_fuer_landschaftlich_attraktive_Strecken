@@ -6,8 +6,8 @@
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
       "stations": [
-        "St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
-        "Leichtenstein"
+        ["St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
+        "Leichtenstein"]
       ],
       "transferTime" : null,
       "journeyTime": "8h 23min",
@@ -76,7 +76,9 @@
       "fromDestination": "Vienna",
       "toDestination": "Graz",
       "stations": [
-        "Wr.Neustadt", "Mürzzuschlag", "Kapfenberg", "Bruck/Mur"
+        [
+          "Wr.Neustadt", "Mürzzuschlag", "Kapfenberg", "Bruck/Mur"
+        ]
       ],
       "transferTime" : null,
       "journeyTime": "2h 54min",
@@ -107,9 +109,11 @@
       "fromDestination": "Vienna",
       "toDestination": "Krems/Donau",
       "stations": [
-        "Tulln/Donau", "Absdorf-Hippersdorf", "Kirchberg am Wagram",
-        "Fels am Wagram","Wagram am Wagram-Grafenegg", "Etsdorf/Kamp-Straß im Straßertale",
-        "Hadersdorf/Kamp"
+        [
+          "Tulln/Donau", "Absdorf-Hippersdorf", "Kirchberg am Wagram",
+          "Fels am Wagram","Wagram am Wagram-Grafenegg", "Etsdorf/Kamp-Straß im Straßertale",
+          "Hadersdorf/Kamp"
+        ]
       ],
       "transferTime" : null,
       "journeyTime": "1h 08min",
