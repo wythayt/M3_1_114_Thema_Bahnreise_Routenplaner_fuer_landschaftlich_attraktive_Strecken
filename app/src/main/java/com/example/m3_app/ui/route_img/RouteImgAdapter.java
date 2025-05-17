@@ -87,5 +87,11 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
     public int getItemCount() {
         return routeImgCards.size();
     }
+
+    public void updateData(List<RouteImgCard> newCards) {
+        routeImgCards.clear();
+        routeImgCards.addAll(newCards);
+        notifyDataSetChanged();
+    }
 }
 

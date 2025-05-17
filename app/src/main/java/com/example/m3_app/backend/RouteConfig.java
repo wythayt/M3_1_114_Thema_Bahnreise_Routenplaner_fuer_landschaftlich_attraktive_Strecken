@@ -6,7 +6,9 @@ public class RouteConfig {
     public List<Route> routes;
 
     public static class Route {
+        public String id;
         public String imageResource;
+        public String cardImageResource;
         public String title; //fragment_details/titleText(TextView) + routeName(TextView)
         // + in item_route_img in textTitle(TextView) + in item_route_card  routeTitle(TextView)
         public String fromDestination; //fragment_search_results/from

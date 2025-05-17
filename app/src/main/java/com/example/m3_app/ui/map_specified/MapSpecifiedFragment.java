@@ -13,8 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -28,11 +30,13 @@ import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
 import com.google.android.material.button.MaterialButton;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
+import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentDirections;
 
 public class MapSpecifiedFragment extends Fragment {
     private FragmentMapSpecifiedBinding binding;
@@ -48,14 +52,14 @@ public class MapSpecifiedFragment extends Fragment {
         binding = FragmentMapSpecifiedBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        List<RouteCard> cards = Arrays.asList(
-                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
-                new RouteCard("Through Forests", R.drawable.placeholder)
-        );
-
-        binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        RouteCardAdapter adapter = new RouteCardAdapter(cards);
-        binding.routeCardsRecycler.setAdapter(adapter);
+//        List<RouteCard> cards = Arrays.asList(
+//                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
+//                new RouteCard("Through Forests", R.drawable.placeholder)
+//        );
+//
+//        binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+//        RouteCardAdapter adapter = new RouteCardAdapter();
+//        binding.routeCardsRecycler.setAdapter(adapter);
 
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         String startLocation = args.getFrom();
@@ -76,9 +80,21 @@ public class MapSpecifiedFragment extends Fragment {
             navController.navigate(R.id.searchFragmentTest);
         });
 
+        String finalStartLocation = startLocation;
+        String finalEndLocation = endLocation;
+
         binding.button5.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.searchResultsFragment);
+            NavDirections action = MapSpecifiedFragmentDirections
+                    .actionMapSpecifiedFragmentToSearchResultsFragment(finalStartLocation, finalEndLocation);
+            navController.navigate(action);
+        });
+
+        binding.button.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            NavDirections action = MapSpecifiedFragmentDirections
+                    .actionMapSpecifiedFragmentToSearchResultsFragment(finalStartLocation, finalEndLocation);
+            navController.navigate(action);
         });
 
         return view;
@@ -131,6 +147,18 @@ public class MapSpecifiedFragment extends Fragment {
             }
         });
 
+        RouteCardAdapter adapter = new RouteCardAdapter();
+
+        adapter.setOnRouteClickListener(card -> {
+            NavDirections action = MapSpecifiedFragmentDirections
+                    .actionMapSpecifiedFragmentToRouteDetailsFragment(card.id);
+            NavHostFragment.findNavController(this).navigate(action);
+        });
+
+        binding.routeCardsRecycler.setLayoutManager(
+                new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.routeCardsRecycler.setAdapter(adapter);
+
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         String startLocation = args.getFrom();
         String endLocation = args.getTo();
@@ -142,22 +170,30 @@ public class MapSpecifiedFragment extends Fragment {
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication()))
                 .get(MapSpecifiedViewModel.class);
 
-        filterVm.getSelectedChips().observe(getViewLifecycleOwner(), selectedChips -> {
-            List<RouteConfig.Route> allRoutes = mapVm.getAllRoutes().getValue();
+        Observer<Object> updateUI = __ -> {
+            List<RouteConfig.Route> allRoutes  = mapVm.getAllRoutes().getValue();
+            Set<String> selectedChips = filterVm.getSelectedChips().getValue();
             if (allRoutes == null) return;
 
-            List<RouteConfig.Route> matches =
-                    RouteFilterUtil.filterByChips(allRoutes, selectedChips, startLocation, endLocation);
+            List<RouteConfig.Route> matches = RouteFilterUtil
+                    .filterByChips(allRoutes, selectedChips, startLocation, endLocation);
 
-            if (!matches.isEmpty()) {
-                RouteConfig.Route chosenRoute = matches.isEmpty() ? allRoutes.get(0) : matches.get(0);
-                int resId = requireContext().getResources()
-                        .getIdentifier(chosenRoute.imageResource, "drawable", requireContext().getPackageName());
-                binding.imageView7.setImageResource(resId);
-            } else {
-                binding.imageView7.setImageResource(R.drawable.placeholder);
+            RouteConfig.Route chosen = !matches.isEmpty() ? matches.get(0) : allRoutes.get(0);
+            int mapResId = requireContext().getResources()
+                    .getIdentifier(chosen.imageResource, "drawable", requireContext().getPackageName());
+            binding.imageView7.setImageResource(mapResId);
+
+            //build the RouteCard list and hand it to the adapter
+            List<RouteCard> cards = new ArrayList<>(matches.size());
+            for (RouteConfig.Route match : matches) {
+                int thumbId = requireContext().getResources()
+                        .getIdentifier(match.cardImageResource, "drawable", requireContext().getPackageName());
+                cards.add(new RouteCard(match.id, match.title, thumbId));
             }
-        });
+            adapter.setData(cards);
+        };
 
+        mapVm.getAllRoutes().observe(getViewLifecycleOwner(), updateUI);
+        filterVm.getSelectedChips().observe(getViewLifecycleOwner(), updateUI);
     }
 }

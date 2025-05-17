@@ -88,8 +88,8 @@ public class SearchFragmentTest extends Fragment {
             navController.navigate(R.id.suggestionsFragment);
         });
         List<RouteCard> cards = Arrays.asList(
-                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
-                new RouteCard("Through Forests", R.drawable.placeholder)
+                new RouteCard("ID_01","Bavarian Bliss", R.drawable.placeholder),
+                new RouteCard("ID_02","Through Forests", R.drawable.placeholder)
         );
 
         binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

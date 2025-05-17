@@ -17,7 +17,7 @@ public class RouteFilterUtil {
                 .collect(Collectors.toList());
 
         if (selectedChips == null || selectedChips.isEmpty()) {
-            return new ArrayList<>(routes);
+            return new ArrayList<>(locationMatched);
         }
 
         return locationMatched.stream().filter(route -> {

@@ -30,6 +30,16 @@
         android:label="Map Specified">
         <argument android:name="from" app:argType="string" />
         <argument android:name="to" app:argType="string" />
+
+        <action
+            android:id="@+id/action_mapSpecifiedFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
+
+        <action
+            android:id="@+id/action_mapSpecifiedFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment">
+            <argument android:name="routeId" app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
@@ -48,7 +58,10 @@
     <fragment
         android:id="@+id/searchResultsFragment"
         android:name="com.example.m3_app.ui.search_results.SearchResultsFragment"
-        android:label="Search Results" />
+        android:label="Search Results">
+        <argument android:name="from" app:argType="string" />
+        <argument android:name="to" app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/tripDetailsFragment"
@@ -62,6 +75,11 @@
     <fragment
         android:id="@+id/routeDetailsFragment"
         android:name="com.example.m3_app.ui.route_details.RouteDetailsFragment"
-        android:label="Route Details" />
+        android:label="Route Details">
+
+        <argument
+            android:name="routeId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

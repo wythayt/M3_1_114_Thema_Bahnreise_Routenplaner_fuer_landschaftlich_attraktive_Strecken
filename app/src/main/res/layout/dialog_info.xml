@@ -20,16 +20,17 @@
         android:id="@+id/tvMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hint: click on star to see routes and our picks for that destination"
-        android:textSize="15sp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/sf_pro_text_bold"
+        android:text="Click on star to see routes and our picks for that destination"
         android:textAllCaps="false"
-        android:textColor="@color/black"
         android:textAppearance="?attr/textAppearanceBody1"
-        app:layout_constraintTop_toBottomOf="@id/ivClose"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivClose" />
 
     <LinearLayout
         android:layout_width="wrap_content"
