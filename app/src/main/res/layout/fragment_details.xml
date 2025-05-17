@@ -114,6 +114,7 @@
                     android:src="@drawable/placeholder" />
 
                 <TextView
+                    android:id="@+id/mainCategory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

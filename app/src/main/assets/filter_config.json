@@ -16,6 +16,7 @@
         "ÖBB"
       ],
       "rating": "4.9",
+      "mainCategory": "Mountains",
       "filter": {
         "familyFun": false,
         "historyHeritage": false,
@@ -46,6 +47,7 @@
         "DB"
       ],
       "rating": "4.7",
+      "mainCategory": "Sightseeing",
       "filter": {
         "familyFun": true,
         "historyHeritage": false,
@@ -76,6 +78,7 @@
         "ÖBB"
       ],
       "rating": "5.0",
+      "mainCategory": "Mountains",
       "filter": {
         "familyFun": true,
         "historyHeritage": true,

@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:text="Sample Title"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/sf_pro_text_bold"/>
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

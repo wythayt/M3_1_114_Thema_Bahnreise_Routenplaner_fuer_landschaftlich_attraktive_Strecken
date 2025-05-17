@@ -17,6 +17,8 @@ public class RouteConfig {
         public String distance; //fragment_details/distance(TextView)
 
         public String rating; //fragment_details/rating
+        public String mainCategory; //item_route_card/textViewType(TextView)
+        //+fragment_details/mainCategory
         public List<String> transportOperator;//fragment_details/operators
         public Filter filter;
     }
