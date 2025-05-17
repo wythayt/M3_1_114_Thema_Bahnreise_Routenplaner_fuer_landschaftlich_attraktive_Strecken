@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="Specific Destination"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteY="184dp" />
 
@@ -59,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Inspire me from here"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteY="249dp" />
 
@@ -81,6 +83,7 @@
                 android:background="@drawable/searchbox_background"
                 android:ems="10"
                 android:hint="From"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:inputType="text"
                 android:padding="16dp"
                 android:textAlignment="gravity"
@@ -100,6 +103,7 @@
                 android:autofillHints=""
                 android:background="@drawable/searchbox_background"
                 android:ems="10"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:hint="To"
                 android:inputType="text"
                 android:padding="16dp"
@@ -135,12 +139,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Suggestions"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:text="See all ->"
                 android:textColor="@color/red"
                 android:textSize="16sp" />

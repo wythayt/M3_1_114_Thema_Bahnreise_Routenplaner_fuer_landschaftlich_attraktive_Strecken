@@ -51,7 +51,7 @@ public class RatingsFragment extends Fragment {
                         new ArrayList<>(Arrays.asList(R.drawable.placeholder,R.drawable.placeholder))));
         binding.FeedbackRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.FeedbackRecyclerView.setAdapter(new FeedbackCardAdapter(cards));
-        binding.backText.setOnClickListener(v -> {
+        binding.backTextRatings.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(requireParentFragment());
             navController.navigateUp();
         });

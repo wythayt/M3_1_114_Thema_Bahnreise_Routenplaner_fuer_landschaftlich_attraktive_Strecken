@@ -4,60 +4,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/beige"
     tools:context=".ui.search.DetailsFragment">
 
+    <LinearLayout
+        android:id="@+id/header_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/secondary_beige">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backText"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="start|center_vertical"
+            app:icon="@drawable/arrow_back_ios_24px"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/shareIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Share"
+            android:layout_gravity="center"
+            android:src="@drawable/share_24px" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header_title">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/header_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:contentDescription="Arrow Back"
-                    android:src="@drawable/arrow_back_ios_24px" />
-
-                <TextView
-                    android:id="@+id/backText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="Back"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/shareIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="Share"
-                    android:src="@drawable/share_24px"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </LinearLayout>
 
 
             <LinearLayout
@@ -66,10 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:orientation="horizontal"
-                android:padding="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/backText">
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/linesText"
@@ -79,7 +79,7 @@
                     android:text="Lines:"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/sf_pro_text_bold"/>
 
                 <TextView
                     android:id="@+id/titleText"
@@ -87,17 +87,15 @@
                     android:layout_height="wrap_content"
                     android:text="Swiss Dream"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:fontFamily="@font/sf_pro_text_regular"/>
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/imageRoute"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/placeholder"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleRow" />
+                android:src="@drawable/placeholder" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -119,7 +117,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Scenic View" />
+                    android:text="Scenic View"
+                    android:fontFamily="@font/sf_pro_text_regular"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,6 +127,7 @@
                     android:background="@drawable/title_backround"
                     android:padding="10dp"
                     android:text="Ratings"
+                    android:fontFamily="@font/sf_pro_text_regular"
                     android:textSize="15sp" />
 
                 <TextView
@@ -171,27 +171,32 @@
                     android:contentDescription="Star"
                     android:src="@drawable/star_24px" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:paddingHorizontal="20dp">
-            <TextView
-                android:id="@+id/seeMoreFeedback"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="See more ->"
-                android:textColor="@color/red"/>
-        </LinearLayout>
+
+                <TextView
+                    android:id="@+id/seeMoreFeedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/sf_pro_text_regular"
+                    android:text="See more ->"
+                    android:textColor="@color/red" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:padding="16dp"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="16dp"
                 android:text="About this line"
                 android:textSize="20sp"
+                android:fontFamily="@font/sf_pro_text_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
@@ -219,6 +224,7 @@
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
                         android:text="Route"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:textSize="16sp" />
 
                     <TextView
@@ -229,6 +235,7 @@
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
                         android:text="Swiss Dream"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -245,6 +252,7 @@
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
                         android:text="Journey Time"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:textSize="16sp" />
 
                     <TextView
@@ -255,6 +263,7 @@
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
                         android:text="9h 12min"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -282,6 +291,7 @@
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
                         android:text="Cost"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:textSize="16sp" />
 
                     <TextView
@@ -292,6 +302,7 @@
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
                         android:text="239"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -307,6 +318,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:text="Distance"
                         android:textSize="16sp" />
 
@@ -317,6 +329,7 @@
                         android:paddingStart="4dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
+                        android:fontFamily="@font/sf_pro_text_regular"
                         android:text="About 765 km"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -341,6 +354,7 @@
                     android:background="@drawable/title_backround"
                     android:padding="10dp"
                     android:text="This line is supported by"
+                    android:fontFamily="@font/sf_pro_text_regular"
                     android:textSize="16sp" />
 
                 <TextView
@@ -351,6 +365,7 @@
                     android:paddingTop="8dp"
                     android:paddingEnd="4dp"
                     android:text="OBB, WESTbahn"
+                    android:fontFamily="@font/sf_pro_text_regular"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -372,6 +387,7 @@
                     android:background="@drawable/title_backround"
                     android:padding="10dp"
                     android:text="Stations on this line"
+                    android:fontFamily="@font/sf_pro_text_regular"
                     android:textSize="16sp" />
 
                 <TextView
@@ -381,14 +397,17 @@
                     android:paddingStart="4dp"
                     android:paddingTop="8dp"
                     android:paddingEnd="4dp"
+                    android:fontFamily="@font/sf_pro_text_regular"
                     android:text="Vienna - St.Polten - Linz - Salzburg - Bludenz"
                     android:textSize="16sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"/>
+                android:layout_height="100dp" />
         </LinearLayout>
     </ScrollView>
+
     <Button
         android:id="@+id/floatingButton"
         android:layout_width="wrap_content"
@@ -397,6 +416,14 @@
         android:contentDescription="@string/button_book_ticket"
         android:text="@string/button_book_ticket"
         app:backgroundTint="@color/red"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
