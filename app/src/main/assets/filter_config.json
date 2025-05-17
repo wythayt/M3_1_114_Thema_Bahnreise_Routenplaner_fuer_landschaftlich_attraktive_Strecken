@@ -13,7 +13,7 @@
       ],
       "transferTime" : null,
       "journeyTime": "8h 23min",
-      "cost": "135",
+      "cost": "135 €",
       "distance": "780 km",
       "transportOperator": [
         "ÖBB"
@@ -52,7 +52,7 @@
       ],
       "transferTime" : "27 min",
       "journeyTime": "8h 30min",
-      "cost": "168",
+      "cost": "168 €",
       "distance": "810 km",
       "transportOperator": [
         "ÖBB","DB"
@@ -125,7 +125,7 @@
       ],
       "transferTime" : null,
       "journeyTime": "1h 08min",
-      "cost": "16",
+      "cost": "16 €",
       "distance": "59 km",
       "transportOperator": [
         "ÖBB"
@@ -159,7 +159,7 @@
       ],
       "transferTime" : "34 min",
       "journeyTime": "8h 17min",
-      "cost": "279",
+      "cost": "279 €",
       "distance": "875 km",
       "transportOperator": [
         "ÖBB","DB"
