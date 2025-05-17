@@ -52,8 +52,7 @@
                 android:checked="true"
                 android:text="Specific Destination"
                 android:fontFamily="@font/sf_pro_text_regular"
-                android:textSize="20sp"
-                tools:layout_editor_absoluteY="184dp" />
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/radio_inspire"
@@ -61,8 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="Inspire me from here"
                 android:fontFamily="@font/sf_pro_text_regular"
-                android:textSize="20sp"
-                tools:layout_editor_absoluteY="249dp" />
+                android:textSize="20sp" />
 
         </RadioGroup>
 
@@ -139,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Suggestions"
-                android:fontFamily="@font/sf_pro_text_regular"
+                android:fontFamily="@font/sf_pro_text_semibold"
                 android:textSize="20sp" />
 
             <TextView

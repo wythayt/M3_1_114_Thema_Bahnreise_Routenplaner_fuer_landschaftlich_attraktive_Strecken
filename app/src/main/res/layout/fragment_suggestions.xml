@@ -48,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="Suggestions"
-                android:textSize="50sp" />
+                android:textSize="25sp"
+                android:fontFamily="@font/sf_pro_text_bold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyclerView"

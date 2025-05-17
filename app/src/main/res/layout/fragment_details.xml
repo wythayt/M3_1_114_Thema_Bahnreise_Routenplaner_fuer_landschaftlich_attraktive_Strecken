@@ -90,12 +90,27 @@
                     android:textSize="18sp"
                     android:fontFamily="@font/sf_pro_text_regular"/>
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageRoute"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:src="@drawable/placeholder" />
+                android:layout_height="250dp">
+                <ImageView
+                    android:id="@+id/imageRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/placeholder" />
+                <ImageButton
+                    android:id="@+id/buttonLike"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:contentDescription="like"
+                    android:src="@drawable/ic_favorite_24dp" />
+
+            </FrameLayout>
+
+
+
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -128,7 +143,7 @@
                     android:background="@drawable/title_backround"
                     android:padding="10dp"
                     android:text="Ratings"
-                    android:fontFamily="@font/sf_pro_text_regular"
+                    android:fontFamily="@font/sf_pro_text_bold"
                     android:textSize="15sp" />
 
                 <TextView
@@ -193,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:paddingVertical="12dp"
+                android:paddingVertical="8dp"
                 android:paddingHorizontal="16dp"
                 android:text="About this line"
                 android:textSize="20sp"
@@ -225,7 +240,7 @@
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
                         android:text="Route"
-                        android:fontFamily="@font/sf_pro_text_regular"
+                        android:fontFamily="@font/sf_pro_text_bold"
                         android:textSize="16sp" />
 
                     <TextView
@@ -253,7 +268,7 @@
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
                         android:text="Journey Time"
-                        android:fontFamily="@font/sf_pro_text_regular"
+                        android:fontFamily="@font/sf_pro_text_bold"
                         android:textSize="16sp" />
 
                     <TextView
@@ -292,7 +307,7 @@
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
                         android:text="Cost"
-                        android:fontFamily="@font/sf_pro_text_regular"
+                        android:fontFamily="@font/sf_pro_text_bold"
                         android:textSize="16sp" />
 
                     <TextView
@@ -319,7 +334,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/title_backround"
                         android:padding="10dp"
-                        android:fontFamily="@font/sf_pro_text_regular"
+                        android:fontFamily="@font/sf_pro_text_bold"
                         android:text="Distance"
                         android:textSize="16sp" />
 
@@ -355,7 +370,7 @@
                     android:background="@drawable/title_backround"
                     android:padding="10dp"
                     android:text="This line is supported by"
-                    android:fontFamily="@font/sf_pro_text_regular"
+                    android:fontFamily="@font/sf_pro_text_bold"
                     android:textSize="16sp" />
 
                 <TextView
@@ -388,7 +403,7 @@
                     android:background="@drawable/title_backround"
                     android:padding="10dp"
                     android:text="Stations on this line"
-                    android:fontFamily="@font/sf_pro_text_regular"
+                    android:fontFamily="@font/sf_pro_text_bold"
                     android:textSize="16sp" />
 
                 <TextView

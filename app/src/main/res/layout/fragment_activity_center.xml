@@ -28,7 +28,8 @@
                 android:layout_marginTop="24dp"
                 android:paddingHorizontal="16dp"
                 android:text="Activity Center"
-                android:textSize="50sp" />
+                android:textSize="25sp"
+                android:fontFamily="@font/sf_pro_text_bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,7 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upcoming"
-                    android:textSize="30sp" />
+                    android:textSize="20sp"
+                    android:fontFamily="@font/sf_pro_text_semibold"/>
 
                 <ImageButton
                     android:layout_width="48dp"
@@ -75,7 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Past"
-                    android:textSize="30sp" />
+                    android:textSize="20sp"
+                    android:fontFamily="@font/sf_pro_text_semibold"/>
 
                 <ImageButton
                     android:layout_width="48dp"

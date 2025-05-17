@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="Vienna Hbf"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/sf_pro_text_bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Railjet RJX 160" />
+            android:text="Railjet RJX 160"
+            android:fontFamily="@font/sf_pro_text_regular"/>
     </LinearLayout>
 
     <TextView
@@ -37,7 +38,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="4 stops ▼"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_text_regular"/>
 
     <LinearLayout
         android:id="@+id/containerStops"
@@ -52,13 +54,15 @@
             android:layout_height="wrap_content"
             android:paddingVertical="2dp"
             android:text="• St. Pölten Hbf"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/sf_pro_text_regular"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="2dp"
             android:text="• Amstetten"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/sf_pro_text_regular"/>
     </LinearLayout>
 </LinearLayout>
