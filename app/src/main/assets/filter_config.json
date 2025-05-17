@@ -1,7 +1,9 @@
 {
   "routes": [
     {
+      "id": "ID_01",
       "imageResource": "sample_3_selected",
+      "cardImageResource": "sample_alps",
       "title": "Through Alps",
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
@@ -34,7 +36,9 @@
     },
 
     {
+      "id": "ID_02",
       "imageResource": "sample_2_selected",
+      "cardImageResource": "sample_bavarian_bliss",
       "title": "Bavarian Bliss",
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
@@ -71,7 +75,9 @@
     },
 
     {
-      "imageResource": "sample_1_selected",
+      "id": "ID_03",
+      "imageResource": "vienna_graz",
+      "cardImageResource": "graz_card1",
       "title": "To Graz Through Tunnels",
       "fromDestination": "Vienna",
       "toDestination": "Graz",
@@ -104,7 +110,9 @@
       }
     },
     {
-      "imageResource": "sample_1_selected",
+      "id": "ID_04",
+      "imageResource": "vienna_krems",
+      "cardImageResource": "krems_card1",
       "title": "Along The Donau",
       "fromDestination": "Vienna",
       "toDestination": "Krems/Donau",
@@ -139,7 +147,9 @@
       }
     },
     {
-      "imageResource": "sample_1_selected",
+      "id": "ID_05",
+      "imageResource": "vienna_berlin",
+      "cardImageResource": "berlin_card1",
       "title": "Explore Germany",
       "fromDestination": "Vienna",
       "toDestination": "Berlin",
