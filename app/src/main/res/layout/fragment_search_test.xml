@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     android:background="#fff9f3">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
     <LinearLayout
         android:id="@+id/linearLayoutSearchSub"
         android:layout_width="match_parent"
@@ -72,6 +79,26 @@
             android:padding="18dp">
 
             <EditText
+                android:id="@+id/editTextTo2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:autofillHints=""
+                android:background="@drawable/searchbox_background"
+                android:ems="10"
+                android:fontFamily="@font/sf_pro_text_regular"
+                android:hint="To"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextFrom1"
+                app:layout_constraintVertical_bias="0.055" />
+
+            <EditText
                 android:id="@+id/editTextFrom1"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -91,26 +118,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup1"
                 app:layout_constraintVertical_bias="0.029" />
-
-            <EditText
-                android:id="@+id/editTextTo2"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="12dp"
-                android:autofillHints=""
-                android:background="@drawable/searchbox_background"
-                android:ems="10"
-                android:fontFamily="@font/sf_pro_text_regular"
-                android:hint="To"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextFrom1"
-                app:layout_constraintVertical_bias="0.055" />
 
 
             <Button
@@ -150,22 +157,23 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/routeCardsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:contentDescription="Suggestions list"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearchSub"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_route_card" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/routeCardsRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:contentDescription="Suggestions list"
-        android:orientation="horizontal"
-        android:padding="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearchSub"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_route_card" />
+    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
