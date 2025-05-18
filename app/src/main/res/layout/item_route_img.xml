@@ -18,6 +18,17 @@
             android:contentDescription="image"
             android:scaleType="centerCrop" />
 
+        <ImageButton
+            android:id="@+id/buttonLike"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="6dp"
+            android:layout_gravity="top|start"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:contentDescription="like"
+            android:src="@drawable/ic_favorite_24dp" />
+
     </FrameLayout>
 
     <RelativeLayout

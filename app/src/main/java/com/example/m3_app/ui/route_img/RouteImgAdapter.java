@@ -1,5 +1,7 @@
 package com.example.m3_app.ui.route_img;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +34,7 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
         ImageView imageView;
         TextView titleView, categoryView;
         View cardView;
-
+        ImageView likeButton;
         Button pastButton;
         public ViewHolder(View view) {
             super(view);
@@ -41,6 +43,7 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
             titleView = view.findViewById(R.id.textTitle);
             categoryView = view.findViewById(R.id.textViewType);
             pastButton = view.findViewById(R.id.buttonBook);
+            likeButton = view.findViewById(R.id.buttonLike);
         }
     }
 
@@ -50,6 +53,24 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
         holder.titleView.setText(card.title);
         holder.categoryView.setText(card.category);
         holder.imageView.setImageResource(card.imageId);
+
+        Context context = holder.itemView.getContext();
+        SharedPreferences prefs = context.getSharedPreferences("LikedRoutes", Context.MODE_PRIVATE);
+        boolean isLiked = prefs.getBoolean(card.id, false);
+
+        holder.likeButton.setImageResource(
+                isLiked ? R.drawable.baseline_favorite_24 : R.drawable.ic_favorite_24dp
+        );
+
+        holder.likeButton.setOnClickListener(v -> {
+            boolean newLiked = !prefs.getBoolean(card.id, false);
+            prefs.edit().putBoolean(card.id, newLiked).apply();
+
+            holder.likeButton.setImageResource(
+                    newLiked ? R.drawable.baseline_favorite_24 : R.drawable.ic_favorite_24dp
+            );
+        });
+
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
