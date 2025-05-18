@@ -27,22 +27,69 @@
                 android:paddingTop="24dp"
                 android:paddingBottom="16dp"
                 android:text="My Account"
-                android:textSize="40sp"
-                android:textStyle="bold" />
-
-            <TextView
+                android:textSize="25sp"
+                android:fontFamily="@font/sf_pro_text_bold" />
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="4dp"
-                android:text="Username: mustermann"
-                android:textSize="18sp" />
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="24dp">
 
-            <TextView
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/account_circle_24px"
+                android:contentDescription="Profile picture"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Max Mustermann"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/sf_pro_text_bold"
+                    android:layout_marginTop="12dp"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="4dp"
-                android:text="Email: mmustermann@mail.at"
-                android:textSize="18sp" />
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Account Details"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/sf_pro_text_semibold"
+                        android:layout_marginBottom="8dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="4dp"
+                        android:text="Username: mustermann"
+                        android:fontFamily="@font/sf_pro_text_regular"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="4dp"
+                        android:text="Email: mmustermann@mail.at"
+                        android:fontFamily="@font/sf_pro_text_regular"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
 
             <View
                 android:layout_width="match_parent"
@@ -50,22 +97,51 @@
                 android:layout_marginVertical="16dp"
                 android:background="#ccc" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:paddingHorizontal="16dp">
 
-                <Button
-                    android:id="@+id/favButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_gravity="end"
-                    android:backgroundTint="#f04b4b"
-                    android:text="Favourites"
-                    android:textSize="20sp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/favButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="My Favorites"
+                        android:textSize="16sp"
+                        app:icon="@drawable/baseline_favorite_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="10dp"
+                        android:padding="12dp"
+                        app:strokeWidth="3dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/settingsButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Settings"
+                        android:textSize="16sp"
+                        app:iconGravity="textStart"
+                        android:padding="12dp"
+                        app:strokeWidth="3dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/logoutButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Log Out"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:padding="12dp"
+                        app:strokeWidth="3dp"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
