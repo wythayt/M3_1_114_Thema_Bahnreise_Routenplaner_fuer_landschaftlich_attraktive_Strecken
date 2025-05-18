@@ -1,5 +1,6 @@
 package com.example.m3_app.ui.route_map;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_app.R;
-import com.example.m3_app.ui.route_img.RouteImgAdapter;
-import com.example.m3_app.ui.route_img.RouteImgCard;
+import com.example.m3_app.backend.RouteConfig;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -26,16 +25,20 @@ import java.util.Objects;
 
 public class RouteMapAdapter extends RecyclerView.Adapter<com.example.m3_app.ui.route_map.RouteMapAdapter.ViewHolder> {
     public interface OnRouteClickListener {
-        void onRouteClick(RouteMapCard card);
+        void onRouteClick(RouteConfig.Route route);
     }
 
-    private final List<RouteMapCard> routeMapCards;
+    private final List<RouteConfig.Route> routes;
+    private final boolean isUpcoming;
     private final OnRouteClickListener listener;
 
+    List<LocalDate> dates;
 
-    public RouteMapAdapter(List<RouteMapCard> routeMapCards, OnRouteClickListener listener) {
-        this.routeMapCards = routeMapCards;
+    public RouteMapAdapter(List<RouteConfig.Route> routes, boolean isUpcoming, OnRouteClickListener listener, List<LocalDate> dates) {
+        this.routes = routes;
+        this.isUpcoming = isUpcoming;
         this.listener = listener;
+        this.dates = dates;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -66,17 +69,16 @@ public class RouteMapAdapter extends RecyclerView.Adapter<com.example.m3_app.ui.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        RouteMapCard card = routeMapCards.get(position);
-        holder.titleView.setText(card.title);
-        holder.dateView.setText(formatDate(card.date));
-        holder.imageView.setImageResource(card.imageMapId);
+        RouteConfig.Route route = routes.get(position);
+        LocalDate date = dates.get(position);
+        Context context = holder.itemView.getContext();
 
+        int imgResId = context.getResources().getIdentifier(route.imageResource, "drawable", context.getPackageName());
+        holder.imageView.setImageResource(imgResId != 0 ? imgResId : R.drawable.placeholder);
+        holder.dateView.setText(formatDate(date.toString()));
+        holder.titleView.setText(route.title);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
-        LocalDate today = LocalDate.now();
-        LocalDate cardDate = LocalDate.parse(card.date, formatter);
-
-        if (!cardDate.isBefore(today)) {
+        if (isUpcoming) {
             holder.upcomingButton.setVisibility(View.VISIBLE);
             holder.pastButton.setVisibility(View.GONE);
         } else {
@@ -84,22 +86,16 @@ public class RouteMapAdapter extends RecyclerView.Adapter<com.example.m3_app.ui.
             holder.pastButton.setVisibility(View.VISIBLE);
         }
 
-        holder.upcomingButton.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onRouteClick(card);
-            }
-        });
-
-        holder.pastButton.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onRouteClick(card);
-            }
-        });
+        View.OnClickListener clickListener = v -> {
+            if (listener != null) listener.onRouteClick(route);
+        };
+        holder.upcomingButton.setOnClickListener(clickListener);
+        holder.pastButton.setOnClickListener(clickListener);
     }
 
     @Override
     public int getItemCount() {
-        return routeMapCards.size();
+        return routes.size();
     }
 
     private String formatDate(String date) {

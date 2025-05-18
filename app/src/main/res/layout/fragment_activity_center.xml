@@ -26,10 +26,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/sf_pro_text_bold"
                 android:paddingHorizontal="16dp"
                 android:text="Activity Center"
-                android:textSize="25sp"
-                android:fontFamily="@font/sf_pro_text_bold"/>
+                android:textSize="25sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,9 +43,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro_text_semibold"
                     android:text="Upcoming"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/sf_pro_text_semibold"/>
+                    android:textSize="20sp" />
 
                 <ImageButton
                     android:layout_width="48dp"
@@ -60,7 +60,6 @@
                 android:id="@+id/RecyclerViewUpcoming"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_route_map" />
 
@@ -76,9 +75,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro_text_semibold"
                     android:text="Past"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/sf_pro_text_semibold"/>
+                    android:textSize="20sp" />
 
                 <ImageButton
                     android:layout_width="48dp"
@@ -93,9 +92,16 @@
                 android:id="@+id/RecyclerViewPast"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_route_map" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.example.m3_app.ui.trip_details;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,8 @@ import com.example.m3_app.databinding.FragmentTripDetailsBinding;
 import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
 import com.example.m3_app.ui.route_details.RouteDetailsFragmentArgs;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,19 +37,13 @@ public class TripDetailsFragment extends Fragment {
 
     private FragmentTripDetailsBinding binding;
 
-    private MapSpecifiedViewModel mapVm;
-
     public TripDetailsFragment() {
         super(R.layout.fragment_trip_details);
     }
 
-    private ImageButton buttonClose;
-    private ImageButton buttonHelp;
-    private ImageView imageMap;
-    private TextView endStop;
     private LinearLayout containerTripSegments;
-
     private boolean isFirstSegment = true;
+    private boolean isUpcomingTrip = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,11 +62,10 @@ public class TripDetailsFragment extends Fragment {
         binding = FragmentTripDetailsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        buttonClose = view.findViewById(R.id.buttonClose);
-        buttonHelp = view.findViewById(R.id.buttonHelp);
-        imageMap = view.findViewById(R.id.imageMap);
+        ImageButton buttonClose = view.findViewById(R.id.buttonClose);
+        ImageButton buttonHelp = view.findViewById(R.id.buttonHelp);
+        ImageView imageMap = view.findViewById(R.id.imageMap);
         containerTripSegments = view.findViewById(R.id.containerTripSegments);
-        endStop = view.findViewById(R.id.endStop);
 
         imageMap.setImageResource(R.drawable.placeholder);
 
@@ -117,8 +114,13 @@ public class TripDetailsFragment extends Fragment {
         final int qrIconRes = R.drawable.qr_code_24dp;
         final int qrImageRes = R.drawable.sample_qr;
 
+        if (isUpcomingTrip) {
+            logo.setImageResource(qrIconRes);
+            logo.setTag("qr");
+        } else {
         logo.setImageResource(companyLogoRes);
         logo.setTag("company");
+        }
 
         logo.setOnClickListener(v -> {
             String currentTag = (String) logo.getTag();
@@ -129,6 +131,15 @@ public class TripDetailsFragment extends Fragment {
                         .setPositiveButton("Yes", (dialog, which) -> {
                             logo.setImageResource(qrIconRes);
                             logo.setTag("qr");
+
+                            String routeId = TripDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
+                            String today = java.time.LocalDate.now().toString();
+//                            String today = "2025-03-18";
+                            requireContext()
+                                    .getSharedPreferences("BookedTrips", android.content.Context.MODE_PRIVATE)
+                                    .edit()
+                                    .putString(routeId, today)
+                                    .apply();
                         })
                         .setNegativeButton("No", null)
                         .show();
@@ -178,7 +189,6 @@ public class TripDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        requireActivity();
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).hide();
 
         requireActivity().getWindow().setFlags(
@@ -186,12 +196,23 @@ public class TripDetailsFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
 
-        mapVm = new ViewModelProvider(
+        MapSpecifiedViewModel mapVm = new ViewModelProvider(
                 requireActivity(),
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())
         ).get(MapSpecifiedViewModel.class);
 
         String routeId = TripDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
+
+        SharedPreferences prefs = requireContext().getSharedPreferences("BookedTrips", Context.MODE_PRIVATE);
+        String dateStr = prefs.getString(routeId, null);
+        if (dateStr != null) {
+            try {
+                LocalDate bookedDate = LocalDate.parse(dateStr);
+                isUpcomingTrip = !bookedDate.isBefore(LocalDate.now());
+            } catch (DateTimeParseException e) {
+                isUpcomingTrip = false;
+            }
+        }
 
         mapVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> routes.stream()
                 .filter(route -> routeId.equals(route.id))
