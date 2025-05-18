@@ -173,8 +173,14 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearchSub"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_route_card" />
-
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"/>
     </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

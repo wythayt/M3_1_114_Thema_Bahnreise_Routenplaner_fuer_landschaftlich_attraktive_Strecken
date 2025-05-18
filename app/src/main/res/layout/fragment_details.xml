@@ -95,18 +95,20 @@
                 android:layout_height="250dp"
                 android:layout_marginBottom="15dp"
                 android:paddingHorizontal="16dp"
-                >
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner12">
 
                 <ImageView
                     android:id="@+id/cardImageResource"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/placeholder"/>
+                    android:src="@drawable/placeholder"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner12" />
                 <ImageButton
                     android:id="@+id/buttonLike"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@null"
+                    android:layout_margin="10dp"
                     android:contentDescription="like"
                     android:src="@drawable/ic_favorite_24dp" />
 
@@ -472,7 +474,8 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"/>
