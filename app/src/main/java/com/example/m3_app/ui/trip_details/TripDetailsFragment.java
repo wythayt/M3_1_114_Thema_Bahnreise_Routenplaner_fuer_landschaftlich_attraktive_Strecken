@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,7 +25,6 @@ import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.databinding.FragmentTripDetailsBinding;
 import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
 import com.example.m3_app.ui.route_details.RouteDetailsFragmentArgs;
-import com.example.m3_app.ui.route_details.RouteDetailsFragmentDirections;
 
 import java.util.List;
 import java.util.Objects;
@@ -86,7 +86,7 @@ public class TripDetailsFragment extends Fragment {
         return view;
     }
 
-    private void addSegment(String stationName, String trainName, List<String> stops, String connection) {
+    private void addSegment(String stationName, String trainName, List<String> stops, String connection, String company) {
         LayoutInflater inflater = getLayoutInflater();
 
         if (!isFirstSegment) {
@@ -103,6 +103,44 @@ public class TripDetailsFragment extends Fragment {
         TextView trainNameView = segmentView.findViewById(R.id.textTrainName);
         TextView toggleStopsView = segmentView.findViewById(R.id.textToggleStops);
         LinearLayout stopsContainer = segmentView.findViewById(R.id.containerStops);
+        ImageView logo = segmentView.findViewById(R.id.logo);
+
+        int companyLogoRes = R.drawable.train_24dp;
+        if (Objects.equals(company, "ÖBB")) {
+            companyLogoRes = R.drawable.oebb_logo;
+        } else if (Objects.equals(company, "DB")) {
+            companyLogoRes = R.drawable.db_logo;
+        } else if (Objects.equals(company, "Westbahn")) {
+            companyLogoRes = R.drawable.westbahn_logo;
+        }
+
+        final int qrIconRes = R.drawable.qr_code_24dp;
+        final int qrImageRes = R.drawable.sample_qr;
+
+        logo.setImageResource(companyLogoRes);
+        logo.setTag("company");
+
+        logo.setOnClickListener(v -> {
+            String currentTag = (String) logo.getTag();
+            if ("company".equals(currentTag)) {
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("Ticket Confirmation")
+                        .setMessage("Have you bought a ticket from " + company + "?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            logo.setImageResource(qrIconRes);
+                            logo.setTag("qr");
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+            } else if ("qr".equals(currentTag)) {
+                ImageView qrView = new ImageView(requireContext());
+                qrView.setImageResource(qrImageRes);
+                new AlertDialog.Builder(requireContext())
+                        .setView(qrView)
+                        .setPositiveButton("Close", null)
+                        .show();
+            }
+        });
 
         stationNameView.setText(stationName);
         trainNameView.setText(trainName);
@@ -167,7 +205,7 @@ public class TripDetailsFragment extends Fragment {
         binding.imageMap.setImageResource(imageMapRes != 0 ? imageMapRes : R.drawable.placeholder);
 
         for (List<String> l : r.stations) {
-            addSegment(l.get(0), "train name", l.subList(1, l.size()), r.transferTime);
+            addSegment(l.get(0), "train name", l.subList(1, l.size()), r.transferTime, r.transportOperator.get(r.stations.indexOf(l)));
         }
 
         binding.endStop.setText(r.toDestination);

@@ -6,4 +6,5 @@
     <string name="title_search">Search</string>
     <string name="button_book_ticket">Book Tickets</string>
     <string name="title_ratings">Ratings</string>
+    <string name="train_company_logo">Train Company Logo</string>
 </resources>
