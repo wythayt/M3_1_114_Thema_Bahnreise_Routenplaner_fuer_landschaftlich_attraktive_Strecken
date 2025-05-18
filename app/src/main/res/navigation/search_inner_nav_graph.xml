@@ -123,6 +123,10 @@
         <argument
             android:name="routeId"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_tripDetailsFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/ratingsFragment"

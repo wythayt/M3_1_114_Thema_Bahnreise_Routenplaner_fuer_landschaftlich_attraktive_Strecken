@@ -20,22 +20,10 @@ import com.example.m3_app.R;
 import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.databinding.FragmentDetailsBinding;
 import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
-import com.example.m3_app.ui.route_card.RouteCard;
-import com.example.m3_app.ui.route_card.RouteCardAdapter;
 
 import java.util.Objects;
 
 public class RouteDetailsFragment extends Fragment {
-
-    public interface onRouteClickListener {
-        void onRouteClick(RouteCard routeCard);
-    }
-
-    private onRouteClickListener onRouteClickListener;
-
-    public void setOnRouteClickListener(onRouteClickListener onRouteClickListener) {
-        this.onRouteClickListener = onRouteClickListener;
-    }
 
     private FragmentDetailsBinding binding;
     private MapSpecifiedViewModel mapVm;

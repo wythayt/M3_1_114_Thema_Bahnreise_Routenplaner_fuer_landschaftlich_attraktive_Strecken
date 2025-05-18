@@ -1,7 +1,5 @@
 package com.example.m3_app.ui.trip_details;
 
-import static com.example.m3_app.ui.trip_details.TripDetailsFragmentArgs.*;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +23,8 @@ import com.example.m3_app.R;
 import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.databinding.FragmentTripDetailsBinding;
 import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
+import com.example.m3_app.ui.route_details.RouteDetailsFragmentArgs;
+import com.example.m3_app.ui.route_details.RouteDetailsFragmentDirections;
 
 import java.util.List;
 import java.util.Objects;
@@ -74,7 +74,14 @@ public class TripDetailsFragment extends Fragment {
 
         buttonClose.setOnClickListener(v -> NavHostFragment.findNavController(this).navigateUp());
 
-//        buttonHelp.setOnClickListener();
+        buttonHelp.setOnClickListener(v -> {
+            String routeId = RouteDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(
+                    TripDetailsFragmentDirections.
+                            actionTripDetailsFragmentToRouteDetailsFragment(routeId)
+            );
+        });
 
         return view;
     }
