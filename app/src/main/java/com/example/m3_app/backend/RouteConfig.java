@@ -24,6 +24,7 @@ public class RouteConfig {
         //+fragment_details/mainCategory
         public List<String> transportOperator;//fragment_details/operators
         public String description; //fragment_details/description
+        public List<String> imageGallery; //added images
         public Filter filter;
     }
 

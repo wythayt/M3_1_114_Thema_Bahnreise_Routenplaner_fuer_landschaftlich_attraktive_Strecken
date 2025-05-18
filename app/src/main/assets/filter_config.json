@@ -8,7 +8,7 @@
       "fromDestination": "Vienna",
       "toDestination": "Zurich",
       "stations": [
-        ["St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
+        ["Vienna","St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
         "Leichtenstein"]
       ],
       "transferTime" : null,
@@ -21,6 +21,12 @@
       "rating": "4.9",
       "mainCategory": "Mountains",
       "description": "Eine unvergessliche Fahrt durch die majestätischen Alpen, vorbei an schroffen Felsformationen, grünen Tälern und charmanten Städten wie Innsbruck und dem Fürstentum Liechtenstein. Genieße atemberaubende Ausblicke und erlebe die Alpenregion von ihrer schönsten Seite. Ideal für Naturliebhaber und Fans eindrucksvoller Panoramastrecken.",
+      "imageGallery": [
+
+        "through_alps1",
+        "sample_alps",
+        "through_alps2"
+      ],
       "filter": {
         "familyFun": false,
         "historyHeritage": false,
@@ -45,7 +51,7 @@
       "toDestination": "Zurich",
       "stations": [
         [
-          "St.Pölten","Linz", "Salzburg"
+          "Vienna","St.Pölten","Linz", "Salzburg","Munich"
         ],
         [
           "Munich", "Memmingen", "Lindau", "Bregenz", "Winterhtur"
@@ -61,6 +67,11 @@
       "rating": "4.7",
       "mainCategory": "Sightseeing",
       "description": "Erlebe die Vielfalt Bayerns auf einer malerischen Route durch geschichtsträchtige Städte und verträumte Dörfer. Von Wien über München und den Bodensee bis nach Zürich – unterwegs erwarten dich bayerische Gastfreundschaft, historische Altstädte und weite Berglandschaften. Perfekt für Familien und Entdecker.",
+      "imageGallery": [
+        "bavarian_bliss1",
+        "sample_bavarian_bliss",
+        "bavarian_bliss2"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": false,
@@ -86,7 +97,7 @@
       "toDestination": "Graz",
       "stations": [
         [
-          "Wr.Neustadt", "Mürzzuschlag", "Kapfenberg", "Bruck/Mur"
+          "Vienna","Wr.Neustadt", "Mürzzuschlag", "Kapfenberg", "Bruck/Mur"
         ]
       ],
       "transferTime" : null,
@@ -99,6 +110,12 @@
       "rating": "5.0",
       "mainCategory": "Mountains",
       "description": "Diese abwechslungsreiche Fahrt führt dich von Wien durch eine der beeindruckendsten Tunnel- und Gebirgslandschaften Österreichs. Vorbei an Wr.Neustadt und Mürzzuschlag bis ins charmante Graz, mit spektakulären Ausblicken und kleinen Städtchen entlang der Strecke. Ein Geheimtipp für Natur- und Kulturliebhaber.",
+      "imageGallery": [
+        "graz_card1",
+        "to_graz_through_tunnels_1",
+        "to_graz_through_tunnels_2",
+        "to_graz_through_tunnels_3"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": true,
@@ -122,7 +139,7 @@
       "toDestination": "Krems/Donau",
       "stations": [
         [
-          "Tulln/Donau", "Absdorf-Hippersdorf", "Kirchberg am Wagram",
+          "Vienna","Tulln/Donau", "Absdorf-Hippersdorf", "Kirchberg am Wagram",
           "Fels am Wagram","Wagram am Wagram-Grafenegg", "Etsdorf/Kamp-Straß im Straßertale",
           "Hadersdorf/Kamp"
         ]
@@ -137,6 +154,10 @@
       "rating": "5.0",
       "mainCategory": "Along The River",
       "description": "Folge dem Verlauf der Donau von Wien bis ins idyllische Krems und entdecke malerische Weinberge, barocke Stifte und kleine Dörfer. Diese Route eignet sich hervorragend für Genießer und Freunde gemütlicher Landschaften. Die Fahrt entlang des Flusses verspricht Ruhe und reizvolle Ausblicke.",
+      "imageGallery": [
+        "krems_card1",
+        "krems1"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": false,
@@ -159,8 +180,8 @@
       "fromDestination": "Vienna",
       "toDestination": "Berlin",
       "stations": [
-        ["St.Pölten", "Linz", "Passau","Plattling", "Regensburg", "Nürnberg"],
-        ["Erfurt", "Halle(Saale)"]
+        ["Vienna","St.Pölten", "Linz", "Passau","Plattling", "Regensburg", "Nürnberg"],
+        ["Nürnberg","Erfurt", "Halle(Saale)"]
       ],
       "transferTime" : "34 min",
       "journeyTime": "8h 17min",
@@ -172,6 +193,11 @@
       "rating": "4.2",
       "mainCategory": "Sightseeing",
       "description": "Eine ausgedehnte Reise durch das Herz Deutschlands bis nach Berlin. Entdecke traditionsreiche Städte wie Passau, Regensburg und Nürnberg, bevor du die kulturelle Vielfalt Erfurts und die lebendige Metropole Berlin erreichst. Diese Route bietet einen spannenden Mix aus Geschichte, moderner Urbanität und Natur.",
+      "imageGallery": [
+        "berlin_card1",
+        "explore_germany2",
+        "explore_germany1"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": true,
@@ -187,7 +213,7 @@
       }
     },
     {
-      "id": "ID_05",
+      "id": "ID_06",
       "imageResource": "vienna_zurich_bavarian_bliss",
       "cardImageResource": "sample_bavarian_bliss",
       "title": "Visit 3 Countries",
@@ -195,10 +221,10 @@
       "toDestination": "Zurich",
       "stations": [
         [
-          "St.Pölten","Linz", "Passau", "Regensburg", "Nürnberg", "Würzberg", "Frankfurt"
+          "Vienna","St.Pölten","Linz", "Passau", "Regensburg", "Nürnberg", "Würzberg", "Frankfurt"
         ],
         [
-          "Karlsruhe", "Freiburg", "Basel"
+          "Frankfurt","Karlsruhe", "Freiburg", "Basel"
         ]
       ],
       "transferTime" : "1h 05min",
@@ -211,6 +237,11 @@
       "rating": "4.2",
       "mainCategory": "History Heritage",
       "description": "Auf dieser faszinierenden Strecke passierst du gleich drei Länder – Österreich, Deutschland und die Schweiz. Von Wien über historische Städte wie Würzburg und Frankfurt bis ins charmante Zürich. Genieße Kultur, Architektur und landschaftliche Höhepunkte entlang einer der spannendsten Bahnstrecken Europas.",
+      "imageGallery": [
+        "visit_3_countries_1",
+        "visit_3_countries_2",
+        "visit_3_countries_3"
+      ],
       "filter": {
         "familyFun": false,
         "historyHeritage": true,
