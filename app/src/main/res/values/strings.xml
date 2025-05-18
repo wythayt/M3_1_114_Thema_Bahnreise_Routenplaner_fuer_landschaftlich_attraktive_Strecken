@@ -7,4 +7,7 @@
     <string name="button_book_ticket">Book Tickets</string>
     <string name="title_ratings">Ratings</string>
     <string name="train_company_logo">Train Company Logo</string>
+    <string name="hint_message"><![CDATA[
+    Click on <img src="star_24px" /> to see routes and our picks for that destination
+  ]]></string>
 </resources>
