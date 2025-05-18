@@ -23,6 +23,7 @@ public class RouteConfig {
         public String mainCategory; //item_route_card/textViewType(TextView)
         //+fragment_details/mainCategory
         public List<String> transportOperator;//fragment_details/operators
+        public String description; //fragment_details/description
         public Filter filter;
     }
 
