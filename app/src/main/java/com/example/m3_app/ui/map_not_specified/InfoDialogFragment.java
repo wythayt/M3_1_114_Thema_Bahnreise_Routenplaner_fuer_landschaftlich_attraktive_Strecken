@@ -3,14 +3,19 @@ package com.example.m3_app.ui.map_not_specified;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.m3_app.R;
@@ -24,9 +29,37 @@ public class InfoDialogFragment extends DialogFragment {
                 .getLayoutInflater()
                 .inflate(R.layout.dialog_info, null);
 
-        ImageView ivClose = dialogView.findViewById(R.id.ivClose);
+        ImageView ivClose  = dialogView.findViewById(R.id.ivClose);
         Button gotIt = dialogView.findViewById(R.id.btnGotIt);
         Button dontShow = dialogView.findViewById(R.id.btnDontShow);
+
+        TextView tv = dialogView.findViewById(R.id.tvMessage);
+
+        Html.ImageGetter imageGetter = source -> {
+            if (source.endsWith("/")) {
+                source = source.substring(0, source.length() - 1);
+            }
+            int id = requireContext().getResources()
+                    .getIdentifier(source, "drawable", requireContext().getPackageName());
+            if (id == 0) {
+                ColorDrawable empty = new ColorDrawable(Color.TRANSPARENT);
+                empty.setBounds(0,0,0,0);
+                return empty;
+            }
+            Drawable d = ContextCompat.getDrawable(requireContext(), id);
+            assert d != null;
+            d.setBounds(0,0,d.getIntrinsicWidth(), d.getIntrinsicHeight());
+            return d;
+        };
+
+
+        CharSequence styled = HtmlCompat.fromHtml(
+                getString(R.string.hint_message),
+                HtmlCompat.FROM_HTML_MODE_LEGACY,
+                imageGetter,
+                null
+        );
+        tv.setText(styled);
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(requireContext())
                 .setView(dialogView)
@@ -34,17 +67,16 @@ public class InfoDialogFragment extends DialogFragment {
                 .create();
 
         ivClose.setOnClickListener(v -> dialog.dismiss());
-        gotIt.setOnClickListener(v -> dialog.dismiss());
+        gotIt  .setOnClickListener(v -> dialog.dismiss());
         dontShow.setOnClickListener(v -> {
             // TODO: implement “don’t show again”
             dialog.dismiss();
         });
 
-        assert dialog.getWindow()!=null;
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         return dialog;
     }
+
 
     @Override
     public void onResume() {
