@@ -1,5 +1,6 @@
 package com.example.m3_app.ui.route_details;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,6 +96,27 @@ public class RouteDetailsFragment extends Fragment {
                     .findFirst()
                     .ifPresent(route -> bindRoute(route));
         });
+
+        binding.shareIcon.setOnClickListener(v -> {
+            mapVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> {
+                routes.stream()
+                        .filter(route -> routeId.equals(route.id))
+                        .findFirst()
+                        .ifPresent(route -> {
+                            String shareBody = buildShare(route);
+                            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                            shareIntent.setType("text/plain");
+                            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this route!");
+                            shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+
+                            startActivity(Intent.createChooser(shareIntent, "Share via"));
+                        });
+            });
+        });
+    }
+
+    private String buildShare(RouteConfig.Route route) {
+        return "Have a look at route \"" + route.title + "\"!\nFrom: " + route.fromDestination + ", To: " + route.toDestination + ", " + route.journeyTime + ".";
     }
 
     private void bindRoute(RouteConfig.Route r) {

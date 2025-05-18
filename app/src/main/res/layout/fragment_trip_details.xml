@@ -45,6 +45,7 @@
         <ImageView
             android:id="@+id/imageMap"
             android:layout_width="match_parent"
+            android:contentDescription="Route map"
             android:layout_height="160dp"
             android:scaleType="centerCrop" />
         <!--        android:src="@drawable/placeholder"-->
