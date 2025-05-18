@@ -25,6 +25,7 @@ public class RouteConfig {
         public List<String> transportOperator;//fragment_details/operators
         public String description; //fragment_details/description
         public List<String> imageGallery; //added images
+        public List<String> trainName;
         public Filter filter;
     }
 

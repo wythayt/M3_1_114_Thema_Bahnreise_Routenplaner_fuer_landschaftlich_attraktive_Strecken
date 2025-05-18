@@ -27,6 +27,7 @@
         "sample_alps",
         "through_alps2"
       ],
+      "trainName": ["RJX 160"],
       "filter": {
         "familyFun": false,
         "historyHeritage": false,
@@ -72,6 +73,9 @@
         "sample_bavarian_bliss",
         "bavarian_bliss2"
       ],
+      "trainName": [
+        "RJX 260", "EC 194"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": false,
@@ -116,6 +120,9 @@
         "to_graz_through_tunnels_2",
         "to_graz_through_tunnels_3"
       ],
+      "trainName": [
+        "RJ 373"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": true,
@@ -158,6 +165,9 @@
         "krems_card1",
         "krems1"
       ],
+      "trainName": [
+        "REX 4"
+      ],
       "filter": {
         "familyFun": true,
         "historyHeritage": false,
@@ -197,6 +207,9 @@
         "berlin_card1",
         "explore_germany2",
         "explore_germany1"
+      ],
+      "trainName": [
+        "ICE 228", "ICE 1110"
       ],
       "filter": {
         "familyFun": true,
@@ -241,6 +254,9 @@
         "visit_3_countries_1",
         "visit_3_countries_2",
         "visit_3_countries_3"
+      ],
+      "trainName": [
+        "ICE 228"
       ],
       "filter": {
         "familyFun": false,
