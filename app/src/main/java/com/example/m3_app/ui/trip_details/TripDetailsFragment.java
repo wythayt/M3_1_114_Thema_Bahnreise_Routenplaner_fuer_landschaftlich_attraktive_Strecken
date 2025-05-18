@@ -118,8 +118,8 @@ public class TripDetailsFragment extends Fragment {
             logo.setImageResource(qrIconRes);
             logo.setTag("qr");
         } else {
-        logo.setImageResource(companyLogoRes);
-        logo.setTag("company");
+            logo.setImageResource(companyLogoRes);
+            logo.setTag("company");
         }
 
         logo.setOnClickListener(v -> {
@@ -226,7 +226,9 @@ public class TripDetailsFragment extends Fragment {
         binding.imageMap.setImageResource(imageMapRes != 0 ? imageMapRes : R.drawable.placeholder);
 
         for (List<String> l : r.stations) {
-            addSegment(l.get(0), "train name", l.subList(1, l.size()), r.transferTime, r.transportOperator.get(r.stations.indexOf(l)));
+            addSegment(l.get(0), r.trainName.get(r.stations.indexOf(l)),
+                    l.subList(1, l.size()), r.transferTime,
+                    r.transportOperator.get(r.stations.indexOf(l)));
         }
 
         binding.endStop.setText(r.toDestination);

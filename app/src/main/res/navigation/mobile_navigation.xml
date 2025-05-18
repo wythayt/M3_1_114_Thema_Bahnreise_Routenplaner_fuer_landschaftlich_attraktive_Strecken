@@ -32,7 +32,16 @@
     <fragment
         android:id="@+id/tripDetailsFragment"
         android:name="com.example.m3_app.ui.trip_details.TripDetailsFragment"
-        android:label="Trip Details" />
+        android:label="Trip Details">
+
+        <argument
+            android:name="routeId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_tripDetailsFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/favouritesFragment"
@@ -56,6 +65,15 @@
     <fragment
         android:id="@+id/routeDetailsFragment"
         android:name="com.example.m3_app.ui.route_details.RouteDetailsFragment"
-        android:label="Route Details" />
+        android:label="Route Details">
+
+        <argument
+            android:name="routeId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_routeDetailsFragment_to_tripDetailsFragment"
+            app:destination="@id/tripDetailsFragment" />
+    </fragment>
 
 </navigation>
