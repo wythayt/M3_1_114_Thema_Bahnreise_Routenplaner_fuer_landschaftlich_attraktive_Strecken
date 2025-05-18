@@ -20,10 +20,22 @@ import com.example.m3_app.R;
 import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.databinding.FragmentDetailsBinding;
 import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
+import com.example.m3_app.ui.route_card.RouteCard;
+import com.example.m3_app.ui.route_card.RouteCardAdapter;
 
 import java.util.Objects;
 
 public class RouteDetailsFragment extends Fragment {
+
+    public interface onRouteClickListener {
+        void onRouteClick(RouteCard routeCard);
+    }
+
+    private onRouteClickListener onRouteClickListener;
+
+    public void setOnRouteClickListener(onRouteClickListener onRouteClickListener) {
+        this.onRouteClickListener = onRouteClickListener;
+    }
 
     private FragmentDetailsBinding binding;
     private MapSpecifiedViewModel mapVm;
@@ -61,8 +73,12 @@ public class RouteDetailsFragment extends Fragment {
         });
 
         binding.floatingButton.setOnClickListener(v -> {
+            String routeId = RouteDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
             NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.tripDetailsFragment);
+            navController.navigate(
+                    RouteDetailsFragmentDirections.
+                            actionRouteDetailsFragmentToTripDetailsFragment(routeId)
+            );
         });
 
         return view;
@@ -97,9 +113,8 @@ public class RouteDetailsFragment extends Fragment {
                     .ifPresent(route -> bindRoute(route));
         });
 
-        binding.shareIcon.setOnClickListener(v -> {
-            mapVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> {
-                routes.stream()
+        binding.shareIcon.setOnClickListener(v -> mapVm.getAllRoutes()
+                .observe(getViewLifecycleOwner(), routes -> routes.stream()
                         .filter(route -> routeId.equals(route.id))
                         .findFirst()
                         .ifPresent(route -> {
@@ -110,9 +125,7 @@ public class RouteDetailsFragment extends Fragment {
                             shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 
                             startActivity(Intent.createChooser(shareIntent, "Share via"));
-                        });
-            });
-        });
+                        })));
     }
 
     private String buildShare(RouteConfig.Route route) {
