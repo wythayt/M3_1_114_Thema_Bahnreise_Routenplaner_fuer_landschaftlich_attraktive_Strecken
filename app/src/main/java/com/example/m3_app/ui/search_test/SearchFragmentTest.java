@@ -12,21 +12,27 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_app.databinding.FragmentSearchTestBinding;
 import com.example.m3_app.R;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
+import com.example.m3_app.ui.route_config.RouteConfigViewModel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class SearchFragmentTest extends Fragment {
     private FragmentSearchTestBinding binding;
+    private final List<String> wantedIds = Arrays.asList("ID_01", "ID_02", "ID_03", "ID_04");
 
     public SearchFragmentTest() {
         super(R.layout.fragment_search_test);
@@ -53,8 +59,6 @@ public class SearchFragmentTest extends Fragment {
 
             int checkedId = binding.radioGroup1.getCheckedRadioButtonId();
 
-
-            //TODO: error popup-window + retry
             if (checkedId == R.id.radio_specific) {
                 if (from.isEmpty() || to.isEmpty()) {
                     new AlertDialog.Builder(requireContext()).setTitle("Missing Input")
@@ -67,7 +71,6 @@ public class SearchFragmentTest extends Fragment {
                                 .actionSearchFragmentTestToMapSpecifiedFragment(from, to);
 
                 navController.navigate(action);
-                //navController.navigate(R.id.mapSpecifiedFragment);
             } else {
                 if (from.isEmpty()) {
                     new AlertDialog.Builder(requireContext()).setTitle("Missing Input")
@@ -79,22 +82,44 @@ public class SearchFragmentTest extends Fragment {
                         SearchFragmentTestDirections
                                 .actionSearchFragmentTestToMapNotSpecifiedFragment(from, to);
                 navController.navigate(action);
-                //navController.navigate(R.id.mapNotSpecifiedFragment);
             }
         });
 
         binding.textView4.setOnClickListener(v -> {
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.suggestionsFragment);
-        });
-        List<RouteCard> cards = Arrays.asList(
-                new RouteCard("ID_01","Bavarian Bliss", R.drawable.placeholder),
-                new RouteCard("ID_02","Through Forests", R.drawable.placeholder)
-        );
+            String[] idsArray = wantedIds.toArray(new String[0]);
 
-        binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        RouteCardAdapter adapter = new RouteCardAdapter(cards);
+            NavDirections action = SearchFragmentTestDirections.actionSearchFragmentTestToSuggestionsFragment(idsArray);
+            NavController nav = NavHostFragment.findNavController(this);
+            nav.navigate(action);
+        });
+
+
+        RouteConfigViewModel configVm = new ViewModelProvider(
+                requireActivity(),
+                new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())
+        ).get(RouteConfigViewModel.class);
+
+        NavController nav = NavHostFragment.findNavController(this);
+
+        RouteCardAdapter adapter = new RouteCardAdapter();
+        adapter.setOnRouteClickListener(card -> {
+            NavDirections action = SearchFragmentTestDirections
+                    .actionSearchFragmentTestToRouteDetailsFragment(card.id);
+            nav.navigate(action);
+        });
+        binding.routeCardsRecycler.setLayoutManager(
+                new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         binding.routeCardsRecycler.setAdapter(adapter);
+
+        configVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> {
+            List<RouteCard> cards = new ArrayList<>();
+            wantedIds.stream().map(configVm::getRouteById).filter(Objects::nonNull).forEach(route -> {
+                int imgRes = requireContext().getResources()
+                        .getIdentifier(route.cardImageResource, "drawable", getContext().getPackageName());
+                cards.add(new RouteCard(route.id, route.title, imgRes));
+            });
+            adapter.setData(cards);
+        });
 
         return root;
     }
@@ -116,5 +141,4 @@ public class SearchFragmentTest extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
     }
-
 }

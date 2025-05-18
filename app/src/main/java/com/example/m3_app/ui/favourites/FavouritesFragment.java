@@ -50,16 +50,16 @@ public class FavouritesFragment extends Fragment {
         View view = binding.getRoot();
 
 
-        List<RouteImgCard> cards = Arrays.asList(
-                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", true),
-                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest", true)
-        );
+//        List<RouteImgCard> cards = Arrays.asList(
+//                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", true),
+//                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest", true)
+//        );
 
         binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.RecyclerView.setAdapter(new RouteImgAdapter(cards, card -> {
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.routeDetailsFragment);
-        }));
+//        binding.RecyclerView.setAdapter(new RouteImgAdapter(cards, card -> {
+//            NavController navController = NavHostFragment.findNavController(this);
+//            navController.navigate(R.id.routeDetailsFragment);
+//        }));
 
         binding.back.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(requireParentFragment());

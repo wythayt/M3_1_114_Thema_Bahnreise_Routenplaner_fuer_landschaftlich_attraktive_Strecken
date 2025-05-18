@@ -22,6 +22,15 @@
             <argument android:name="to" app:argType="string" />
         </action>
 
+        <action
+            android:id="@+id/action_searchFragmentTest_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment" />
+
+        <action
+            android:id="@+id/action_searchFragmentTest_to_suggestionsFragment"
+            app:destination="@id/suggestionsFragment">
+        </action>
+
     </fragment>
 
     <fragment
@@ -53,7 +62,21 @@
     <fragment
         android:id="@+id/suggestionsFragment"
         android:name="com.example.m3_app.ui.suggestions.SuggestionsFragment"
-        android:label="Suggestions" />
+        android:label="Suggestions">
+
+        <argument
+            android:name="routeIds"
+            app:argType="string[]"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_suggestionsFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment">
+            <argument
+                android:name="routeId"
+                app:argType="string" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/searchResultsFragment"
@@ -61,6 +84,14 @@
         android:label="Search Results">
         <argument android:name="from" app:argType="string" />
         <argument android:name="to" app:argType="string" />
+
+        <action
+            android:id="@+id/action_searchResultsFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment">
+            <argument
+                android:name="routeId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment

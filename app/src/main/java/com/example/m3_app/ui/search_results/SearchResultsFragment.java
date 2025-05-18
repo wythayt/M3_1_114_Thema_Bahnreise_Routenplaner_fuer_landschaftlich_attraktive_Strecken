@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -27,14 +28,16 @@ import java.util.Objects;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.backend.utility.RouteFilterUtil;
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
 import java.util.ArrayList;
 import java.util.Set;
+import com.example.m3_app.ui.search_results.SearchResultsFragmentDirections;
 
 public class SearchResultsFragment extends Fragment {
-
     private FragmentSearchResultsBinding binding;
     private RouteImgAdapter adapter;
     private FilterViewModel filterVm;
@@ -50,7 +53,6 @@ public class SearchResultsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        //TODO replace "Filter" button with "Sort by"?
         super.onCreate(savedInstanceState);
         requireActivity()
                 .getOnBackPressedDispatcher()
@@ -66,7 +68,11 @@ public class SearchResultsFragment extends Fragment {
 
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         fromDestination = args.getFrom();
-        toDestination   = args.getTo();
+        toDestination = args.getTo();
+
+        binding.header.setText(
+                String.format("%s → %s", fromDestination, toDestination)
+        );
 
         adapter = new RouteImgAdapter(new ArrayList<>(), card -> {
             NavController navController = NavHostFragment.findNavController(this);
@@ -93,31 +99,43 @@ public class SearchResultsFragment extends Fragment {
         );
 
         filterVm = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
-        mapVm = new ViewModelProvider(
+        mapVm    = new ViewModelProvider(
                 this,
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())
         ).get(MapSpecifiedViewModel.class);
 
+        NavController nav = NavHostFragment.findNavController(this);
+        RouteImgAdapter adapter = new RouteImgAdapter(new ArrayList<>(), card -> {
+            NavDirections action = SearchResultsFragmentDirections
+                    .actionSearchResultsFragmentToRouteDetailsFragment(card.getId());
+
+            nav.navigate(action);
+        });
+
+        binding.RecyclerView.setLayoutManager(
+                new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        binding.RecyclerView.setAdapter(adapter);
+
         Observer<Object> rebuild = unused -> {
-            List<RouteConfig.Route> allRoutes = mapVm.getAllRoutes().getValue();
-            Set<String> selectedChips = filterVm.getSelectedChips().getValue();
+            List<RouteConfig.Route> allRoutes  = mapVm.getAllRoutes().getValue();
+            Set<String> selectedChips  = filterVm.getSelectedChips().getValue();
             if (allRoutes == null) return;
 
-            List<RouteConfig.Route> matches = RouteFilterUtil.filterByChips(
-                    allRoutes, selectedChips, fromDestination, toDestination);
+            List<RouteConfig.Route> matches = RouteFilterUtil
+                    .filterByChips(allRoutes, selectedChips, fromDestination, toDestination);
 
             List<RouteImgCard> cards = new ArrayList<>();
-            for (RouteConfig.Route r : matches) {
+            matches.forEach(r -> {
                 int imageRes = requireContext().getResources()
                         .getIdentifier(r.cardImageResource, "drawable", requireContext().getPackageName());
                 cards.add(new RouteImgCard(
+                        r.id,
                         r.title,
                         imageRes != 0 ? imageRes : R.drawable.placeholder,
                         r.mainCategory,
                         false
                 ));
-            }
-
+            });
             adapter.updateData(cards);
         };
 

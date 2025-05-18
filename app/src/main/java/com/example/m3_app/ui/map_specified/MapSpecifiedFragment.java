@@ -52,15 +52,6 @@ public class MapSpecifiedFragment extends Fragment {
         binding = FragmentMapSpecifiedBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-//        List<RouteCard> cards = Arrays.asList(
-//                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
-//                new RouteCard("Through Forests", R.drawable.placeholder)
-//        );
-//
-//        binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-//        RouteCardAdapter adapter = new RouteCardAdapter();
-//        binding.routeCardsRecycler.setAdapter(adapter);
-
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         String startLocation = args.getFrom();
         String endLocation = args.getTo();
