@@ -46,16 +46,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_text_bold"
                 android:padding="16dp"
                 android:text="Suggestions"
-                android:textSize="25sp"
-                android:fontFamily="@font/sf_pro_text_bold"/>
+                android:textSize="25sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
