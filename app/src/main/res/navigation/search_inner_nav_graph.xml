@@ -11,15 +11,23 @@
         <action
             android:id="@+id/action_searchFragmentTest_to_mapSpecifiedFragment"
             app:destination="@id/mapSpecifiedFragment">
-            <argument android:name="from" app:argType="string" />
-            <argument android:name="to" app:argType="string" />
+            <argument
+                android:name="from"
+                app:argType="string" />
+            <argument
+                android:name="to"
+                app:argType="string" />
         </action>
 
         <action
             android:id="@+id/action_searchFragmentTest_to_mapNotSpecifiedFragment"
             app:destination="@id/mapNotSpecifiedFragment">
-            <argument android:name="from" app:argType="string" />
-            <argument android:name="to" app:argType="string" />
+            <argument
+                android:name="from"
+                app:argType="string" />
+            <argument
+                android:name="to"
+                app:argType="string" />
         </action>
 
         <action
@@ -28,8 +36,7 @@
 
         <action
             android:id="@+id/action_searchFragmentTest_to_suggestionsFragment"
-            app:destination="@id/suggestionsFragment">
-        </action>
+            app:destination="@id/suggestionsFragment" />
 
     </fragment>
 
@@ -37,8 +44,12 @@
         android:id="@+id/mapSpecifiedFragment"
         android:name="com.example.m3_app.ui.map_specified.MapSpecifiedFragment"
         android:label="Map Specified">
-        <argument android:name="from" app:argType="string" />
-        <argument android:name="to" app:argType="string" />
+        <argument
+            android:name="from"
+            app:argType="string" />
+        <argument
+            android:name="to"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_mapSpecifiedFragment_to_searchResultsFragment"
@@ -47,7 +58,9 @@
         <action
             android:id="@+id/action_mapSpecifiedFragment_to_routeDetailsFragment"
             app:destination="@id/routeDetailsFragment">
-            <argument android:name="routeId" app:argType="string" />
+            <argument
+                android:name="routeId"
+                app:argType="string" />
         </action>
     </fragment>
 
@@ -55,8 +68,12 @@
         android:id="@+id/mapNotSpecifiedFragment"
         android:name="com.example.m3_app.ui.map_not_specified.MapNotSpecifiedFragment"
         android:label="Map Not Specified">
-        <argument android:name="from" app:argType="string" />
-        <argument android:name="to" app:argType="string" />
+        <argument
+            android:name="from"
+            app:argType="string" />
+        <argument
+            android:name="to"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -82,8 +99,12 @@
         android:id="@+id/searchResultsFragment"
         android:name="com.example.m3_app.ui.search_results.SearchResultsFragment"
         android:label="Search Results">
-        <argument android:name="from" app:argType="string" />
-        <argument android:name="to" app:argType="string" />
+        <argument
+            android:name="from"
+            app:argType="string" />
+        <argument
+            android:name="to"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_searchResultsFragment_to_routeDetailsFragment"
@@ -97,11 +118,20 @@
     <fragment
         android:id="@+id/tripDetailsFragment"
         android:name="com.example.m3_app.ui.trip_details.TripDetailsFragment"
-        android:label="Trip Details" />
+        android:label="Trip Details">
+
+        <argument
+            android:name="routeId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_tripDetailsFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ratingsFragment"
         android:name="com.example.m3_app.ui.ratings.RatingsFragment"
-        android:label="Ratings"/>
+        android:label="Ratings" />
 
     <fragment
         android:id="@+id/routeDetailsFragment"
@@ -111,6 +141,10 @@
         <argument
             android:name="routeId"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_routeDetailsFragment_to_tripDetailsFragment"
+            app:destination="@id/tripDetailsFragment" />
     </fragment>
 
 </navigation>

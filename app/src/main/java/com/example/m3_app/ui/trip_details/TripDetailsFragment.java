@@ -15,19 +15,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.m3_app.R;
+import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.databinding.FragmentTripDetailsBinding;
+import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
+import com.example.m3_app.ui.route_details.RouteDetailsFragmentArgs;
+import com.example.m3_app.ui.route_details.RouteDetailsFragmentDirections;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class TripDetailsFragment extends Fragment {
 
     private FragmentTripDetailsBinding binding;
+
+    private MapSpecifiedViewModel mapVm;
 
     public TripDetailsFragment() {
         super(R.layout.fragment_trip_details);
@@ -68,23 +74,26 @@ public class TripDetailsFragment extends Fragment {
 
         buttonClose.setOnClickListener(v -> NavHostFragment.findNavController(this).navigateUp());
 
-//        buttonHelp.setOnClickListener();
-
-        addSegment("Vienna Hbf", "Railjet RJX 160", Arrays.asList("St. Pölten Hbf", "Amstetten"));
-        addSegment("Amstetten", "EC 62", Arrays.asList("Linz", "Salzburg", "Innsbruck"));
-
-        endStop.setText("Innsbruck");
+        buttonHelp.setOnClickListener(v -> {
+            String routeId = RouteDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(
+                    TripDetailsFragmentDirections.
+                            actionTripDetailsFragmentToRouteDetailsFragment(routeId)
+            );
+        });
 
         return view;
     }
 
-    private void addSegment(String stationName, String trainName, List<String> stops) {
+    private void addSegment(String stationName, String trainName, List<String> stops, String connection) {
         LayoutInflater inflater = getLayoutInflater();
 
         if (!isFirstSegment) {
             View connectionView = inflater.inflate(R.layout.route_connection, containerTripSegments, false);
             TextView connectionText = (TextView) connectionView;
-            connectionText.setText("Layover: 13 min\nTransfer to the connecting Railjet");
+            String text = "Layover:" + connection + "\nTransfer to the connecting train";
+            connectionText.setText(text);
             containerTripSegments.addView(connectionText);
         }
 
@@ -138,5 +147,29 @@ public class TripDetailsFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
+
+        mapVm = new ViewModelProvider(
+                requireActivity(),
+                new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())
+        ).get(MapSpecifiedViewModel.class);
+
+        String routeId = TripDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
+
+        mapVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> routes.stream()
+                .filter(route -> routeId.equals(route.id))
+                .findFirst()
+                .ifPresent(this::bindRoute));
+    }
+
+    private void bindRoute(RouteConfig.Route r) {
+        int imageMapRes = requireContext().getResources()
+                .getIdentifier(r.imageResource, "drawable", requireContext().getPackageName());
+        binding.imageMap.setImageResource(imageMapRes != 0 ? imageMapRes : R.drawable.placeholder);
+
+        for (List<String> l : r.stations) {
+            addSegment(l.get(0), "train name", l.subList(1, l.size()), r.transferTime);
+        }
+
+        binding.endStop.setText(r.toDestination);
     }
 }
