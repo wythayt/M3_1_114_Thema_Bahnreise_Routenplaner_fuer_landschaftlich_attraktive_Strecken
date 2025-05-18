@@ -1,6 +1,8 @@
 package com.example.m3_app.ui.route_details;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,12 +96,19 @@ public class RouteDetailsFragment extends Fragment {
 
         String routeId = RouteDetailsFragmentArgs.fromBundle(requireArguments()).getRouteId();
 
-        mapVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> {
-            routes.stream()
-                    .filter(route -> routeId.equals(route.id))
-                    .findFirst()
-                    .ifPresent(route -> bindRoute(route));
-        });
+        mapVm.getAllRoutes().observe(getViewLifecycleOwner(), routes -> routes.stream()
+                .filter(route -> routeId.equals(route.id))
+                .findFirst()
+                .ifPresent(route -> {
+                    bindRoute(route);
+
+                    boolean isLiked = requireContext()
+                            .getSharedPreferences("LikedRoutes", Context.MODE_PRIVATE)
+                            .getBoolean(route.id, false);
+
+                    int iconRes = isLiked ? R.drawable.baseline_favorite_24 : R.drawable.ic_favorite_24dp;
+                    binding.buttonLike.setImageResource(iconRes);
+                }));
 
         binding.shareIcon.setOnClickListener(v -> mapVm.getAllRoutes()
                 .observe(getViewLifecycleOwner(), routes -> routes.stream()
@@ -114,6 +123,18 @@ public class RouteDetailsFragment extends Fragment {
 
                             startActivity(Intent.createChooser(shareIntent, "Share via"));
                         })));
+
+        binding.buttonLike.setOnClickListener(v -> {
+            SharedPreferences prefs = requireContext().getSharedPreferences("LikedRoutes", Context.MODE_PRIVATE);
+            boolean isLiked = prefs.getBoolean(routeId, false);
+
+            boolean newLiked = !isLiked;
+            prefs.edit().putBoolean(routeId, newLiked).apply();
+
+            int iconRes = newLiked ? R.drawable.baseline_favorite_24 : R.drawable.ic_favorite_24dp;
+            binding.buttonLike.setImageResource(iconRes);
+        });
+
     }
 
     private String buildShare(RouteConfig.Route route) {

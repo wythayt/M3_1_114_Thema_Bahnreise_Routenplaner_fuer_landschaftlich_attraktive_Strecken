@@ -18,7 +18,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
-import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.databinding.FragmentSuggestionsBinding;
 import com.example.m3_app.ui.route_config.RouteConfigViewModel;
 import com.example.m3_app.ui.route_img.RouteImgAdapter;
@@ -55,16 +54,7 @@ public class SuggestionsFragment extends Fragment {
         binding = FragmentSuggestionsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-//        List<RouteImgCard> cards = Arrays.asList(
-//                new RouteImgCard("Bavarian Bliss", R.drawable.placeholder, "Along the river", false),
-//                new RouteImgCard("Through Forests", R.drawable.placeholder, "Through the forest", false)
-//        );
-
         binding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        binding.RecyclerView.setAdapter(new RouteImgAdapter(cards, card -> {
-//            NavController navController = NavHostFragment.findNavController(this);
-//            navController.navigate(R.id.routeDetailsFragment);
-//        }));
 
         binding.back.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(requireParentFragment());
@@ -119,8 +109,7 @@ public class SuggestionsFragment extends Fragment {
                         r.id,
                         r.title,
                         imageRes != 0 ? imageRes : R.drawable.placeholder,
-                        r.mainCategory,
-                        false
+                        r.mainCategory
                 ));
             });
             adapter.updateData(cards);

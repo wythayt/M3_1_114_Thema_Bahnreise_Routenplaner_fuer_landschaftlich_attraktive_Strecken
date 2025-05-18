@@ -18,15 +18,6 @@
             android:contentDescription="image"
             android:scaleType="centerCrop" />
 
-        <ImageButton
-            android:id="@+id/buttonLike"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:background="@null"
-            android:contentDescription="like"
-            android:src="@drawable/ic_favorite_24dp" />
-
     </FrameLayout>
 
     <RelativeLayout
@@ -44,18 +35,18 @@
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_text_bold"
                 android:text="Template Name"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro_text_bold"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_text_regular"
                 android:text="Scenery type"
                 android:textColor="#666"
-                android:textSize="14sp"
-                android:fontFamily="@font/sf_pro_text_regular"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <Button

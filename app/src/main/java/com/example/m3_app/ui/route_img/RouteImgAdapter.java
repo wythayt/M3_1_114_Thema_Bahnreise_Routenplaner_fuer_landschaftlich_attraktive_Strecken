@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +31,6 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView titleView, categoryView;
-        ImageButton likeButton;
         View cardView;
 
         Button pastButton;
@@ -42,7 +40,6 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
             imageView = view.findViewById(R.id.imageRoute);
             titleView = view.findViewById(R.id.textTitle);
             categoryView = view.findViewById(R.id.textViewType);
-            likeButton = view.findViewById(R.id.buttonLike);
             pastButton = view.findViewById(R.id.buttonBook);
         }
     }
@@ -53,19 +50,6 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
         holder.titleView.setText(card.title);
         holder.categoryView.setText(card.category);
         holder.imageView.setImageResource(card.imageId);
-
-        if (card.favourite) {
-            holder.likeButton.setImageResource(R.drawable.baseline_favorite_24);
-            holder.pastButton.setVisibility(View.VISIBLE);
-        }
-        else {
-            holder.likeButton.setImageResource(R.drawable.ic_favorite_24dp);
-            holder.pastButton.setVisibility(View.GONE);
-        }
-
-//        holder.likeButton.setOnClickListener(v -> {
-//            // Handle like logic here
-//        });
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {

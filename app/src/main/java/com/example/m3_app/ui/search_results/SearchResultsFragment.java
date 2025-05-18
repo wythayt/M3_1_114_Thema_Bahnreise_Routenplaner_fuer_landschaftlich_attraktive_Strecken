@@ -35,7 +35,6 @@ import com.example.m3_app.backend.utility.RouteFilterUtil;
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
 import java.util.ArrayList;
 import java.util.Set;
-import com.example.m3_app.ui.search_results.SearchResultsFragmentDirections;
 
 public class SearchResultsFragment extends Fragment {
     private FragmentSearchResultsBinding binding;
@@ -132,8 +131,7 @@ public class SearchResultsFragment extends Fragment {
                         r.id,
                         r.title,
                         imageRes != 0 ? imageRes : R.drawable.placeholder,
-                        r.mainCategory,
-                        false
+                        r.mainCategory
                 ));
             });
             adapter.updateData(cards);
