@@ -46,9 +46,9 @@ public class RatingsFragment extends Fragment {
         View root = binding.getRoot();
 
         List<FeedbackCard> cards = Arrays.asList(new FeedbackCard("Wow! Awesome trip!!",
-                new ArrayList<>(Arrays.asList(R.drawable.placeholder,R.drawable.placeholder))),
+                new ArrayList<>(Arrays.asList(R.drawable.feedback3,R.drawable.feedback4))),
                 new FeedbackCard("It was great!!!",
-                        new ArrayList<>(Arrays.asList(R.drawable.feedback_1,R.drawable.placeholder))));
+                        new ArrayList<>(Arrays.asList(R.drawable.feedback_1,R.drawable.feedback2))));
         binding.FeedbackRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.FeedbackRecyclerView.setAdapter(new FeedbackCardAdapter(cards));
         binding.backTextRatings.setOnClickListener(v -> {
