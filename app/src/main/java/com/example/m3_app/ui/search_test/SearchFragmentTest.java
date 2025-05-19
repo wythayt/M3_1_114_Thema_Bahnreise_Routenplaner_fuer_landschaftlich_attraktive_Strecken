@@ -42,6 +42,7 @@ public class SearchFragmentTest extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSearchTestBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        showData();
 
         binding.radioGroup1.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radio_specific) {
@@ -52,6 +53,7 @@ public class SearchFragmentTest extends Fragment {
         });
         binding.searchButton.setBackgroundColor(Color.parseColor("#E63946"));
         binding.searchButton.setOnClickListener(v -> {
+            showLoading();
             String from = binding.editTextFrom1.getText().toString();
             String to = binding.editTextTo2.getText().toString();
 
@@ -140,5 +142,15 @@ public class SearchFragmentTest extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
+    }
+
+    private void showLoading() {
+        binding.linearLayoutSearchSub.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void showData() {
+        binding.linearLayoutSearchSub.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }
