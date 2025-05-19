@@ -147,6 +147,8 @@ public class RouteDetailsFragment extends Fragment {
 
         binding.mainCategory.setText(r.mainCategory);
         binding.rating.setText(r.rating);
+        binding.ratingBar.setRating(Float.parseFloat(r.rating));
+
 
         binding.routeName.setText(r.title);
         binding.journeyTime.setText(r.journeyTime);
