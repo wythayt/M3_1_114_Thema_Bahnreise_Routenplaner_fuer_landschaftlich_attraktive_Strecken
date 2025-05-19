@@ -145,12 +145,12 @@ public class SearchFragmentTest extends Fragment {
     }
 
     private void showLoading() {
-        binding.linearLayoutSearchSub.setVisibility(View.GONE);
+        binding.linearLayoutSub.setVisibility(View.GONE);
         binding.progressBar.setVisibility(View.VISIBLE);
     }
 
     private void showData() {
-        binding.linearLayoutSearchSub.setVisibility(View.VISIBLE);
+        binding.linearLayoutSub.setVisibility(View.VISIBLE);
         binding.progressBar.setVisibility(View.GONE);
     }
 }

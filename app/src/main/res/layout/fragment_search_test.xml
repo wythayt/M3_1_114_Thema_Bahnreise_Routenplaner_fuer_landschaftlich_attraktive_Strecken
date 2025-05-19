@@ -41,8 +41,24 @@
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/guideline_top"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-        <RadioGroup
+        <LinearLayout
+            android:id="@+id/linearLayoutSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/guideline_top">
+
+            <RadioGroup
             android:id="@+id/radioGroup1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +67,6 @@
             android:paddingStart="18dp"
             android:paddingTop="18dp"
             android:paddingEnd="18dp"
-            app:layout_constraintTop_toBottomOf="@id/guideline_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.028">
@@ -191,6 +206,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
