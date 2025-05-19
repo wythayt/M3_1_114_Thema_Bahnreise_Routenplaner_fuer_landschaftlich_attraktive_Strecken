@@ -62,6 +62,13 @@ public class TripDetailsFragment extends Fragment {
         binding = FragmentTripDetailsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Important Information")
+                .setMessage("To buy a ticket click on a company logo. " +
+                        "The route will appear in activity center after that.")
+                .setNeutralButton("OK!", null)
+                .show();
+
         ImageButton buttonClose = view.findViewById(R.id.buttonClose);
         ImageButton buttonHelp = view.findViewById(R.id.buttonHelp);
         ImageView imageMap = view.findViewById(R.id.imageMap);
