@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.m3_app.R;
 import com.example.m3_app.backend.RouteConfig;
@@ -144,10 +145,6 @@ public class RouteDetailsFragment extends Fragment {
     private void bindRoute(RouteConfig.Route r) {
         binding.titleText.setText(r.title);
 
-        int imageRes = requireContext().getResources()
-                .getIdentifier(r.cardImageResource, "drawable", requireContext().getPackageName());
-        binding.cardImageResource.setImageResource(imageRes != 0 ? imageRes : R.drawable.placeholder);
-
         binding.mainCategory.setText(r.mainCategory);
         binding.rating.setText(r.rating);
 
@@ -169,6 +166,35 @@ public class RouteDetailsFragment extends Fragment {
 
         StringBuilder b = getStringBuilder(r);
         binding.categories.setText(b.substring(0, b.length() - 2));
+
+        ImageGalleryAdapter adapter = new ImageGalleryAdapter(requireContext(), r.imageGallery);
+        binding.imageGalleryPager.setAdapter(adapter);
+
+        ViewPager2 pager = binding.imageGalleryPager;
+
+        binding.arrowIndicatorL.setVisibility(View.GONE);
+        binding.arrowIndicatorR.setVisibility(r.imageGallery.size() > 1 ? View.VISIBLE : View.GONE);
+
+        binding.arrowIndicatorL.setOnClickListener(v -> {
+            int current = pager.getCurrentItem();
+            if (current > 0) pager.setCurrentItem(current - 1, true);
+        });
+
+        binding.arrowIndicatorR.setOnClickListener(v -> {
+            int current = pager.getCurrentItem();
+            if (current < adapter.getItemCount() - 1)
+                pager.setCurrentItem(current + 1, true);
+        });
+
+        pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                binding.arrowIndicatorL.setVisibility(position > 0 ? View.VISIBLE : View.GONE);
+                binding.arrowIndicatorR.setVisibility(position < adapter.getItemCount() - 1 ? View.VISIBLE : View.GONE);
+            }
+        });
+
     }
 
     @NonNull

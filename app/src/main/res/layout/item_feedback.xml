@@ -73,7 +73,7 @@
                 android:textStyle="bold"
                 android:padding="16dp"
                 android:fontFamily="@font/sf_pro_text_regular"
-                android:background="@drawable/title_backround"/>
+                android:background="@drawable/title_background"/>
 
             <TextView
                 android:id="@+id/textViewType"

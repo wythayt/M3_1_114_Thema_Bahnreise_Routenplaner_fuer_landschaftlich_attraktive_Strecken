@@ -98,12 +98,40 @@
                 android:paddingHorizontal="16dp"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner12">
 
-                <ImageView
-                    android:id="@+id/cardImageResource"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/imageGalleryPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/placeholder"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner12" />
+                    android:clipChildren="false"
+                    android:clipToPadding="false" />
+
+                <ImageView
+                    android:id="@+id/arrowIndicatorL"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:alpha="0.6"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:contentDescription="Left arrow"
+                    android:focusable="true"
+                    android:src="@drawable/arrow_back_b_ios_24dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/arrowIndicatorR"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:alpha="0.6"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:contentDescription="Right arrow"
+                    android:focusable="true"
+                    android:src="@drawable/arrow_forward_ios_24dp"
+                    android:visibility="visible" />
 
                 <ImageButton
                     android:id="@+id/buttonLike"
