@@ -52,6 +52,8 @@ public class MapSpecifiedFragment extends Fragment {
         binding = FragmentMapSpecifiedBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        showLoading();
+
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         String startLocation = args.getFrom();
         String endLocation = args.getTo();
@@ -113,7 +115,7 @@ public class MapSpecifiedFragment extends Fragment {
         ViewGroup root = (ViewGroup) requireActivity().findViewById(android.R.id.content);
         View navBar = root.findViewById(R.id.nav_view);
 
-        assert navBar!=null;
+        assert navBar != null;
         navBar.setVisibility(View.GONE);
 
         requireActivity().getWindow().setFlags(
@@ -162,7 +164,7 @@ public class MapSpecifiedFragment extends Fragment {
                 .get(MapSpecifiedViewModel.class);
 
         Observer<Object> updateUI = __ -> {
-            List<RouteConfig.Route> allRoutes  = mapVm.getAllRoutes().getValue();
+            List<RouteConfig.Route> allRoutes = mapVm.getAllRoutes().getValue();
             Set<String> selectedChips = filterVm.getSelectedChips().getValue();
             if (allRoutes == null) return;
 
@@ -186,5 +188,19 @@ public class MapSpecifiedFragment extends Fragment {
 
         mapVm.getAllRoutes().observe(getViewLifecycleOwner(), updateUI);
         filterVm.getSelectedChips().observe(getViewLifecycleOwner(), updateUI);
+
+        showResults();
+    }
+
+    private void showLoading() {
+        binding.imageView7.setVisibility(View.GONE);
+        binding.routeCardsRecycler.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void showResults() {
+        binding.imageView7.setVisibility(View.VISIBLE);
+        binding.routeCardsRecycler.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }

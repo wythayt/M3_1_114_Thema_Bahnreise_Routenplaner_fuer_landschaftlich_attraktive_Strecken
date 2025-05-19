@@ -38,6 +38,8 @@ public class MapNotSpecifiedFragment extends Fragment {
         binding = FragmentMapNotSpecifiedBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        showLoading();
+
 //        List<RouteCard> cards = Arrays.asList(
 //                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
 //                new RouteCard("Through Forests", R.drawable.placeholder)
@@ -97,12 +99,25 @@ public class MapNotSpecifiedFragment extends Fragment {
         ViewGroup root = (ViewGroup) requireActivity().findViewById(android.R.id.content);
         View navBar = root.findViewById(R.id.nav_view);
 
-        assert navBar!=null;
+        assert navBar != null;
         navBar.setVisibility(View.GONE);
 
         requireActivity().getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
+        showResults();
+    }
+
+    private void showLoading() {
+        binding.imageView7.setVisibility(View.GONE);
+        binding.routeCardsRecycler.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void showResults() {
+        binding.imageView7.setVisibility(View.VISIBLE);
+        binding.routeCardsRecycler.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }
