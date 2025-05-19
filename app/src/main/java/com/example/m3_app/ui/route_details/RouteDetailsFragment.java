@@ -160,5 +160,31 @@ public class RouteDetailsFragment extends Fragment {
         binding.operators.setText(ops);
         String sts = String.join(" – ", r.stations.get(0));
         binding.stations.setText(sts);
+
+        int iconRes = requireContext().getResources()
+                .getIdentifier(r.mainCategory.toLowerCase().replaceAll("\\s+", ""),
+                        "drawable", requireContext().getPackageName());
+        binding.categoryIcon.setImageResource(iconRes != 0 ? iconRes : R.drawable.placeholder);
+        binding.description.setText(r.description);
+
+        StringBuilder b = getStringBuilder(r);
+        binding.categories.setText(b.substring(0, b.length() - 2));
+    }
+
+    @NonNull
+    private static StringBuilder getStringBuilder(RouteConfig.Route r) {
+        StringBuilder b = new StringBuilder();
+        if (r.filter.familyFun) b.append("Family Fun, ");
+        if (r.filter.historyHeritage) b.append("History & Heritage, ");
+        if (r.filter.artCulture) b.append("Art & Culture, ");
+        if (r.filter.noTransfer) b.append("No Transfer, ");
+        if (r.filter.audioGuide) b.append("Audio Guide, ");
+        if (r.filter.withSights) b.append("With Sights, ");
+        if (r.filter.topRated) b.append("Top Rated, ");
+        if (r.filter.barrierFree) b.append("Barrier Free, ");
+        if (r.filter.alongTheRiver) b.append("Along the River, ");
+        if (r.filter.forest) b.append("Forest, ");
+        if (r.filter.mountains) b.append("Mountains, ");
+        return b;
     }
 }
