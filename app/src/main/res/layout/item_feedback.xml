@@ -92,6 +92,7 @@
                     android:id="@+id/firstPhoto"
                     android:layout_width="160dp"
                     android:layout_height="150dp"
+                    android:scaleType="centerCrop"
                     android:background="@drawable/searchbox_background"
                     android:src="@drawable/placeholder" />
                 <View
@@ -102,6 +103,7 @@
                     android:id="@+id/secondPhoto"
                     android:layout_width="160dp"
                     android:layout_height="150dp"
+                    android:scaleType="centerCrop"
                     android:background="@drawable/searchbox_background"
                     android:src="@drawable/placeholder"/>
             </LinearLayout>
