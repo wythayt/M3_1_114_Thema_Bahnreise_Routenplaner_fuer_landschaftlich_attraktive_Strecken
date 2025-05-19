@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="8dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -116,7 +116,8 @@
                         app:iconGravity="textStart"
                         app:iconPadding="10dp"
                         android:padding="12dp"
-                        app:strokeWidth="3dp"/>
+                        app:strokeWidth="3dp"
+                        app:cornerRadius="10dp"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/settingsButton"
@@ -129,7 +130,8 @@
                         android:textSize="15sp"
                         app:iconGravity="textStart"
                         android:padding="12dp"
-                        app:strokeWidth="3dp"/>
+                        app:strokeWidth="3dp"
+                        app:cornerRadius="10dp"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/logoutButton"
@@ -142,7 +144,8 @@
                         android:textColor="@color/red"
                         android:textSize="15sp"
                         android:padding="12dp"
-                        app:strokeWidth="3dp"/>
+                        app:strokeWidth="3dp"
+                        app:cornerRadius="10dp"/>
                 </LinearLayout>
             </LinearLayout>
     </ScrollView>
