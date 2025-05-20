@@ -35,6 +35,7 @@
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
                 android:contentDescription="like"
+                app:tint="@color/red"
                 android:src="@drawable/ic_favorite_24dp" />
         </FrameLayout>
 
