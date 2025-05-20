@@ -190,6 +190,7 @@ public class TripDetailsFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        isFirstSegment = true;
         super.onDestroyView();
         binding = null;
     }
