@@ -36,6 +36,7 @@ public class RouteImgAdapter extends RecyclerView.Adapter<RouteImgAdapter.ViewHo
         View cardView;
         ImageView likeButton;
         Button pastButton;
+
         public ViewHolder(View view) {
             super(view);
             cardView = view;

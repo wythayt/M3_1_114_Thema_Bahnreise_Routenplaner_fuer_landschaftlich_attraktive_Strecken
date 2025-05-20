@@ -1,12 +1,15 @@
 package com.example.m3_app.ui.route_config;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.google.gson.Gson;
 import com.example.m3_app.backend.RouteConfig;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -17,7 +20,7 @@ import java.util.Map;
 
 public class RouteConfigViewModel extends AndroidViewModel {
     private final MutableLiveData<List<RouteConfig.Route>> allRoutes = new MutableLiveData<>();
-    private final Map<String, RouteConfig.Route> byId        = new HashMap<>();
+    private final Map<String, RouteConfig.Route> byId = new HashMap<>();
 
     public RouteConfigViewModel(@NonNull Application app) {
         super(app);

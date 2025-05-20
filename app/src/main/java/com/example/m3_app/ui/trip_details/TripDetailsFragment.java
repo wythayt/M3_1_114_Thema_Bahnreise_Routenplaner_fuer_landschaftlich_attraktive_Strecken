@@ -31,6 +31,7 @@ import com.example.m3_app.ui.route_details.RouteDetailsFragmentArgs;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class TripDetailsFragment extends Fragment {
@@ -166,20 +167,20 @@ public class TripDetailsFragment extends Fragment {
         stopsContainer.removeAllViews();
         for (String stop : stops) {
             TextView stopView = new TextView(requireContext());
-            stopView.setText("• " + stop);
+            stopView.setText(String.format("• %s", stop));
             stopView.setTextSize(14);
             stopView.setPadding(0, 8, 0, 8);
             stopsContainer.addView(stopView);
         }
 
-        toggleStopsView.setText(stops.size() + " stops ▼");
+        toggleStopsView.setText(String.format(Locale.UK, "%d stops ▼", stops.size()));
         toggleStopsView.setOnClickListener(v -> {
             if (stopsContainer.getVisibility() == View.GONE) {
                 stopsContainer.setVisibility(View.VISIBLE);
-                toggleStopsView.setText(stops.size() + " stops ▲");
+                toggleStopsView.setText(String.format(Locale.UK, "%d stops ▲", stops.size()));
             } else {
                 stopsContainer.setVisibility(View.GONE);
-                toggleStopsView.setText(stops.size() + " stops ▼");
+                toggleStopsView.setText(String.format(Locale.UK, "%d stops ▼", stops.size()));
             }
         });
 

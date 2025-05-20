@@ -23,14 +23,13 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class FiltersBottomSheet extends BottomSheetDialogFragment {
-    private SheetFiltersBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = SheetFiltersBinding.inflate(inflater, container, false);
+        com.example.m3_app.databinding.SheetFiltersBinding binding = SheetFiltersBinding.inflate(inflater, container, false);
         binding.btnClose.setOnClickListener(v -> dismiss());
 
         FilterViewModel viewModel = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);

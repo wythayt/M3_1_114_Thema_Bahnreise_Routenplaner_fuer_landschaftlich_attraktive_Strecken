@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 import com.example.m3_app.R;
+
 import java.util.List;
 
 public class RouteCardAdapter extends RecyclerView.Adapter<RouteCardAdapter.ViewHolder> {
@@ -27,7 +29,8 @@ public class RouteCardAdapter extends RecyclerView.Adapter<RouteCardAdapter.View
         this.setData(cards);
     }
 
-    public RouteCardAdapter() {}
+    public RouteCardAdapter() {
+    }
 
     public void setOnRouteClickListener(onRouteClickListener onRouteClickListener) {
         this.onRouteClickListener = onRouteClickListener;
@@ -76,12 +79,16 @@ public class RouteCardAdapter extends RecyclerView.Adapter<RouteCardAdapter.View
         });
     }
 
-    @Override public int getItemCount() { return routeCards.size(); }
+    @Override
+    public int getItemCount() {
+        return routeCards.size();
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView titleView;
         ImageView likeButton;
+
         public ViewHolder(View view) {
             super(view);
             imageView = view.findViewById(R.id.routeImage);

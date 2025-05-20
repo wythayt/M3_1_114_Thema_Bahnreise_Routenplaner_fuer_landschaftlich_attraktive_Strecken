@@ -71,7 +71,7 @@ public class ActivityCenterFragment extends Fragment {
             List<RouteConfig.Route> upcoming = new ArrayList<>();
             List<LocalDate> upcomingDates = new ArrayList<>();
             List<RouteConfig.Route> past = new ArrayList<>();
-            List<LocalDate> pastDates= new ArrayList<>();
+            List<LocalDate> pastDates = new ArrayList<>();
 
             for (RouteConfig.Route route : allRoutes) {
                 String dateStr = prefs.getString(route.id, null);

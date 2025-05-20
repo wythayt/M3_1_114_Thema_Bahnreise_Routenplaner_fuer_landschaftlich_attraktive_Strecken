@@ -33,12 +33,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.backend.utility.RouteFilterUtil;
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
+
 import java.util.ArrayList;
 import java.util.Set;
 
 public class SearchResultsFragment extends Fragment {
     private FragmentSearchResultsBinding binding;
-    private RouteImgAdapter adapter;
     private FilterViewModel filterVm;
     private MapSpecifiedViewModel mapVm;
     private String fromDestination;
@@ -73,7 +73,7 @@ public class SearchResultsFragment extends Fragment {
                 String.format("%s → %s", fromDestination, toDestination)
         );
 
-        adapter = new RouteImgAdapter(new ArrayList<>(), card -> {
+        RouteImgAdapter adapter = new RouteImgAdapter(new ArrayList<>(), card -> {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.routeDetailsFragment);
         });
@@ -98,7 +98,7 @@ public class SearchResultsFragment extends Fragment {
         );
 
         filterVm = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
-        mapVm    = new ViewModelProvider(
+        mapVm = new ViewModelProvider(
                 this,
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())
         ).get(MapSpecifiedViewModel.class);
@@ -116,8 +116,8 @@ public class SearchResultsFragment extends Fragment {
         binding.RecyclerView.setAdapter(adapter);
 
         Observer<Object> rebuild = unused -> {
-            List<RouteConfig.Route> allRoutes  = mapVm.getAllRoutes().getValue();
-            Set<String> selectedChips  = filterVm.getSelectedChips().getValue();
+            List<RouteConfig.Route> allRoutes = mapVm.getAllRoutes().getValue();
+            Set<String> selectedChips = filterVm.getSelectedChips().getValue();
             if (allRoutes == null) return;
 
             List<RouteConfig.Route> matches = RouteFilterUtil

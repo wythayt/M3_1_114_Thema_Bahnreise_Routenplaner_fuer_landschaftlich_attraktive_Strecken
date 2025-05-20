@@ -1,7 +1,6 @@
 package com.example.m3_app.ui.ratings;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -40,15 +39,14 @@ public class RatingsFragment extends Fragment {
                         navController.navigateUp();
                     }
                 });
-        RatingsViewModel ratingsViewModel = new ViewModelProvider(this).get(RatingsViewModel.class);
 
         binding = FragmentRatingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         List<FeedbackCard> cards = Arrays.asList(new FeedbackCard("Wow! Awesome trip!!",
-                new ArrayList<>(Arrays.asList(R.drawable.feedback3,R.drawable.feedback4))),
+                        new ArrayList<>(Arrays.asList(R.drawable.feedback3, R.drawable.feedback4))),
                 new FeedbackCard("It was great!!!",
-                        new ArrayList<>(Arrays.asList(R.drawable.feedback_1,R.drawable.feedback2))));
+                        new ArrayList<>(Arrays.asList(R.drawable.feedback_1, R.drawable.feedback2))));
         binding.FeedbackRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.FeedbackRecyclerView.setAdapter(new FeedbackCardAdapter(cards));
         binding.backTextRatings.setOnClickListener(v -> {

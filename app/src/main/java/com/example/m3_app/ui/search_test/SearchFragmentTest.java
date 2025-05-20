@@ -117,7 +117,7 @@ public class SearchFragmentTest extends Fragment {
             List<RouteCard> cards = new ArrayList<>();
             wantedIds.stream().map(configVm::getRouteById).filter(Objects::nonNull).forEach(route -> {
                 int imgRes = requireContext().getResources()
-                        .getIdentifier(route.cardImageResource, "drawable", getContext().getPackageName());
+                        .getIdentifier(route.cardImageResource, "drawable", requireContext().getPackageName());
                 cards.add(new RouteCard(route.id, route.title, imgRes));
             });
             adapter.setData(cards);

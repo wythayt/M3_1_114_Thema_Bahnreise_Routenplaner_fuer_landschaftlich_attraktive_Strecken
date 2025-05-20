@@ -33,6 +33,7 @@ public class FeedbackCardAdapter extends RecyclerView.Adapter<FeedbackCardAdapte
             commentView = view.findViewById(R.id.textTitleComment);
         }
     }
+
     @NonNull
     @Override
     public FeedbackCardAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
