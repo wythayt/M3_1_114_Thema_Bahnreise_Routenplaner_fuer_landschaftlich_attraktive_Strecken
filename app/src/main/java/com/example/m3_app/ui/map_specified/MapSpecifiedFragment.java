@@ -28,6 +28,7 @@ import com.example.m3_app.ui.filter.FilterViewModel;
 import com.example.m3_app.ui.filter.FiltersBottomSheet;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ import java.util.Set;
 
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentDirections;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MapSpecifiedFragment extends Fragment {
     private FragmentMapSpecifiedBinding binding;
@@ -123,6 +125,25 @@ public class MapSpecifiedFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
 
+        PhotoView photoView = binding.imageView7;
+        FloatingActionButton fabZoomIn = binding.fabZoomIn;
+        FloatingActionButton fabZoomOut = binding.fabZoomOut;
+
+        photoView.setMinimumScale(0.5f);
+        photoView.setMediumScale(2.0f);
+        photoView.setMaximumScale(6.0f);
+
+        fabZoomIn.setOnClickListener(v -> {
+            float scale = photoView.getScale();
+            photoView.setScale(scale * 0.8f, true);
+        });
+
+        fabZoomOut.setOnClickListener(v -> {
+            float scale = photoView.getScale();
+            photoView.setScale(scale * 1.25f, true);
+
+        });
+
         MaterialButton filtersBtn = binding.button4;
         ColorStateList defaultTint = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
         ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
@@ -178,11 +199,11 @@ public class MapSpecifiedFragment extends Fragment {
 
             //build the RouteCard list and hand it to the adapter
             List<RouteCard> cards = new ArrayList<>(matches.size());
-            for (RouteConfig.Route match : matches) {
+            matches.forEach(match -> {
                 int thumbId = requireContext().getResources()
                         .getIdentifier(match.cardImageResource, "drawable", requireContext().getPackageName());
                 cards.add(new RouteCard(match.id, match.title, thumbId));
-            }
+            });
             adapter.setData(cards);
         };
 
