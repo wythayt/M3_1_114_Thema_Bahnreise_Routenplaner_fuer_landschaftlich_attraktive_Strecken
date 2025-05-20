@@ -151,6 +151,7 @@ public class RouteDetailsFragment extends Fragment {
 
 
         binding.routeName.setText(r.title);
+        binding.description.setText(r.description);
         binding.journeyTime.setText(r.journeyTime);
         binding.cost.setText(r.cost);
         binding.distance.setText(r.distance);
