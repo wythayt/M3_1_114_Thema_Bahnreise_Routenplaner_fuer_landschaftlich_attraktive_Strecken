@@ -21,6 +21,8 @@ import androidx.fragment.app.DialogFragment;
 import com.example.m3_app.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.Objects;
+
 public class InfoDialogFragment extends DialogFragment {
     @NonNull
     @Override
@@ -67,13 +69,13 @@ public class InfoDialogFragment extends DialogFragment {
                 .create();
 
         ivClose.setOnClickListener(v -> dialog.dismiss());
-        gotIt  .setOnClickListener(v -> dialog.dismiss());
+        gotIt.setOnClickListener(v -> dialog.dismiss());
         dontShow.setOnClickListener(v -> {
             // TODO: implement “don’t show again”
             dialog.dismiss();
         });
 
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         return dialog;
     }
 
