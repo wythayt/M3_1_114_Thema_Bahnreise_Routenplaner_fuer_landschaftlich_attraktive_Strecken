@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="12dp"
     android:background="@drawable/card_background"
@@ -20,7 +20,7 @@
             android:id="@+id/imageMap"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:contentDescription="Map"
+            android:contentDescription="@string/map"
             android:scaleType="centerCrop" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Template Name"
+                android:text="@string/template_name"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
                 android:id="@+id/textDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:text="@string/date"
                 android:textColor="#666"
                 android:textSize="14sp" />
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:backgroundTint="#f04b4b"
-            android:text="Rebook"
+            android:text="@string/rebook"
             android:visibility="gone" />
 
         <ImageButton
@@ -70,7 +70,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:background="@drawable/bg_circle"
-            android:contentDescription="Get-in Button"
+            android:contentDescription="@string/more_information"
             android:src="@drawable/baseline_arrow_right_alt_24" />
     </RelativeLayout>
 </LinearLayout>

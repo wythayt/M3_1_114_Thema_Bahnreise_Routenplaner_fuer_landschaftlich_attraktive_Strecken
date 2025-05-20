@@ -24,10 +24,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_text_bold"
                 android:paddingBottom="24dp"
-                android:text="Help"
-                android:textSize="25sp"
-                android:fontFamily="@font/sf_pro_text_bold"/>
+                android:text="@string/title_help"
+                android:textSize="25sp" />
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,107 +39,117 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:divider="?android:attr/dividerHorizontal"
-                    android:showDividers="middle"
-                    android:dividerPadding="8dp">
+                    android:dividerPadding="8dp"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackground">
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:contentDescription="@string/faq"
                             android:src="@drawable/help_24px"
-                            app:tint="@color/grey"
-                            android:layout_marginEnd="16dp"/>
+                            app:tint="@color/grey" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="FAQ"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/sf_pro_text_semibold"
+                            android:text="@string/faq"
                             android:textColor="@color/grey"
-                            android:fontFamily="@font/sf_pro_text_semibold"/>
+                            android:textSize="20sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackground">
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:contentDescription="@string/settings"
                             android:src="@drawable/settings_24dp"
-                            app:tint="@color/grey"
-                            android:layout_marginEnd="16dp"/>
+                            app:tint="@color/grey" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Settings"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/sf_pro_text_semibold"
+                            android:text="@string/settings"
                             android:textColor="@color/grey"
-                            android:fontFamily="@font/sf_pro_text_semibold"/>
+                            android:textSize="20sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackground">
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:contentDescription="@string/gdpr_privacy"
                             android:src="@drawable/policy_24dp"
-                            app:tint="@color/grey"
-                            android:layout_marginEnd="16dp"/>
+                            app:tint="@color/grey" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="GDPR/Privacy"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/sf_pro_text_semibold"
+                            android:text="@string/gdpr_privacy"
                             android:textColor="@color/grey"
-                            android:fontFamily="@font/sf_pro_text_semibold"/>
+                            android:textSize="20sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackground">
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:contentDescription="@string/contact_support"
                             android:src="@drawable/support_agent_24dp"
-                            app:tint="@color/grey"
-                            android:layout_marginEnd="16dp"/>
+                            app:tint="@color/grey" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Contact Support"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/sf_pro_text_semibold"
+                            android:text="@string/contact_support"
                             android:textColor="@color/grey"
-                            android:fontFamily="@font/sf_pro_text_semibold"/>
+                            android:textSize="20sp" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

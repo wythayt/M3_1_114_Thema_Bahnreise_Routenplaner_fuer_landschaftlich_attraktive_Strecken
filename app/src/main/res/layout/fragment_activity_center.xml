@@ -28,7 +28,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/sf_pro_text_bold"
                 android:paddingHorizontal="16dp"
-                android:text="Activity Center"
+                android:text="@string/activity_center"
                 android:textSize="25sp" />
 
             <LinearLayout
@@ -44,15 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/sf_pro_text_semibold"
-                    android:text="Upcoming"
+                    android:text="@string/upcoming"
                     android:textSize="20sp" />
-
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@null"
-                    android:contentDescription="Search"
-                    android:src="@drawable/search_24px" />
 
             </LinearLayout>
 
@@ -76,15 +69,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/sf_pro_text_semibold"
-                    android:text="Past"
+                    android:text="@string/past"
                     android:textSize="20sp" />
-
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@null"
-                    android:contentDescription="Search"
-                    android:src="@drawable/search_24px" />
 
             </LinearLayout>
 

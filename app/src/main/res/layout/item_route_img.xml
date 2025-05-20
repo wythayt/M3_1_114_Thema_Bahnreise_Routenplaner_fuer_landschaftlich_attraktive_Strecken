@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/card_background"
     android:orientation="vertical"
     android:padding="16dp">
@@ -11,30 +11,32 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
 
-        <ImageView
-            android:id="@+id/imageRoute"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="image"
-            android:scaleType="centerCrop" />
+            android:layout_height="200dp">
 
-        <ImageButton
-            android:id="@+id/buttonLike"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="6dp"
-            android:layout_gravity="top|start"
-            android:background="@android:color/transparent"
-            android:scaleType="centerInside"
-            android:contentDescription="like"
-            android:src="@drawable/ic_favorite_24dp" />
+            <ImageView
+                android:id="@+id/imageRoute"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/image"
+                android:scaleType="centerCrop" />
 
-    </FrameLayout>
+            <ImageButton
+                android:id="@+id/buttonLike"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="top|start"
+                android:layout_margin="6dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/like"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_favorite_24dp" />
+
+        </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro_text_bold"
-                android:text="Template Name"
+                android:text="@string/template_name"
                 android:textSize="16sp" />
 
             <TextView
@@ -59,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro_text_regular"
-                android:text="Scenery type"
+                android:text="@string/scenery_type"
                 android:textColor="#666"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -70,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:backgroundTint="#f04b4b"
-            android:text="Book Ticket"
+            android:text="@string/book_ticket"
             android:visibility="gone" />
 
 

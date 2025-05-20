@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start|center_vertical"
-            android:text="Back"
+            android:text="@string/back"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -43,7 +43,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
-            android:contentDescription="Share"
+            android:contentDescription="@string/share"
             android:src="@drawable/share_24px" />
     </LinearLayout>
 
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/sf_pro_text_bold"
-                    android:text="Lines:"
+                    android:text="@string/lines"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sf_pro_text_regular"
-                    android:text="Swiss Dream"
+                    android:text="@string/swiss_dream"
                     android:textColor="#000000"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -94,61 +94,62 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginBottom="15dp"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="15dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginBottom="15dp"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner12">
 
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/imageGalleryPager"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipChildren="false"
-                    android:clipToPadding="false" />
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="15dp"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner12">
 
-                <ImageView
-                    android:id="@+id/arrowIndicatorL"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="start|center_vertical"
-                    android:layout_marginStart="12dp"
-                    android:alpha="0.6"
-                    android:background="@android:color/transparent"
-                    android:clickable="true"
-                    android:contentDescription="Left arrow"
-                    android:focusable="true"
-                    android:src="@drawable/arrow_back_b_ios_24dp"
-                    android:visibility="gone" />
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/imageGalleryPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipChildren="false"
+                        android:clipToPadding="false" />
 
-                <ImageView
-                    android:id="@+id/arrowIndicatorR"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:alpha="0.6"
-                    android:background="@android:color/transparent"
-                    android:clickable="true"
-                    android:contentDescription="Right arrow"
-                    android:focusable="true"
-                    android:src="@drawable/arrow_forward_ios_24dp"
-                    android:visibility="visible" />
+                    <ImageView
+                        android:id="@+id/arrowIndicatorL"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:alpha="0.6"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:contentDescription="@string/left_arrow"
+                        android:focusable="true"
+                        android:src="@drawable/arrow_back_b_ios_24dp"
+                        android:visibility="gone" />
 
-                <ImageButton
-                    android:id="@+id/buttonLike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@null"
-                    android:contentDescription="like"
-                    android:src="@drawable/ic_favorite_24dp" />
+                    <ImageView
+                        android:id="@+id/arrowIndicatorR"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="12dp"
+                        android:alpha="0.6"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:contentDescription="@string/right_arrow"
+                        android:focusable="true"
+                        android:src="@drawable/arrow_forward_ios_24dp"
+                        android:visibility="visible" />
 
-            </FrameLayout>
+                    <ImageButton
+                        android:id="@+id/buttonLike"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="10dp"
+                        android:background="@null"
+                        android:contentDescription="@string/like"
+                        android:src="@drawable/ic_favorite_24dp" />
+
+                </FrameLayout>
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -165,7 +166,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
-                    android:contentDescription="Route Image"
+                    android:contentDescription="@string/route_icon"
                     android:src="@drawable/placeholder" />
 
                 <TextView
@@ -174,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/sf_pro_text_regular"
-                    android:text="Scenic View" />
+                    android:text="@string/scenic_view" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -183,26 +184,27 @@
                     android:background="@drawable/title_background"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:padding="6dp"
-                    android:text="Ratings"
+                    android:text="@string/ratings"
                     android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4.0" />
+                    android:text="@string/_4_0" />
+
                 <RatingBar
                     android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:numStars="5"
-                    android:rating="4.5"
-                    android:stepSize="0.5"
                     android:progressTint="#FFD700"
+                    android:rating="4.5"
                     android:secondaryProgressTint="#FFD700"
-                    android:thumbTint="#FFD700"
-                    style="@style/Widget.AppCompat.RatingBar.Small"/>
+                    android:stepSize="0.5"
+                    android:thumbTint="#FFD700" />
 
             </LinearLayout>
 
@@ -217,7 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/sf_pro_text_regular"
-                    android:text="See more ->"
+                    android:text="@string/see_more"
                     android:textColor="@color/red" />
             </LinearLayout>
 
@@ -228,7 +230,7 @@
                 android:fontFamily="@font/sf_pro_text_semibold"
                 android:gravity="start"
                 android:paddingHorizontal="16dp"
-                android:text="About this line"
+                android:text="@string/about_this_line"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -257,7 +259,7 @@
                         android:background="@drawable/title_background"
                         android:fontFamily="@font/sf_pro_text_bold"
                         android:padding="6dp"
-                        android:text="Route"
+                        android:text="@string/route"
                         android:textSize="16sp" />
 
                     <TextView
@@ -268,7 +270,7 @@
                         android:paddingStart="4dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
-                        android:text="Swiss Dream"
+                        android:text="@string/swiss_dream"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -285,7 +287,7 @@
                         android:background="@drawable/title_background"
                         android:fontFamily="@font/sf_pro_text_bold"
                         android:padding="6dp"
-                        android:text="Journey Time"
+                        android:text="@string/journey_time"
                         android:textSize="16sp" />
 
                     <TextView
@@ -296,7 +298,7 @@
                         android:paddingStart="4dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
-                        android:text="9h 12min"
+                        android:text="@string/_9h_12min"
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -324,7 +326,7 @@
                         android:background="@drawable/title_background"
                         android:fontFamily="@font/sf_pro_text_bold"
                         android:padding="6dp"
-                        android:text="Cost"
+                        android:text="@string/cost"
                         android:textSize="16sp" />
 
                     <TextView
@@ -335,7 +337,7 @@
                         android:paddingStart="4dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
-                        android:text="239"
+                        android:text="@string/_239"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -352,7 +354,7 @@
                         android:background="@drawable/title_background"
                         android:fontFamily="@font/sf_pro_text_bold"
                         android:padding="6dp"
-                        android:text="Distance"
+                        android:text="@string/distance"
                         android:textSize="16sp" />
 
                     <TextView
@@ -363,7 +365,7 @@
                         android:paddingStart="4dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="4dp"
-                        android:text="About 765 km"
+                        android:text="@string/about_765_km"
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -388,7 +390,7 @@
                     android:background="@drawable/title_background"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:padding="6dp"
-                    android:text="Categories"
+                    android:text="@string/categories"
                     android:textSize="16sp" />
 
                 <TextView
@@ -399,7 +401,7 @@
                     android:paddingStart="4dp"
                     android:paddingTop="8dp"
                     android:paddingEnd="4dp"
-                    android:text="Along the river, forest"
+                    android:text="@string/along_the_river_forest"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -423,7 +425,7 @@
                     android:background="@drawable/title_background"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:padding="6dp"
-                    android:text="This line is supported by"
+                    android:text="@string/this_line_is_supported_by"
                     android:textSize="16sp" />
 
                 <TextView
@@ -434,7 +436,7 @@
                     android:paddingStart="4dp"
                     android:paddingTop="8dp"
                     android:paddingEnd="4dp"
-                    android:text="OBB, WESTbahn"
+                    android:text="@string/obb_westbahn"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -456,7 +458,7 @@
                     android:background="@drawable/title_background"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:padding="6dp"
-                    android:text="Stations on this line"
+                    android:text="@string/stations_on_this_line"
                     android:textSize="16sp" />
 
                 <TextView
@@ -467,7 +469,7 @@
                     android:paddingStart="4dp"
                     android:paddingTop="8dp"
                     android:paddingEnd="4dp"
-                    android:text="Vienna - St.Polten - Linz - Salzburg - Bludenz"
+                    android:text="@string/vienna_st_polten_linz_salzburg_bludenz"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -489,7 +491,7 @@
                     android:background="@drawable/title_background"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:padding="6dp"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textSize="16sp" />
 
                 <TextView
@@ -501,7 +503,7 @@
                     android:paddingStart="4dp"
                     android:paddingTop="8dp"
                     android:paddingEnd="4dp"
-                    android:text="Text"
+                    android:text="@string/text"
                     android:textSize="16sp" />
             </LinearLayout>
 

@@ -4,6 +4,6 @@
     android:layout_marginVertical="8dp"
     android:background="#aed9a0"
     android:padding="10dp"
-    android:text="Layover: 13 min\nTransfer to the connecting Railjet"
+    android:text="@string/connection_view"
     android:textAlignment="center"
     android:textSize="14sp" />

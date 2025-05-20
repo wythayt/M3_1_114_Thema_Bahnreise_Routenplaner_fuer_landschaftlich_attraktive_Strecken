@@ -1,9 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/dialog_background"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
     android:padding="24dp">
 
     <androidx.constraintlayout.widget.Guideline
@@ -24,22 +23,22 @@
         android:id="@+id/ivClose"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:contentDescription="@string/close"
         android:src="@drawable/close_24px"
-        android:contentDescription="Close"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hint"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hint"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@id/ivClose"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ivClose"
-        android:layout_marginEnd="8dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvMessage"
@@ -52,9 +51,9 @@
         android:textAppearance="?attr/textAppearanceBody1"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/ivClose"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/ivClose" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -65,7 +64,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/sf_pro_text_bold"
-        android:text="Don't show again"
+        android:text="@string/don_t_show_again"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="15sp"
@@ -77,11 +76,11 @@
         android:id="@+id/btnGotIt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/sf_pro_text_bold"
-        android:text="Got it!"
+        android:text="@string/got_it"
         android:textAllCaps="false"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"

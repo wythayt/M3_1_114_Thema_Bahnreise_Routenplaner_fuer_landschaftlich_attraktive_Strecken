@@ -46,11 +46,11 @@
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.example.m3_app.ui.favourites.FavouritesFragment"
-        android:label="Favourites" >
+        android:label="Favourites">
 
         <action
             android:id="@+id/action_favouritesFragment_to_routeDetailsFragment"
-            app:destination="@id/routeDetailsFragment" >
+            app:destination="@id/routeDetailsFragment">
             <argument
                 android:name="routeId"
                 app:argType="string" />
@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/ratingsFragment"
         android:name="com.example.m3_app.ui.ratings.RatingsFragment"
-        android:label="Ratings"/>
+        android:label="Ratings" />
 
     <fragment
         android:id="@+id/routeDetailsFragment"
