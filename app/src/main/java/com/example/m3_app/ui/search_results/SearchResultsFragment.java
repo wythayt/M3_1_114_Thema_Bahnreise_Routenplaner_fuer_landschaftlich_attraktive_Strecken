@@ -112,7 +112,7 @@ public class SearchResultsFragment extends Fragment {
         });
 
         binding.RecyclerView.setLayoutManager(
-                new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+                new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.RecyclerView.setAdapter(adapter);
 
         Observer<Object> rebuild = unused -> {
@@ -122,7 +122,6 @@ public class SearchResultsFragment extends Fragment {
 
             List<RouteConfig.Route> matches = RouteFilterUtil
                     .filterByChips(allRoutes, selectedChips, fromDestination, toDestination);
-
             List<RouteImgCard> cards = new ArrayList<>();
             matches.forEach(r -> {
                 int imageRes = requireContext().getResources()

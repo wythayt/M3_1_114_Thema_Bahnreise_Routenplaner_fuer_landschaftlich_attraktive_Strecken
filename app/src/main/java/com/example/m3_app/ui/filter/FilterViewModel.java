@@ -11,7 +11,6 @@ import java.util.Set;
 
 public class FilterViewModel extends ViewModel {
     private final MutableLiveData<Set<String>> selectedChips = new MutableLiveData<>(new HashSet<>());
-
     public LiveData<Set<String>> getSelectedChips() {
         return selectedChips;
     }

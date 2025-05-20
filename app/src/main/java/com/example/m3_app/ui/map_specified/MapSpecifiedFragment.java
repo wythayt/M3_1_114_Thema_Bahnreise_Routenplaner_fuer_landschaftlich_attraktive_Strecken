@@ -191,7 +191,6 @@ public class MapSpecifiedFragment extends Fragment {
 
             List<RouteConfig.Route> matches = RouteFilterUtil
                     .filterByChips(allRoutes, selectedChips, startLocation, endLocation);
-
             RouteConfig.Route chosen = !matches.isEmpty() ? matches.get(0) : allRoutes.get(0);
             int mapResId = requireContext().getResources()
                     .getIdentifier(chosen.imageResource, "drawable", requireContext().getPackageName());
