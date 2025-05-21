@@ -118,8 +118,8 @@ public class MapNotSpecifiedFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         MaterialButton filtersBtn = binding.button4;
-        ColorStateList beige  = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
-        ColorStateList green  = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
+        ColorStateList beige = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
+        ColorStateList green = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
         filtersBtn.setOnClickListener(v -> {
             new FiltersBottomSheetNotSpecified().show(getParentFragmentManager(), "filters");
             filtersBtn.setBackgroundTintList(green);
@@ -130,11 +130,13 @@ public class MapNotSpecifiedFragment extends Fragment {
         });
 
         PhotoView pv = binding.imageView7;
-        pv.setMinimumScale(0.5f);
-        pv.setMediumScale(2f);
-        pv.setMaximumScale(6f);
-        binding.fabZoomIn.setOnClickListener(v -> pv.setScale(pv.getScale() * .8f,  true));
-        binding.fabZoomOut.setOnClickListener(v -> pv.setScale(pv.getScale() * 1.25f, true));
+        pv.setZoomable(false);
+
+//        pv.setMinimumScale(0.5f);
+//        pv.setMediumScale(2f);
+//        pv.setMaximumScale(6f);
+//        binding.fabZoomIn.setOnClickListener(v -> pv.setScale(pv.getScale() * .8f,  true));
+//        binding.fabZoomOut.setOnClickListener(v -> pv.setScale(pv.getScale() * 1.25f, true));
 
         String from = binding.textView2.getText().toString();
         Button confirmBtn = binding.confirmButton;
