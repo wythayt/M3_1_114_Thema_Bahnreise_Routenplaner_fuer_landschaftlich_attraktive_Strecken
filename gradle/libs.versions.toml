@@ -13,6 +13,7 @@ navigationFragment = "2.9.0"
 navigationUi = "2.9.0"
 constraintlayoutVersion = "2.2.1"
 photoview = "2.3.0"
+zoomlayout = "1.9.0"
 
 [libraries]
 desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
@@ -29,6 +30,7 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayoutVersion" }
 gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
 photoview = { group = "com.github.Baseflow", name = "PhotoView", version.ref = "photoview" }
+zoomlayout = { group = "com.otaliastudios", name = "zoomlayout", version.ref = "zoomlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

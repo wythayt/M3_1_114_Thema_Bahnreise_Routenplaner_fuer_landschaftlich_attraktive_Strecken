@@ -56,4 +56,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.gson)
     implementation(libs.photoview)
+    implementation(libs.zoomlayout)
 }
