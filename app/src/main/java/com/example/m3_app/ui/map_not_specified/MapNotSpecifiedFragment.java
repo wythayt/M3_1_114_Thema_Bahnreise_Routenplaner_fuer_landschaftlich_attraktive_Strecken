@@ -188,12 +188,6 @@ public class MapNotSpecifiedFragment extends Fragment {
             }
             boolean showAll = countryChips.isEmpty();
 
-            if (selectedTo[0] == null) {
-                pv.setImageResource(R.drawable.large_empty_map_google);
-                adapter.setData(Collections.emptyList());
-                return;
-            }
-
             pickButtons.forEach(b -> {
                 String city  = String.valueOf(b.getTag());
                 String country = Objects.requireNonNull(cityCountry.getOrDefault(city, "")).toLowerCase();
