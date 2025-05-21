@@ -114,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="439dp" />
+        app:layout_constraintGuide_begin="456dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline31"
@@ -297,16 +297,17 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:padding="0dp"
+        android:tag="Zurich"
         app:icon="@drawable/star_96096"
-        app:iconTint="@color/light_yellow"
         app:iconSize="24dp"
-        app:rippleColor="@color/secondary_green"
+        app:iconTint="@color/light_yellow"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
-        app:layout_constraintVertical_bias="0.821"/>
+        app:layout_constraintVertical_bias="0.867"
+        app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonBerlin"
@@ -318,15 +319,15 @@
         android:padding="0dp"
         android:tag="Berlin"
         app:icon="@drawable/star_96096"
-        app:iconTint="@color/light_yellow"
         app:iconSize="24dp"
-        app:rippleColor="@color/secondary_green"
-        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:iconTint="@color/light_yellow"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.042"
+        app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonGraz"
@@ -338,15 +339,15 @@
         android:padding="0dp"
         android:tag="Graz"
         app:icon="@drawable/star_96096"
-        app:iconTint="@color/light_yellow"
         app:iconSize="24dp"
-        app:rippleColor="@color/secondary_green"
-        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:iconTint="@color/light_yellow"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintVertical_bias="0.875" />
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.875"
+        app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonKrems"
@@ -358,15 +359,15 @@
         android:padding="0dp"
         android:tag="Krems/Donau"
         app:icon="@drawable/star_96096"
-        app:iconTint="@color/light_yellow"
         app:iconSize="24dp"
-        app:rippleColor="@color/secondary_green"
-        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:iconTint="@color/light_yellow"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintHorizontal_bias="0.635"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.654"
+        app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"

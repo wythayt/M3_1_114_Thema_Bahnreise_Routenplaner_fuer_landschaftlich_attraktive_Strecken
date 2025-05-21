@@ -131,6 +131,8 @@ public class MapNotSpecifiedFragment extends Fragment {
         });
 
         PhotoView pv = binding.imageView7;
+
+        pv.setImageResource(R.drawable.large_empty_map_google);
         pv.setZoomable(false);
 
 //        pv.setMinimumScale(0.5f);
@@ -173,26 +175,25 @@ public class MapNotSpecifiedFragment extends Fragment {
         cityCountry.put("Graz", "Austria");
         cityCountry.put("Krems/Donau", "Austria");
 
-
         Observer<Object> updateUI = ignored -> {
             List<RouteConfig.Route> all = mapVm.getAllRoutes().getValue();
             if (all == null) return;
 
-            Set<String> chips   = filterVm.getSelectedChips().getValue();
+            Set<String> chips = filterVm.getSelectedChips().getValue();
+            Set<String> countryChips = (chips == null)
+                    ? Collections.emptySet()
+                    : chips.stream()
+                    .filter(c -> COUNTRIES.stream().anyMatch(p -> p.equalsIgnoreCase(c)))
+                    .map(String::toLowerCase)
+                    .collect(Collectors.toSet());
 
-            Set<String> countryChips;
-            if (chips != null) {
-                countryChips = chips.stream().filter(c -> COUNTRIES.stream().anyMatch(p -> p.equalsIgnoreCase(c))).map(String::toLowerCase).collect(Collectors.toSet());
-            } else {
-                countryChips = new HashSet<>();
-            }
-            boolean showAll = countryChips.isEmpty();
+            boolean showAllButtons = countryChips.isEmpty();
 
             pickButtons.forEach(b -> {
-                String city  = String.valueOf(b.getTag());
-                String country = Objects.requireNonNull(cityCountry.getOrDefault(city, "")).toLowerCase();
+                String city     = String.valueOf(b.getTag());
+                String country  = cityCountry.getOrDefault(city, "").toLowerCase();
+                boolean visible = showAllButtons || countryChips.contains(country);
 
-                boolean visible = showAll || countryChips.contains(country);
                 b.setVisibility(visible ? View.VISIBLE : View.GONE);
 
                 if (!visible && Objects.equals(selectedTo[0], city)) {
@@ -202,20 +203,35 @@ public class MapNotSpecifiedFragment extends Fragment {
                 }
             });
 
-            List<RouteConfig.Route> matches = (selectedTo[0] == null)
-                    ? RouteFilterUtil.filterByChips(all, null, from)
-                    : RouteFilterUtil.filterByChips(all, null, from, selectedTo[0]);
+            if (selectedTo[0] == null) {
+                pv.setImageResource(R.drawable.large_empty_map_google);
+                adapter.setData(Collections.emptyList());
+                return;
+            }
 
-            RouteConfig.Route toShow = matches.isEmpty() ? all.get(0) : matches.get(0);
-            int mapRes = getResources().getIdentifier(
-                    toShow.imageResource, "drawable", requireContext().getPackageName());
+            List<RouteConfig.Route> fullSet = all.stream()
+                    .filter(r -> r.fromDestination.equalsIgnoreCase(from) &&
+                            r.toDestination.equalsIgnoreCase(selectedTo[0]))
+                    .toList();
+
+            int mapRes;
+            if ("Zurich".equalsIgnoreCase(selectedTo[0])) {
+                mapRes = R.drawable.vienna_zurich_3routes;
+            } else if (!fullSet.isEmpty()) {
+                mapRes = getResources().getIdentifier(
+                        fullSet.get(0).imageResource, "drawable",
+                        requireContext().getPackageName());
+            } else {
+                mapRes = R.drawable.large_empty_map_google;
+            }
             pv.setImageResource(mapRes);
 
             List<RouteCard> cards = new ArrayList<>();
-            for (RouteConfig.Route r : matches) {
+            for (RouteConfig.Route r : fullSet) {
                 int thumb = getResources().getIdentifier(
                         r.cardImageResource, "drawable", requireContext().getPackageName());
-                cards.add(new RouteCard(r.id, r.title, thumb));
+                cards.add(new RouteCard(r.id, r.title,
+                        thumb != 0 ? thumb : R.drawable.large_empty_map_google));
             }
             adapter.setData(cards);
         };
