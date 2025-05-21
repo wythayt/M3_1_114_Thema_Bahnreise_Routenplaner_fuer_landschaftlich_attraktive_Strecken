@@ -24,7 +24,7 @@
         android:orientation="horizontal"
         android:padding="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
@@ -114,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="456dp" />
+        app:layout_constraintGuide_percent="0.4989059" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline31"
@@ -285,15 +285,16 @@
         android:visibility="gone"
         android:textAllCaps="false"
         android:textSize="13sp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/sf_pro_text_bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonZurich"
-        android:layout_width="32dp"
+        android:layout_width="26dp"
         android:layout_height="32dp"
         android:backgroundTint="@android:color/transparent"
         android:minWidth="0dp"
@@ -309,12 +310,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.867"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar"
         app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonBerlin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="26dp"
+        android:layout_height="32dp"
         android:backgroundTint="@android:color/transparent"
         android:minWidth="0dp"
         android:minHeight="0dp"
@@ -329,12 +331,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.042"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar"
         app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonGraz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="26dp"
+        android:layout_height="32dp"
         android:backgroundTint="@android:color/transparent"
         android:minWidth="0dp"
         android:minHeight="0dp"
@@ -349,12 +352,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.875"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar"
         app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonKrems"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="26dp"
+        android:layout_height="32dp"
         android:backgroundTint="@android:color/transparent"
         android:minWidth="0dp"
         android:minHeight="0dp"
@@ -369,6 +373,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.654"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar"
         app:rippleColor="@color/secondary_green" />
 
     <com.google.android.material.button.MaterialButton
@@ -399,5 +404,19 @@
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.695"
         app:srcCompat="@drawable/home_pin_24px" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.975" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
