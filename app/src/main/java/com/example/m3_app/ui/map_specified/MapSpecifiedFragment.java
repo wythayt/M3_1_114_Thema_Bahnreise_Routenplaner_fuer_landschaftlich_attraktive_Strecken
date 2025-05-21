@@ -185,24 +185,31 @@ public class MapSpecifiedFragment extends Fragment {
                 .get(MapSpecifiedViewModel.class);
 
         Observer<Object> updateUI = __ -> {
-            List<RouteConfig.Route> allRoutes = mapVm.getAllRoutes().getValue();
-            Set<String> selectedChips = filterVm.getSelectedChips().getValue();
-            if (allRoutes == null) return;
+            List<RouteConfig.Route> all = mapVm.getAllRoutes().getValue();
+            Set<String> chips          = filterVm.getSelectedChips().getValue();
+            if (all == null) return;
+
+            List<RouteConfig.Route> pool = all.stream()
+                    .filter(r -> r.fromDestination.equalsIgnoreCase(startLocation)
+                            && r.toDestination.equalsIgnoreCase(endLocation))
+                    .toList();
 
             List<RouteConfig.Route> matches = RouteFilterUtil
-                    .filterByChips(allRoutes, selectedChips, startLocation, endLocation);
-            RouteConfig.Route chosen = !matches.isEmpty() ? matches.get(0) : allRoutes.get(0);
-            int mapResId = requireContext().getResources()
-                    .getIdentifier(chosen.imageResource, "drawable", requireContext().getPackageName());
-            binding.imageView7.setImageResource(mapResId);
+                    .filterByChips(pool, chips, startLocation, endLocation);
 
-            //build the RouteCard list and hand it to the adapter
-            List<RouteCard> cards = new ArrayList<>(matches.size());
-            matches.forEach(match -> {
-                int thumbId = requireContext().getResources()
-                        .getIdentifier(match.cardImageResource, "drawable", requireContext().getPackageName());
-                cards.add(new RouteCard(match.id, match.title, thumbId));
-            });
+            List<String> remainingIds = matches.isEmpty()
+                    ? pool.stream().map(r -> r.id).sorted().toList()
+                    : matches.stream().map(r -> r.id).sorted().toList();
+
+            int mapRes = mapVm.mapFor(remainingIds);
+            binding.imageView7.setImageResource(mapRes);
+
+            List<RouteCard> cards = new ArrayList<>();
+            for (RouteConfig.Route r : matches) {
+                int thumb = requireContext().getResources()
+                        .getIdentifier(r.cardImageResource, "drawable", requireContext().getPackageName());
+                cards.add(new RouteCard(r.id, r.title, thumb));
+            }
             adapter.setData(cards);
         };
 

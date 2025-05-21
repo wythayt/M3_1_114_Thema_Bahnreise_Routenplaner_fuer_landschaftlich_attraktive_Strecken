@@ -1,0 +1,24 @@
+{
+  "groups": [
+    { "ids": ["ID_01","ID_02","ID_06"],
+      "image": "vienna_zurich_3routes" },
+
+    { "ids": ["ID_01","ID_02"],
+      "image": "vienna_zurich_2routes_bavarian_bliss_through_alps" },
+
+    { "ids": ["ID_01","ID_06"],
+      "image": "vienna_zurich_2routes_throuh_alps_visit3_countries" },
+
+    { "ids": ["ID_02","ID_06"],
+      "image": "vienna_zurich_2routes_bavarian_bliss_visit3" },
+
+    {"ids":  ["ID_01"],
+    "image":  "vienna_zurich_through_alps"},
+
+    {"ids":  ["ID_02"],
+      "image":  "vienna_zurich_bavarian_bliss"},
+
+    {"ids":  ["ID_06"],
+      "image":  "vienna_zurich_visit_3_countries"}
+  ]
+}

@@ -29,8 +29,8 @@
       ],
       "trainName": ["RJX 160"],
       "filter": {
-        "familyFun": false,
-        "historyHeritage": false,
+        "familyFun": true,
+        "historyHeritage": true,
         "artCulture": false,
         "noTransfer": true,
         "audioGuide": false,
@@ -78,12 +78,12 @@
       ],
       "filter": {
         "familyFun": true,
-        "historyHeritage": false,
+        "historyHeritage": true,
         "artCulture": false,
         "noTransfer": false,
         "audioGuide": false,
         "withSights": true,
-        "topRated": false,
+        "topRated": true,
         "barrierFree": true,
         "alongTheRiver": false,
         "forest": false,
@@ -259,51 +259,16 @@
         "ICE 228"
       ],
       "filter": {
-        "familyFun": false,
-        "historyHeritage": true,
+        "familyFun": true,
+        "historyHeritage": false,
         "artCulture": true,
         "noTransfer": false,
         "audioGuide": true,
         "withSights": true,
-        "topRated": false,
+        "topRated": true,
         "barrierFree": false,
         "alongTheRiver": false,
         "forest": true,
-        "mountains": false
-      }
-    },
-    {
-      "id": "ID_07",
-      "imageResource": "vienna_zurich_3routes",
-      "cardImageResource": "",
-      "title": "",
-      "fromDestination": "Vienna",
-      "toDestination": "Zurich",
-      "stations": [],
-      "transferTime" : "",
-      "journeyTime": "",
-      "cost": "",
-      "distance": "",
-      "transportOperator": [
-      ],
-      "rating": "",
-      "mainCategory": "",
-      "description": "",
-      "imageGallery": [
-      ],
-      "trainName": [
-      ],
-      "filter": {
-        "familyFun": false,
-        "historyHeritage": false,
-        "artCulture": false,
-        "noTransfer": false,
-        "audioGuide": false,
-        "withSights": false,
-        "topRated": false,
-        "barrierFree": false,
-        "alongTheRiver": false,
-        "forest": false,
         "mountains": false
       }
     }
