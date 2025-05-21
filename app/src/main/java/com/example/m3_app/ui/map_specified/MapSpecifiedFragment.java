@@ -51,11 +51,12 @@ public class MapSpecifiedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+        View nav = requireActivity().findViewById(R.id.nav_view);
+        if (nav != null) nav.setVisibility(View.GONE);
+
         binding = FragmentMapSpecifiedBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
         showLoading();
-
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         String startLocation = args.getFrom();
         String endLocation = args.getTo();
@@ -201,15 +202,26 @@ public class MapSpecifiedFragment extends Fragment {
                     ? pool.stream().map(r -> r.id).sorted().toList()
                     : matches.stream().map(r -> r.id).sorted().toList();
 
-            int mapRes = mapVm.mapFor(remainingIds);
+            int mapRes;
+            if (matches.isEmpty()) {
+                mapRes = R.drawable.large_empty_map_google;
+            } else {
+                List<String> ids = matches.stream()
+                        .map(r -> r.id)
+                        .sorted()
+                        .toList();
+                mapRes = mapVm.mapFor(ids);
+            }
             binding.imageView7.setImageResource(mapRes);
 
             List<RouteCard> cards = new ArrayList<>();
-            for (RouteConfig.Route r : matches) {
+            matches.forEach(r -> {
                 int thumb = requireContext().getResources()
-                        .getIdentifier(r.cardImageResource, "drawable", requireContext().getPackageName());
+                        .getIdentifier(r.cardImageResource,
+                                "drawable",
+                                requireContext().getPackageName());
                 cards.add(new RouteCard(r.id, r.title, thumb));
-            }
+            });
             adapter.setData(cards);
         };
 

@@ -1,23 +1,20 @@
 package com.example.m3_app.ui.map_specified;
 import android.app.Application;
-import android.os.Build;
-
 import androidx.annotation.DrawableRes;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.m3_app.R;
 import com.example.m3_app.backend.RouteConfig;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,6 +28,7 @@ public class MapSpecifiedViewModel extends AndroidViewModel {
     }
     private final MutableLiveData<List<RouteConfig.Route>> allRoutes = new MutableLiveData<>();
     private final List<Group> groups;
+    private static final @DrawableRes int PLACEHOLDER = R.drawable.large_empty_map_google;
 
     public LiveData<List<RouteConfig.Route>> getAllRoutes() {
         return allRoutes;
@@ -63,17 +61,30 @@ public class MapSpecifiedViewModel extends AndroidViewModel {
     }
 
     public @DrawableRes int mapFor(List<String> remaining) {
-        List<String> ids = remaining.stream().sorted().toList();
+        if (remaining == null || remaining.isEmpty()) {
+            return PLACEHOLDER;
+        }
+
+        List<String> ids = new ArrayList<>(remaining);
+        Collections.sort(ids);
+
         for (Group g : groups) {
             if (g.ids.equals(ids)) {
-                return getApplication().getResources()
-                        .getIdentifier(g.image, "drawable",
-                                getApplication().getPackageName());
+                return resId(g.image);
             }
         }
 
+        if (ids.size() == 1 && allRoutes.getValue() != null) {
+            return allRoutes.getValue().stream()
+                    .filter(r -> r.id.equals(ids.get(0))).findFirst()
+                    .map(r -> resId(r.imageResource)).orElse(PLACEHOLDER);
+        }
+        return PLACEHOLDER;
+    }
+
+    private int resId(String name) {
         return getApplication().getResources()
-                .getIdentifier(remaining.get(0), "drawable",
+                .getIdentifier(name, "drawable",
                         getApplication().getPackageName());
     }
 }

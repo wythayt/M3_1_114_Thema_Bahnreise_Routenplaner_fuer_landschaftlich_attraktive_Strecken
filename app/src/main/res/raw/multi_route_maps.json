@@ -19,6 +19,15 @@
       "image":  "vienna_zurich_bavarian_bliss"},
 
     {"ids":  ["ID_06"],
-      "image":  "vienna_zurich_visit_3_countries"}
+      "image":  "vienna_zurich_visit_3_countries"},
+
+    {"ids":["ID_03"],
+      "image":"vienna_graz_google"},
+
+    {"ids":["ID_04"],
+      "image":"vienna_krems_donau"},
+
+    {"ids":["ID_05"],
+      "image":"vienna_berlin_google"}
   ]
 }

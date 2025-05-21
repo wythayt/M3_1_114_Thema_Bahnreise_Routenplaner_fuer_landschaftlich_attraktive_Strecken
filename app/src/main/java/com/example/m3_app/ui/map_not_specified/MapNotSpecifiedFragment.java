@@ -142,6 +142,7 @@ public class MapNotSpecifiedFragment extends Fragment {
 //        binding.fabZoomOut.setOnClickListener(v -> pv.setScale(pv.getScale() * 1.25f, true));
 
         String from = binding.textView2.getText().toString();
+        final String originalEndText = binding.textView3.getText().toString();
         Button confirmBtn = binding.confirmButton;
 
         RouteCardAdapter adapter = new RouteCardAdapter();
@@ -190,7 +191,7 @@ public class MapNotSpecifiedFragment extends Fragment {
             boolean showAllButtons = countryChips.isEmpty();
 
             pickButtons.forEach(b -> {
-                String city     = String.valueOf(b.getTag());
+                String city = String.valueOf(b.getTag());
                 String country  = cityCountry.getOrDefault(city, "").toLowerCase();
                 boolean visible = showAllButtons || countryChips.contains(country);
 
@@ -205,7 +206,17 @@ public class MapNotSpecifiedFragment extends Fragment {
 
             if (selectedTo[0] == null) {
                 pv.setImageResource(R.drawable.large_empty_map_google);
-                adapter.setData(Collections.emptyList());
+                binding.textView3.setText(originalEndText);
+                List<RouteCard> cards = new ArrayList<>();
+                all.stream()
+                        .filter(r -> r.fromDestination.equalsIgnoreCase(from))
+                        .forEach(r -> {
+                            int thumb = getResources().getIdentifier(
+                                    r.cardImageResource, "drawable", requireContext().getPackageName());
+                            cards.add(new RouteCard(r.id, r.title,
+                                    thumb != 0 ? thumb : R.drawable.placeholder));
+                        });
+                adapter.setData(cards);
                 return;
             }
 
@@ -265,6 +276,7 @@ public class MapNotSpecifiedFragment extends Fragment {
             confirmBtn.setTag(selectedTo[0]);
             confirmBtn.setVisibility(View.VISIBLE);
 
+            binding.textView3.setText(selectedTo[0]);
             updateUI.onChanged(null);
         }));
 
