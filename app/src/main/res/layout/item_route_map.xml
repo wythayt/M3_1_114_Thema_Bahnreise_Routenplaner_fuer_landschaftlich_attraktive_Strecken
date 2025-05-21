@@ -57,13 +57,15 @@
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:backgroundTint="#f04b4b"
             android:text="@string/rebook"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sf_pro_text_semibold"
             android:visibility="gone" />
 
         <ImageButton

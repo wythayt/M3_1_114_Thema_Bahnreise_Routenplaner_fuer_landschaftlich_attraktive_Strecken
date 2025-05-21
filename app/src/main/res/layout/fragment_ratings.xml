@@ -89,24 +89,28 @@
                 </LinearLayout>
 
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginVertical="16dp"
                     android:backgroundTint="@color/main_green"
                     android:padding="8dp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/sf_pro_text_semibold"
                     android:text="@string/upload_photo"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:backgroundTint="@color/red"
                     android:padding="8dp"
                     android:text="@string/publish"
+                    android:fontFamily="@font/sf_pro_text_semibold"
+                    android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </LinearLayout>
