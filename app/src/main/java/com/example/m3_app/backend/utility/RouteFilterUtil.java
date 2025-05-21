@@ -25,7 +25,7 @@ public class RouteFilterUtil {
         return locationMatched.stream()
                 .filter(route -> {
                     RouteConfig.Filter f = route.filter;
-                    return selectedChips.stream().anyMatch(tag -> {
+                    return selectedChips.stream().allMatch(tag -> {
                         try {
                             Field fld = f.getClass().getDeclaredField(tag);
                             fld.setAccessible(true);
