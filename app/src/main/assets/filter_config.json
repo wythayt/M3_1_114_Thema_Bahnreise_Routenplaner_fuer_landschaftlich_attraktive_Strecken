@@ -271,6 +271,41 @@
         "forest": true,
         "mountains": false
       }
+    },
+    {
+      "id": "ID_07",
+      "imageResource": "vienna_zurich_3routes",
+      "cardImageResource": "",
+      "title": "",
+      "fromDestination": "Vienna",
+      "toDestination": "Zurich",
+      "stations": [],
+      "transferTime" : "",
+      "journeyTime": "",
+      "cost": "",
+      "distance": "",
+      "transportOperator": [
+      ],
+      "rating": "",
+      "mainCategory": "",
+      "description": "",
+      "imageGallery": [
+      ],
+      "trainName": [
+      ],
+      "filter": {
+        "familyFun": false,
+        "historyHeritage": false,
+        "artCulture": false,
+        "noTransfer": false,
+        "audioGuide": false,
+        "withSights": false,
+        "topRated": false,
+        "barrierFree": false,
+        "alongTheRiver": false,
+        "forest": false,
+        "mountains": false
+      }
     }
   ]
 }
