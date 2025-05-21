@@ -36,12 +36,19 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MapNotSpecifiedFragment extends Fragment {
     private FragmentMapNotSpecifiedBinding binding;
+
+    private static final Set<String> COUNTRIES =
+            Set.of("Austria", "Germany", "Switzerland");
 
     public MapNotSpecifiedFragment() {
         super(R.layout.fragment_map_not_specified);
@@ -129,8 +136,8 @@ public class MapNotSpecifiedFragment extends Fragment {
         binding.fabZoomIn.setOnClickListener(v -> pv.setScale(pv.getScale() * .8f,  true));
         binding.fabZoomOut.setOnClickListener(v -> pv.setScale(pv.getScale() * 1.25f, true));
 
-        String  from       = binding.textView2.getText().toString();
-        Button  confirmBtn = binding.confirmButton;
+        String from = binding.textView2.getText().toString();
+        Button confirmBtn = binding.confirmButton;
 
         RouteCardAdapter adapter = new RouteCardAdapter();
         adapter.setOnRouteClickListener(card -> {
@@ -150,14 +157,51 @@ public class MapNotSpecifiedFragment extends Fragment {
 
         final String[] selectedTo = { null };
 
+        List<Button> pickButtons = List.of(
+                binding.buttonZurich,
+                binding.buttonBerlin,
+                binding.buttonGraz,
+                binding.buttonKrems
+        );
+
+        Map<String,String> cityCountry = new HashMap<>();
+        cityCountry.put("Zurich", "Switzerland");
+        cityCountry.put("Berlin", "Germany");
+        cityCountry.put("Graz", "Austria");
+        cityCountry.put("Krems/Donau", "Austria");
+
+
         Observer<Object> updateUI = ignored -> {
             List<RouteConfig.Route> all = mapVm.getAllRoutes().getValue();
             if (all == null) return;
 
             Set<String> chips   = filterVm.getSelectedChips().getValue();
+
+            Set<String> countryChips;
+            if (chips != null) {
+                countryChips = chips.stream().filter(c -> COUNTRIES.stream().anyMatch(p -> p.equalsIgnoreCase(c))).map(String::toLowerCase).collect(Collectors.toSet());
+            } else {
+                countryChips = new HashSet<>();
+            }
+            boolean showAll = countryChips.isEmpty();
+
+            pickButtons.forEach(b -> {
+                String city  = String.valueOf(b.getTag());
+                String country = Objects.requireNonNull(cityCountry.getOrDefault(city, "")).toLowerCase();
+
+                boolean visible = showAll || countryChips.contains(country);
+                b.setVisibility(visible ? View.VISIBLE : View.GONE);
+
+                if (!visible && Objects.equals(selectedTo[0], city)) {
+                    selectedTo[0] = null;
+                    confirmBtn.setVisibility(View.GONE);
+                    b.setEnabled(true);
+                }
+            });
+
             List<RouteConfig.Route> matches = (selectedTo[0] == null)
-                    ? RouteFilterUtil.filterByChips(all, chips, from)
-                    : RouteFilterUtil.filterByChips(all, chips, from, selectedTo[0]);
+                    ? RouteFilterUtil.filterByChips(all, null, from)
+                    : RouteFilterUtil.filterByChips(all, null, from, selectedTo[0]);
 
             RouteConfig.Route toShow = matches.isEmpty() ? all.get(0) : matches.get(0);
             int mapRes = getResources().getIdentifier(
@@ -193,10 +237,6 @@ public class MapNotSpecifiedFragment extends Fragment {
 
         mapVm.getAllRoutes().observe(getViewLifecycleOwner(), updateUI);
         filterVm.getSelectedChips().observe(getViewLifecycleOwner(), updateUI);
-
-        List<Button> pickButtons = List.of(
-                binding.button9
-        );
 
         pickButtons.forEach(btn -> btn.setOnClickListener(v -> {
             pickButtons.forEach(b -> b.setEnabled(true));

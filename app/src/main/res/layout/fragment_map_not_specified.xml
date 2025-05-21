@@ -287,15 +287,56 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/buttonZurich"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:tag= "Zurich"
+        android:tag="Zurich"
+        android:text="Zurich"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.844" />
+
+    <Button
+        android:id="@+id/buttonGraz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="Graz"
+        android:text="Graz"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <Button
+        android:id="@+id/buttonBerlin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="Berlin"
+        android:text="Berlin"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.643"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <Button
+        android:id="@+id/buttonKrems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="Krems/Donau"
+        android:text="Krems/Donau"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.617" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
