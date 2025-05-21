@@ -514,13 +514,15 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/floatingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:contentDescription="@string/button_book_ticket"
         android:text="@string/button_book_ticket"
+        android:textAllCaps="false"
+        android:fontFamily="@font/sf_pro_text_semibold"
         app:backgroundTint="@color/red"
         app:layout_constraintBottom_toTopOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent" />
