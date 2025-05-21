@@ -158,6 +158,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/weather"
+        app:tint="@color/light_yellow"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:srcCompat="@drawable/light_mode_24px" />
@@ -169,7 +170,7 @@
         android:fontFamily="@font/sf_pro_text_bold"
         android:text="@string/_20_22_c"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/grey"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -187,15 +188,16 @@
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_text_bold"
+        android:fontFamily="@font/sf_pro_text_semibold"
         android:text="@string/search_results"
         android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textColor="@color/grey"
+        android:textSize="20sp"
 
         app:icon="@drawable/arrow_right_alt_24px"
         app:iconGravity="textEnd"
         app:iconPadding="0dp"
+        app:iconTint="@color/grey"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
@@ -374,16 +376,16 @@
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_text_bold"
+        android:fontFamily="@font/sf_pro_text_semibold"
         android:text="@string/show_all"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/red"
 
         android:textSize="15sp"
         app:iconGravity="textEnd"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <ImageView

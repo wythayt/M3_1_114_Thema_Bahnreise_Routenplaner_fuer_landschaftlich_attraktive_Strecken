@@ -27,7 +27,7 @@
                 android:fontFamily="@font/sf_pro_text_bold"
                 android:paddingBottom="24dp"
                 android:text="@string/title_help"
-                android:textSize="25sp" />
+                android:textSize="30sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"

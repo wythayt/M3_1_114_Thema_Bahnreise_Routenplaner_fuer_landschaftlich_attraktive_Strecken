@@ -57,7 +57,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:text="@string/favourites"
-                    android:textSize="25sp" />
+                    android:textSize="30sp" />
 
             </LinearLayout>
 
