@@ -78,17 +78,17 @@
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/sf_pro_text_bold"
                     android:text="@string/lines"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/titleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sf_pro_text_regular"
+                    android:fontFamily="@font/sf_pro_text_semibold"
                     android:text="@string/swiss_dream"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView

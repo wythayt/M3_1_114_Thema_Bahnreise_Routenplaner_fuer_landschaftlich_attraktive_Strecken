@@ -49,7 +49,7 @@
                 android:fontFamily="@font/sf_pro_text_bold"
                 android:padding="16dp"
                 android:text="@string/suggestions"
-                android:textSize="25sp" />
+                android:textSize="30sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyclerView"
