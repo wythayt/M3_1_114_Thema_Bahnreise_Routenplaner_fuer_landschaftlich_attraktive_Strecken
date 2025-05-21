@@ -8,8 +8,8 @@
 
 Framework:	[Android]
 
-API-Version: [Android API-Level 24-30]
-Compile SDK Version: API 30
+API-Version: [Android API-Level 24-35]
+Compile SDK Version: API 35
 Source Compatibility: $JavaVersion.VERSION_11
 
 Geraet(e), auf dem(denen) getestet wurde: [Pixel 6]

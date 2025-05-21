@@ -6,7 +6,7 @@ plugins {
 android {
     namespace =
         "com.example.m3_app"
-    compileSdk = 30
+    compileSdk = 35
 
     defaultConfig {
         applicationId =
