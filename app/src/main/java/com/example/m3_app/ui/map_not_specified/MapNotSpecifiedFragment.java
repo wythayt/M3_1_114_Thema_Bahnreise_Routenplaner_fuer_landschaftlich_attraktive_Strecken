@@ -36,6 +36,7 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -159,7 +160,7 @@ public class MapNotSpecifiedFragment extends Fragment {
 
         final String[] selectedTo = { null };
 
-        List<Button> pickButtons = List.of(
+        List<View> pickButtons = List.of(
                 binding.buttonZurich,
                 binding.buttonBerlin,
                 binding.buttonGraz,
@@ -186,6 +187,12 @@ public class MapNotSpecifiedFragment extends Fragment {
                 countryChips = new HashSet<>();
             }
             boolean showAll = countryChips.isEmpty();
+
+            if (selectedTo[0] == null) {
+                pv.setImageResource(R.drawable.large_empty_map_google);
+                adapter.setData(Collections.emptyList());
+                return;
+            }
 
             pickButtons.forEach(b -> {
                 String city  = String.valueOf(b.getTag());

@@ -229,8 +229,10 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline10"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/large_empty_map_google" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -286,57 +288,85 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
-    <Button
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonZurich"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:tag="Zurich"
-        android:text="Zurich"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:backgroundTint="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        app:icon="@drawable/star_96096"
+        app:iconTint="@color/light_yellow"
+        app:iconSize="24dp"
+        app:rippleColor="@color/secondary_green"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.821"/>
 
-    <Button
-        android:id="@+id/buttonGraz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:tag="Graz"
-        android:text="Graz"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline10"
-        app:layout_constraintVertical_bias="0.882" />
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonBerlin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
         android:tag="Berlin"
-        android:text="Berlin"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.643"
-        app:layout_constraintStart_toStartOf="parent"
+        app:icon="@drawable/star_96096"
+        app:iconTint="@color/light_yellow"
+        app:iconSize="24dp"
+        app:rippleColor="@color/secondary_green"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintVertical_bias="0" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonGraz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        android:tag="Graz"
+        app:icon="@drawable/star_96096"
+        app:iconTint="@color/light_yellow"
+        app:iconSize="24dp"
+        app:rippleColor="@color/secondary_green"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintVertical_bias="0.875" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonKrems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
         android:tag="Krems/Donau"
-        android:text="Krems/Donau"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
-        app:layout_constraintStart_toStartOf="parent"
+        app:icon="@drawable/star_96096"
+        app:iconTint="@color/light_yellow"
+        app:iconSize="24dp"
+        app:rippleColor="@color/secondary_green"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintVertical_bias="0.631" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
@@ -354,5 +384,17 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.695"
+        app:srcCompat="@drawable/home_pin_24px" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
