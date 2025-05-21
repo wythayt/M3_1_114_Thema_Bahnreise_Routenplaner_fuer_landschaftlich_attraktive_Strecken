@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/card_background"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_marginBottom="16dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -32,6 +33,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/like"
                 android:scaleType="centerInside"
+                app:tint="@color/red"
                 android:src="@drawable/ic_favorite_24dp" />
 
         </FrameLayout>

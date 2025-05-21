@@ -12,7 +12,7 @@
         android:id="@+id/header_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/secondary_beige"
+        android:background="@color/beige"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,6 +146,7 @@
                         android:layout_height="48dp"
                         android:layout_margin="10dp"
                         android:background="@null"
+                        app:tint="@color/red"
                         android:contentDescription="@string/like"
                         android:src="@drawable/ic_favorite_24dp" />
 
