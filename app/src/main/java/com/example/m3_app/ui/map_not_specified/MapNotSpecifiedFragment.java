@@ -1,32 +1,44 @@
 package com.example.m3_app.ui.map_not_specified;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.m3_app.R;
+import com.example.m3_app.backend.RouteConfig;
+import com.example.m3_app.backend.utility.RouteFilterUtil;
 import com.example.m3_app.databinding.FragmentMapNotSpecifiedBinding;
-import com.example.m3_app.ui.filter.FiltersBottomSheet;
+import com.example.m3_app.ui.filter.FilterViewModel;
 import com.example.m3_app.ui.filter.FiltersBottomSheetNotSpecified;
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
+import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentDirections;
+import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
 import com.example.m3_app.ui.route_card.RouteCard;
 import com.example.m3_app.ui.route_card.RouteCardAdapter;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.button.MaterialButton;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class MapNotSpecifiedFragment extends Fragment {
     private FragmentMapNotSpecifiedBinding binding;
@@ -34,7 +46,6 @@ public class MapNotSpecifiedFragment extends Fragment {
     public MapNotSpecifiedFragment() {
         super(R.layout.fragment_map_not_specified);
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
@@ -43,15 +54,6 @@ public class MapNotSpecifiedFragment extends Fragment {
         View view = binding.getRoot();
 
         showLoading();
-
-//        List<RouteCard> cards = Arrays.asList(
-//                new RouteCard("Bavarian Bliss", R.drawable.placeholder),
-//                new RouteCard("Through Forests", R.drawable.placeholder)
-//        );
-//
-//        binding.routeCardsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-//        RouteCardAdapter adapter = new RouteCardAdapter(cards);
-//        binding.routeCardsRecycler.setAdapter(adapter);
 
         MapSpecifiedFragmentArgs args = MapSpecifiedFragmentArgs.fromBundle(requireArguments());
         String startLocation = args.getFrom();
@@ -77,7 +79,10 @@ public class MapNotSpecifiedFragment extends Fragment {
             navController.navigate(R.id.searchResultsFragment);
         });
 
-        new InfoDialogFragment().show(getChildFragmentManager(), "info_dialog");
+        SharedPreferences prefs = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        if (!prefs.getBoolean(InfoDialogFragment.PREF_DONT_SHOW, false)) {
+            new InfoDialogFragment().show(getChildFragmentManager(), "info_dialog");
+        }
 
         return view;
     }
@@ -97,39 +102,125 @@ public class MapNotSpecifiedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        requireActivity();
-        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).hide();
 
-        ViewGroup root = (ViewGroup) requireActivity().findViewById(android.R.id.content);
-        View navBar = root.findViewById(R.id.nav_view);
-
-        assert navBar != null;
-        navBar.setVisibility(View.GONE);
-
+        Objects.requireNonNull(((AppCompatActivity) requireActivity())
+                .getSupportActionBar()).hide();
+        requireActivity().findViewById(R.id.nav_view).setVisibility(View.GONE);
         requireActivity().getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         MaterialButton filtersBtn = binding.button4;
-        ColorStateList defaultTint = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
-        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
-
+        ColorStateList beige  = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
+        ColorStateList green  = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
         filtersBtn.setOnClickListener(v -> {
-            new FiltersBottomSheetNotSpecified()
-                    .show(getParentFragmentManager(), "filters");
-            filtersBtn.setBackgroundTintList(highlightTint);
+            new FiltersBottomSheetNotSpecified().show(getParentFragmentManager(), "filters");
+            filtersBtn.setBackgroundTintList(green);
         });
-
         getParentFragmentManager().addOnBackStackChangedListener(() -> {
-            boolean sheetVisible = getParentFragmentManager().findFragmentByTag("filters") != null;
-            if (!sheetVisible) {
-                filtersBtn.setBackgroundTintList(defaultTint);
-            }
+            if (getParentFragmentManager().findFragmentByTag("filters") == null)
+                filtersBtn.setBackgroundTintList(beige);
         });
 
+        PhotoView pv = binding.imageView7;
+        pv.setMinimumScale(0.5f);
+        pv.setMediumScale(2f);
+        pv.setMaximumScale(6f);
+        binding.fabZoomIn.setOnClickListener(v -> pv.setScale(pv.getScale() * .8f,  true));
+        binding.fabZoomOut.setOnClickListener(v -> pv.setScale(pv.getScale() * 1.25f, true));
+
+        String  from       = binding.textView2.getText().toString();
+        Button  confirmBtn = binding.confirmButton;
+
+        RouteCardAdapter adapter = new RouteCardAdapter();
+        adapter.setOnRouteClickListener(card -> {
+            NavDirections go = MapSpecifiedFragmentDirections
+                    .actionMapSpecifiedFragmentToRouteDetailsFragment(card.id);
+            NavHostFragment.findNavController(this).navigate(go);
+        });
+        binding.routeCardsRecycler.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.routeCardsRecycler.setAdapter(adapter);
+
+        FilterViewModel filterVm = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
+        MapSpecifiedViewModel mapVm = new ViewModelProvider(
+                this,
+                new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication()))
+                .get(MapSpecifiedViewModel.class);
+
+        final String[] selectedTo = { null };
+
+        Observer<Object> updateUI = ignored -> {
+            List<RouteConfig.Route> all = mapVm.getAllRoutes().getValue();
+            if (all == null) return;
+
+            Set<String> chips   = filterVm.getSelectedChips().getValue();
+            List<RouteConfig.Route> matches = (selectedTo[0] == null)
+                    ? RouteFilterUtil.filterByChips(all, chips, from)
+                    : RouteFilterUtil.filterByChips(all, chips, from, selectedTo[0]);
+
+            RouteConfig.Route toShow = matches.isEmpty() ? all.get(0) : matches.get(0);
+            int mapRes = getResources().getIdentifier(
+                    toShow.imageResource, "drawable", requireContext().getPackageName());
+            pv.setImageResource(mapRes);
+
+            List<RouteCard> cards = new ArrayList<>();
+            for (RouteConfig.Route r : matches) {
+                int thumb = getResources().getIdentifier(
+                        r.cardImageResource, "drawable", requireContext().getPackageName());
+                cards.add(new RouteCard(r.id, r.title, thumb));
+            }
+            adapter.setData(cards);
+        };
+
+        adapter.setOnRouteClickListener(card -> {
+            NavDirections go =
+                    MapNotSpecifiedFragmentDirections
+                            .actionMapNotSpecifiedFragmentToRouteDetailsFragment(card.id);
+            NavHostFragment.findNavController(this).navigate(go);
+        });
+
+        View.OnClickListener goToResults = v -> {
+            String to = selectedTo[0] == null ? "" : selectedTo[0];
+            NavDirections go =
+                    MapNotSpecifiedFragmentDirections
+                            .actionMapNotSpecifiedToSearchResults(from, to);
+            NavHostFragment.findNavController(this).navigate(go);
+        };
+
+        binding.button5.setOnClickListener(goToResults);
+        binding.button.setOnClickListener(goToResults);
+
+        mapVm.getAllRoutes().observe(getViewLifecycleOwner(), updateUI);
+        filterVm.getSelectedChips().observe(getViewLifecycleOwner(), updateUI);
+
+        List<Button> pickButtons = List.of(
+                binding.button9
+        );
+
+        pickButtons.forEach(btn -> btn.setOnClickListener(v -> {
+            pickButtons.forEach(b -> b.setEnabled(true));
+            v.setEnabled(false);
+
+            selectedTo[0] = (String) v.getTag();
+            confirmBtn.setTag(selectedTo[0]);
+            confirmBtn.setVisibility(View.VISIBLE);
+
+            updateUI.onChanged(null);
+        }));
+
+        confirmBtn.setOnClickListener(v -> {
+            String to = (String) confirmBtn.getTag();
+            if (to == null) return;
+            NavDirections go = MapNotSpecifiedFragmentDirections
+                    .actionMapNotSpecifiedToMapSpecified(from, to);
+            NavHostFragment.findNavController(this).navigate(go);
+        });
+
+        updateUI.onChanged(null);
         showResults();
     }
+
 
     private void showLoading() {
         binding.imageView7.setVisibility(View.GONE);

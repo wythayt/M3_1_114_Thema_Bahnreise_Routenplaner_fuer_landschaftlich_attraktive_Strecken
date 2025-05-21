@@ -1,6 +1,7 @@
 package com.example.m3_app.ui.map_not_specified;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -24,6 +25,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.Objects;
 
 public class InfoDialogFragment extends DialogFragment {
+    public static final String PREF_DONT_SHOW = "dont_show_info_dialog";
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -71,7 +74,11 @@ public class InfoDialogFragment extends DialogFragment {
         ivClose.setOnClickListener(v -> dialog.dismiss());
         gotIt.setOnClickListener(v -> dialog.dismiss());
         dontShow.setOnClickListener(v -> {
-            // TODO: implement “don’t show again”
+            requireContext()
+                    .getSharedPreferences("prefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean(PREF_DONT_SHOW, true)
+                    .apply();
             dialog.dismiss();
         });
 

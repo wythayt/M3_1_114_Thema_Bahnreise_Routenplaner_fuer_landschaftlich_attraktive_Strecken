@@ -74,6 +74,31 @@
         <argument
             android:name="to"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_mapNotSpecified_to_searchResults"
+            app:destination="@id/searchResultsFragment" />
+
+        <action
+            android:id="@+id/action_mapNotSpecified_to_mapSpecified"
+            app:destination="@id/mapSpecifiedFragment">
+
+            <argument
+                android:name="from"
+                app:argType="string" />
+
+            <argument
+                android:name="to"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_mapNotSpecifiedFragment_to_routeDetailsFragment"
+            app:destination="@id/routeDetailsFragment">
+            <argument
+                android:name="routeId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
