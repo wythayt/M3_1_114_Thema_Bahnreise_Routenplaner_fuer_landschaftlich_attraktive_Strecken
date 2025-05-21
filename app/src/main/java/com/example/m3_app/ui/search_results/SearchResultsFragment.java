@@ -1,5 +1,6 @@
 package com.example.m3_app.ui.search_results;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.m3_app.R;
 import com.example.m3_app.databinding.FragmentSearchResultsBinding;
 import com.example.m3_app.ui.filter.FilterViewModel;
+import com.example.m3_app.ui.filter.FiltersBottomSheet;
 import com.example.m3_app.ui.map_specified.MapSpecifiedViewModel;
 import com.example.m3_app.ui.route_img.RouteImgAdapter;
 import com.example.m3_app.ui.route_img.RouteImgCard;
@@ -33,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.m3_app.backend.RouteConfig;
 import com.example.m3_app.backend.utility.RouteFilterUtil;
 import com.example.m3_app.ui.map_specified.MapSpecifiedFragmentArgs;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -112,6 +115,17 @@ public class SearchResultsFragment extends Fragment {
                     .actionSearchResultsFragmentToRouteDetailsFragment(card.getId());
 
             nav.navigate(action);
+        });
+
+        MaterialButton filtersBtn = binding.button4;
+
+        ColorStateList defaultTint = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
+        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
+
+        filtersBtn.setOnClickListener(v -> {
+            new FiltersBottomSheet()
+                    .show(getParentFragmentManager(), "filters");
+            filtersBtn.setBackgroundTintList(highlightTint);
         });
 
         binding.RecyclerView.setLayoutManager(
