@@ -33,7 +33,7 @@ Externe Libraries und Frameworks:
 - `androidx.test.espresso:espresso-core:3.6.1` – UI testing
 
 Dauer der Entwicklung:
-[XX Stunden]
+[50-60 Stunden]
 
 Weitere Anmerkungen:
 [None]
