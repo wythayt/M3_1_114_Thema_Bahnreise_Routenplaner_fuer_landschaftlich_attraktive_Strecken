@@ -227,7 +227,7 @@
     },
     {
       "id": "ID_06",
-      "imageResource": "vienna_zurich_bavarian_bliss",
+      "imageResource": "vienna_zurich_visit_3_countries",
       "cardImageResource": "visit_3_countries_1",
       "title": "Visit 3 Countries",
       "fromDestination": "Vienna",
@@ -256,7 +256,7 @@
         "visit_3_countries_3"
       ],
       "trainName": [
-        "ICE 228"
+       "RJ 18", "ICE 228"
       ],
       "filter": {
         "familyFun": true,
