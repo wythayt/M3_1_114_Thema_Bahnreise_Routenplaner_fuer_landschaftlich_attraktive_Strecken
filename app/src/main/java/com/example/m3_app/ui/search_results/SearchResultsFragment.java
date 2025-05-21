@@ -69,6 +69,9 @@ public class SearchResultsFragment extends Fragment {
         fromDestination = args.getFrom();
         toDestination = args.getTo();
 
+        if (toDestination == null || toDestination.trim().isEmpty())
+            toDestination = "All Destinations";
+
         binding.header.setText(
                 String.format("%s → %s", fromDestination, toDestination)
         );
@@ -120,8 +123,11 @@ public class SearchResultsFragment extends Fragment {
             Set<String> selectedChips = filterVm.getSelectedChips().getValue();
             if (allRoutes == null) return;
 
-            List<RouteConfig.Route> matches = RouteFilterUtil
-                    .filterByChips(allRoutes, selectedChips, fromDestination, toDestination);
+            List<RouteConfig.Route> matches =
+                    ("All Destinations".equalsIgnoreCase(toDestination))
+                            ? RouteFilterUtil.filterByChips(allRoutes, selectedChips, fromDestination)
+                            : RouteFilterUtil.filterByChips(allRoutes, selectedChips, fromDestination, toDestination);
+
             List<RouteImgCard> cards = new ArrayList<>();
             matches.forEach(r -> {
                 int imageRes = requireContext().getResources()
