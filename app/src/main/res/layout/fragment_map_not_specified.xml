@@ -153,29 +153,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.72" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/weather"
-        app:tint="@color/light_yellow"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:srcCompat="@drawable/light_mode_24px" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_text_bold"
-        android:text="@string/_20_22_c"
-        android:textAllCaps="false"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline12" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline15"
         android:layout_width="wrap_content"
@@ -269,28 +246,28 @@
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:backgroundTint="@color/teal_200"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/fabZoomIn"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:srcCompat="@drawable/zoom_out_map_24px"
-        tools:ignore="MissingConstraints"
-        app:backgroundTint="@color/teal_200"/>
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Confirm destination"
-        android:visibility="gone"
-        android:textAllCaps="false"
-        android:textSize="13sp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/sf_pro_text_bold"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        android:text="Confirm destination"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -311,8 +288,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.867"
-        app:shapeAppearanceOverlay="@style/CircularShadowStar"
-        app:rippleColor="@color/secondary_green" />
+        app:rippleColor="@color/secondary_green"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonBerlin"
@@ -332,8 +309,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.042"
-        app:shapeAppearanceOverlay="@style/CircularShadowStar"
-        app:rippleColor="@color/secondary_green" />
+        app:rippleColor="@color/secondary_green"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonGraz"
@@ -353,8 +330,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.875"
-        app:shapeAppearanceOverlay="@style/CircularShadowStar"
-        app:rippleColor="@color/secondary_green" />
+        app:rippleColor="@color/secondary_green"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonKrems"
@@ -374,8 +351,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:layout_constraintVertical_bias="0.654"
-        app:shapeAppearanceOverlay="@style/CircularShadowStar"
-        app:rippleColor="@color/secondary_green" />
+        app:rippleColor="@color/secondary_green"
+        app:shapeAppearanceOverlay="@style/CircularShadowStar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
