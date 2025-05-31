@@ -9,7 +9,7 @@
       "toDestination": "Zurich",
       "stations": [
         ["Vienna","St.Pölten", "Linz", "Salzburg", "Rosenheim", "Innsbruck",
-        "Leichtenstein"]
+        "Liechtenstein"]
       ],
       "transferTime" : null,
       "journeyTime": "8h 23min",
@@ -20,7 +20,7 @@
       ],
       "rating": "4.9",
       "mainCategory": "Mountains",
-      "description": "Eine unvergessliche Fahrt durch die majestätischen Alpen, vorbei an schroffen Felsformationen, grünen Tälern und charmanten Städten wie Innsbruck und dem Fürstentum Liechtenstein. Genieße atemberaubende Ausblicke und erlebe die Alpenregion von ihrer schönsten Seite. Ideal für Naturliebhaber und Fans eindrucksvoller Panoramastrecken.",
+      "description": "An unforgettable journey through the majestic Alps, past rugged rock formations, green valleys, and charming towns like Innsbruck and the Principality of Liechtenstein. Enjoy breathtaking views and experience the Alpine region at its most beautiful. Perfect for nature lovers and fans of impressive panoramic routes.",
       "imageGallery": [
 
         "through_alps1",
@@ -67,7 +67,7 @@
       ],
       "rating": "4.7",
       "mainCategory": "Sightseeing",
-      "description": "Erlebe die Vielfalt Bayerns auf einer malerischen Route durch geschichtsträchtige Städte und verträumte Dörfer. Von Wien über München und den Bodensee bis nach Zürich – unterwegs erwarten dich bayerische Gastfreundschaft, historische Altstädte und weite Berglandschaften. Perfekt für Familien und Entdecker.",
+      "description": "Experience the diversity of Bavaria on a picturesque route through historic towns and dreamy villages. From Vienna via Munich and Lake Constance to Zurich — along the way you’ll find Bavarian hospitality, historic old towns, and vast mountain landscapes. Perfect for families and explorers.",
       "imageGallery": [
         "bavarian_bliss1",
         "sample_bavarian_bliss",
@@ -113,7 +113,7 @@
       ],
       "rating": "5.0",
       "mainCategory": "Mountains",
-      "description": "Diese abwechslungsreiche Fahrt führt dich von Wien durch eine der beeindruckendsten Tunnel- und Gebirgslandschaften Österreichs. Vorbei an Wr.Neustadt und Mürzzuschlag bis ins charmante Graz, mit spektakulären Ausblicken und kleinen Städtchen entlang der Strecke. Ein Geheimtipp für Natur- und Kulturliebhaber.",
+      "description": "This varied trip takes you from Vienna through one of Austria's most impressive tunnel and mountain landscapes. Past Wr.Neustadt and Mürzzuschlag to charming Graz, with spectacular views and small towns along the way. A hidden gem for nature and culture enthusiasts.",
       "imageGallery": [
         "graz_card1",
         "to_graz_through_tunnels_1",
@@ -141,7 +141,7 @@
       "id": "ID_04",
       "imageResource": "vienna_krems_donau",
       "cardImageResource": "krems_card1",
-      "title": "Along The Donau",
+      "title": "Along the Donau",
       "fromDestination": "Vienna",
       "toDestination": "Krems/Donau",
       "stations": [
@@ -159,8 +159,8 @@
         "ÖBB"
       ],
       "rating": "5.0",
-      "mainCategory": "Along The River",
-      "description": "Folge dem Verlauf der Donau von Wien bis ins idyllische Krems und entdecke malerische Weinberge, barocke Stifte und kleine Dörfer. Diese Route eignet sich hervorragend für Genießer und Freunde gemütlicher Landschaften. Die Fahrt entlang des Flusses verspricht Ruhe und reizvolle Ausblicke.",
+      "mainCategory": "Along the River",
+      "description": "Follow the course of the Danube from Vienna to idyllic Krems and discover picturesque vineyards, baroque monasteries, and small villages. This route is perfect for connoisseurs and lovers of relaxing landscapes. The ride along the river promises peace and delightful views.",
       "imageGallery": [
         "krems_card1",
         "krems1"
@@ -202,7 +202,7 @@
       ],
       "rating": "4.2",
       "mainCategory": "Sightseeing",
-      "description": "Eine ausgedehnte Reise durch das Herz Deutschlands bis nach Berlin. Entdecke traditionsreiche Städte wie Passau, Regensburg und Nürnberg, bevor du die kulturelle Vielfalt Erfurts und die lebendige Metropole Berlin erreichst. Diese Route bietet einen spannenden Mix aus Geschichte, moderner Urbanität und Natur.",
+      "description": "An extensive journey through the heart of Germany to Berlin. Discover traditional towns like Passau, Regensburg, and Nuremberg before reaching the cultural diversity of Erfurt and the lively metropolis of Berlin. This route offers an exciting mix of history, modern urbanity, and nature.",
       "imageGallery": [
         "berlin_card1",
         "explore_germany2",
@@ -249,7 +249,7 @@
       ],
       "rating": "4.2",
       "mainCategory": "History Heritage",
-      "description": "Auf dieser faszinierenden Strecke passierst du gleich drei Länder – Österreich, Deutschland und die Schweiz. Von Wien über historische Städte wie Würzburg und Frankfurt bis ins charmante Zürich. Genieße Kultur, Architektur und landschaftliche Höhepunkte entlang einer der spannendsten Bahnstrecken Europas.",
+      "description": "On this fascinating route you’ll pass through three countries — Austria, Germany, and Switzerland. From Vienna via historic towns like Würzburg and Frankfurt to charming Zurich. Enjoy culture, architecture, and scenic highlights along one of Europe’s most exciting railway routes.",
       "imageGallery": [
         "visit_3_countries_1",
         "visit_3_countries_2",
