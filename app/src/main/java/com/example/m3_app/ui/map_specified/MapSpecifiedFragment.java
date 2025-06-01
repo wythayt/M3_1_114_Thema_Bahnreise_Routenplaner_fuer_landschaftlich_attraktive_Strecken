@@ -146,20 +146,12 @@ public class MapSpecifiedFragment extends Fragment {
         });
 
         MaterialButton filtersBtn = binding.button4;
-        ColorStateList defaultTint = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
-        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
+        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.forest_green));
 
         filtersBtn.setOnClickListener(v -> {
             new FiltersBottomSheet()
                     .show(getParentFragmentManager(), "filters");
             filtersBtn.setBackgroundTintList(highlightTint);
-        });
-
-        getParentFragmentManager().addOnBackStackChangedListener(() -> {
-            boolean sheetVisible = getParentFragmentManager().findFragmentByTag("filters") != null;
-            if (!sheetVisible) {
-                filtersBtn.setBackgroundTintList(defaultTint);
-            }
         });
 
         RouteCardAdapter adapter = new RouteCardAdapter();
