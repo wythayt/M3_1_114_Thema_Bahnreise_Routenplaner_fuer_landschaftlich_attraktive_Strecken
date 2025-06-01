@@ -119,8 +119,7 @@ public class SearchResultsFragment extends Fragment {
 
         MaterialButton filtersBtn = binding.button4;
 
-        ColorStateList defaultTint = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
-        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
+        ColorStateList highlightTint = ColorStateList.valueOf(requireContext().getColor(R.color.forest_green));
 
         filtersBtn.setOnClickListener(v -> {
             new FiltersBottomSheet()
