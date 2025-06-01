@@ -55,7 +55,7 @@ public class FiltersBottomSheet extends BottomSheetDialogFragment {
         MaterialButton filtersBtn = requireActivity().findViewById(R.id.button4);
 
         assert filtersBtn != null;
-        filtersBtn.setBackgroundTintList(ColorStateList.valueOf(requireContext().getColor(R.color.beige)));
+        filtersBtn.setBackgroundTintList(ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green)));
     }
 }
 
