@@ -46,6 +46,14 @@ public class FiltersBottomSheet extends BottomSheetDialogFragment {
         allChips.forEach(chip ->
                 chip.setOnCheckedChangeListener((c, checked) ->
                         viewModel.updateChip(c.getTag().toString(), checked)));
+
+        binding.resetButton.setOnClickListener(v -> {
+            allChips.forEach(chip -> {
+                chip.setChecked(false);
+                viewModel.updateChip(chip.getTag().toString(), false);
+            });
+        });
+
         return binding.getRoot();
     }
 

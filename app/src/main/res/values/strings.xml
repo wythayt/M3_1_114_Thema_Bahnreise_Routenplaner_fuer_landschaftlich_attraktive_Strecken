@@ -58,6 +58,7 @@
     <string name="see_all">See all</string>
     <string name="search_results">Search Results</string>
     <string name="filter">Filter</string>
+    <string name="reset_all_filters">Reset all filters</string>
     <string name="from_to">FROM ...... TO</string>
     <string name="upload_photo">Upload Photo +</string>
     <string name="publish">Publish</string>
