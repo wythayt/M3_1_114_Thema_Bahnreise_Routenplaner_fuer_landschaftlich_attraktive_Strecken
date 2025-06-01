@@ -35,7 +35,7 @@ public class FiltersBottomSheetNotSpecified extends BottomSheetDialogFragment {
 
         FilterViewModel viewModel = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
 
-        List<Chip> allChips = Stream.of(binding.chipGroup)
+        List<Chip> allChips = Stream.of(binding.chipGroup, binding.chipGroup12, binding.chipGroup3, binding.chipGroup2)
                 .flatMap(group -> IntStream.range(0, group.getChildCount()).mapToObj(group::getChildAt))
                 .filter(child -> child instanceof Chip)
                 .map(child -> (Chip) child)

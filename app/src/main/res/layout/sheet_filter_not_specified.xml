@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:fontFamily="@font/sf_pro_text_bold"
-        android:text="Country"
+        android:text="Shows stars for ..."
         android:textAppearance="?attr/textAppearanceSubtitle1" />
 
     <com.google.android.material.chip.ChipGroup
@@ -74,5 +74,149 @@
             android:text="Switzerland"
             android:tag="switzerland"
             app:checkedIconVisible="false"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_text_bold"
+        android:text="@string/activities_along_the_way"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textSize="15sp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:chipSpacing="8dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipFamilyFun"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="familyFun"
+            android:text="@string/family_fun"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipHistoryAndHeritage"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="historyHeritage"
+            android:text="@string/history_heritage"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipArtAndCulture"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="artCulture"
+            android:text="@string/art_and_culture"
+            app:checkedIconVisible="false" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_text_bold"
+        android:text="@string/extra_options"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textSize="15sp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:chipSpacing="8dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAudioGuide"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="audioGuide"
+            android:text="@string/audio_guide"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNoTransfers"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="noTransfers"
+            android:text="@string/no_transfers"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipWithSights"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="withSights"
+            android:text="@string/with_sights"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTopRated"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="topRated"
+            android:text="@string/top_rated"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipBarrierFree"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="barrierFree"
+            android:text="@string/barrier_free"
+            app:checkedIconVisible="false" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_text_bold"
+        android:text="@string/scenic_views"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textSize="15sp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:chipSpacing="8dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAlongTheRiver"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="alongTheRiver"
+            android:text="@string/along_the_river"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipForest"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="forest"
+            android:text="@string/forest"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMountains"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="mountains"
+            android:text="@string/mountains"
+            app:checkedIconVisible="false" />
     </com.google.android.material.chip.ChipGroup>
 </LinearLayout>

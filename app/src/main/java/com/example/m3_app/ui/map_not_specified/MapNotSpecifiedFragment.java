@@ -38,7 +38,6 @@ import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -119,15 +118,10 @@ public class MapNotSpecifiedFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         MaterialButton filtersBtn = binding.button4;
-        ColorStateList beige = ColorStateList.valueOf(requireContext().getColor(R.color.beige));
-        ColorStateList green = ColorStateList.valueOf(requireContext().getColor(R.color.secondary_green));
+        ColorStateList green = ColorStateList.valueOf(requireContext().getColor(R.color.forest_green));
         filtersBtn.setOnClickListener(v -> {
             new FiltersBottomSheetNotSpecified().show(getParentFragmentManager(), "filters");
             filtersBtn.setBackgroundTintList(green);
-        });
-        getParentFragmentManager().addOnBackStackChangedListener(() -> {
-            if (getParentFragmentManager().findFragmentByTag("filters") == null)
-                filtersBtn.setBackgroundTintList(beige);
         });
 
         PhotoView pv = binding.imageView7;
@@ -163,7 +157,7 @@ public class MapNotSpecifiedFragment extends Fragment {
 
         final String[] selectedTo = { null };
 
-        List<View> pickButtons = List.of(
+        List<MaterialButton> pickButtons = List.of(
                 binding.buttonZurich,
                 binding.buttonBerlin,
                 binding.buttonGraz,
@@ -180,69 +174,95 @@ public class MapNotSpecifiedFragment extends Fragment {
             List<RouteConfig.Route> all = mapVm.getAllRoutes().getValue();
             if (all == null) return;
 
-            Set<String> chips = filterVm.getSelectedChips().getValue();
-            Set<String> countryChips = (chips == null)
-                    ? Collections.emptySet()
-                    : chips.stream()
-                    .filter(c -> COUNTRIES.stream().anyMatch(p -> p.equalsIgnoreCase(c)))
+            Set<String> selectedChips = filterVm.getSelectedChips().getValue();
+            if (selectedChips == null) {
+                selectedChips = Collections.emptySet();
+            }
+
+            Set<String> countryChips = selectedChips.stream()
+                    .filter(c -> COUNTRIES.stream().anyMatch(country -> country.equalsIgnoreCase(c)))
                     .map(String::toLowerCase)
                     .collect(Collectors.toSet());
 
             boolean showAllButtons = countryChips.isEmpty();
 
-            pickButtons.forEach(b -> {
-                String city = String.valueOf(b.getTag());
-                String country  = cityCountry.getOrDefault(city, "").toLowerCase();
+            pickButtons.forEach(btn -> {
+                String city = String.valueOf(btn.getTag());
+                String country = cityCountry.getOrDefault(city, "").toLowerCase();
                 boolean visible = showAllButtons || countryChips.contains(country);
 
-                b.setVisibility(visible ? View.VISIBLE : View.GONE);
+                btn.setVisibility(visible ? View.VISIBLE : View.GONE);
 
                 if (!visible && Objects.equals(selectedTo[0], city)) {
                     selectedTo[0] = null;
                     confirmBtn.setVisibility(View.GONE);
-                    b.setEnabled(true);
+                    btn.setSelected(false);
                 }
             });
 
             if (selectedTo[0] == null) {
-                pv.setImageResource(R.drawable.large_empty_map_google);
-                binding.textView3.setText(originalEndText);
-                List<RouteCard> cards = new ArrayList<>();
-                all.stream()
+
+                List<RouteConfig.Route> pool = all.stream()
                         .filter(r -> r.fromDestination.equalsIgnoreCase(from))
-                        .forEach(r -> {
-                            int thumb = getResources().getIdentifier(
-                                    r.cardImageResource, "drawable", requireContext().getPackageName());
-                            cards.add(new RouteCard(r.id, r.title,
-                                    thumb != 0 ? thumb : R.drawable.placeholder));
-                        });
+                        .toList();
+
+                List<RouteConfig.Route> matches = RouteFilterUtil
+                        .filterByChips(pool, selectedChips, from);
+
+                int mapRes;
+                if (matches.isEmpty()) {
+                    mapRes = R.drawable.large_empty_map_google;
+                } else {
+                    List<String> ids = matches.stream()
+                            .map(r -> r.id)
+                            .sorted()
+                            .toList();
+                    mapRes = mapVm.mapFor(ids);
+                }
+                pv.setImageResource(mapRes);
+
+                List<RouteCard> cards = new ArrayList<>();
+                for (RouteConfig.Route r : matches) {
+                    int thumb = getResources().getIdentifier(
+                            r.cardImageResource, "drawable", requireContext().getPackageName());
+                    cards.add(new RouteCard(r.id,
+                            r.title,
+                            (thumb != 0) ? thumb : R.drawable.placeholder));
+                }
                 adapter.setData(cards);
+
+                binding.textView3.setText(originalEndText);
+
                 return;
             }
 
-            List<RouteConfig.Route> fullSet = all.stream()
-                    .filter(r -> r.fromDestination.equalsIgnoreCase(from) &&
-                            r.toDestination.equalsIgnoreCase(selectedTo[0]))
+            List<RouteConfig.Route> pool = all.stream()
+                    .filter(r -> r.fromDestination.equalsIgnoreCase(from)
+                            && r.toDestination.equalsIgnoreCase(selectedTo[0]))
                     .toList();
 
+            List<RouteConfig.Route> matches = RouteFilterUtil
+                    .filterByChips(pool, selectedChips, from, selectedTo[0]);
+
             int mapRes;
-            if ("Zurich".equalsIgnoreCase(selectedTo[0])) {
-                mapRes = R.drawable.vienna_zurich_3routes;
-            } else if (!fullSet.isEmpty()) {
-                mapRes = getResources().getIdentifier(
-                        fullSet.get(0).imageResource, "drawable",
-                        requireContext().getPackageName());
-            } else {
+            if (matches.isEmpty()) {
                 mapRes = R.drawable.large_empty_map_google;
+            } else {
+                List<String> ids = matches.stream()
+                        .map(r -> r.id)
+                        .sorted()
+                        .toList();
+                mapRes = mapVm.mapFor(ids);
             }
             pv.setImageResource(mapRes);
 
             List<RouteCard> cards = new ArrayList<>();
-            for (RouteConfig.Route r : fullSet) {
+            for (RouteConfig.Route r : matches) {
                 int thumb = getResources().getIdentifier(
                         r.cardImageResource, "drawable", requireContext().getPackageName());
-                cards.add(new RouteCard(r.id, r.title,
-                        thumb != 0 ? thumb : R.drawable.large_empty_map_google));
+                cards.add(new RouteCard(r.id,
+                        r.title,
+                        (thumb != 0) ? thumb : R.drawable.large_empty_map_google));
             }
             adapter.setData(cards);
         };
@@ -268,15 +288,32 @@ public class MapNotSpecifiedFragment extends Fragment {
         mapVm.getAllRoutes().observe(getViewLifecycleOwner(), updateUI);
         filterVm.getSelectedChips().observe(getViewLifecycleOwner(), updateUI);
 
+        final MaterialButton[] selectedBtn = {null};
+
         pickButtons.forEach(btn -> btn.setOnClickListener(v -> {
-            pickButtons.forEach(b -> b.setEnabled(true));
-            v.setEnabled(false);
+            MaterialButton tapped = (MaterialButton) v;
 
-            selectedTo[0] = (String) v.getTag();
-            confirmBtn.setTag(selectedTo[0]);
-            confirmBtn.setVisibility(View.VISIBLE);
+            if (tapped == selectedBtn[0]) {
+                tapped.setSelected(false);
+                selectedBtn[0] = null;
+                selectedTo[0] = null;
 
-            binding.textView3.setText(selectedTo[0]);
+                confirmBtn.setVisibility(View.GONE);
+                binding.textView3.setText(originalEndText);
+            }
+            else {
+                if (selectedBtn[0] != null) {
+                    selectedBtn[0].setSelected(false);
+                }
+
+                tapped.setSelected(true);
+                selectedBtn[0] = tapped;
+                selectedTo[0]  = (String) tapped.getTag();
+
+                confirmBtn.setTag(selectedTo[0]);
+                confirmBtn.setVisibility(View.VISIBLE);
+                binding.textView3.setText(selectedTo[0]);
+            }
             updateUI.onChanged(null);
         }));
 
