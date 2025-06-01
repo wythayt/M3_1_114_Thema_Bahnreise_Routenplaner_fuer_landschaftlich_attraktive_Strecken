@@ -82,14 +82,6 @@
         <action
             android:id="@+id/action_mapNotSpecified_to_mapSpecified"
             app:destination="@id/mapSpecifiedFragment">
-
-            <argument
-                android:name="from"
-                app:argType="string" />
-
-            <argument
-                android:name="to"
-                app:argType="string" />
         </action>
 
         <action
