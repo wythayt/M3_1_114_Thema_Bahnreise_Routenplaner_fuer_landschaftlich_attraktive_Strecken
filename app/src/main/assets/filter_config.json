@@ -1,6 +1,7 @@
 {
   "routes": [
     {
+      "country": "switzerland",
       "id": "ID_01",
       "imageResource": "vienna_zurich_through_alps",
       "cardImageResource": "sample_alps",
@@ -39,11 +40,15 @@
         "barrierFree": true,
         "alongTheRiver": false,
         "forest": false,
-        "mountains": true
+        "mountains": true,
+        "germany": false,
+        "austria": false,
+        "switzerland": true
       }
     },
 
     {
+      "country": "switzerland",
       "id": "ID_02",
       "imageResource": "vienna_zurich_bavarian_bliss",
       "cardImageResource": "sample_bavarian_bliss",
@@ -87,12 +92,16 @@
         "barrierFree": true,
         "alongTheRiver": false,
         "forest": false,
-        "mountains": true
+        "mountains": true,
+        "germany": false,
+        "austria": false,
+        "switzerland": true
       }
     },
 
 
     {
+      "country": "austria",
       "id": "ID_03",
       "imageResource": "vienna_graz_google",
       "cardImageResource": "graz_card1",
@@ -134,10 +143,14 @@
         "barrierFree": true,
         "alongTheRiver": false,
         "forest": true,
-        "mountains": true
+        "mountains": true,
+        "germany": false,
+        "austria": true,
+        "switzerland": false
       }
     },
     {
+      "country": "austria",
       "id": "ID_04",
       "imageResource": "vienna_krems_donau",
       "cardImageResource": "krems_card1",
@@ -179,10 +192,14 @@
         "barrierFree": true,
         "alongTheRiver": true,
         "forest": false,
-        "mountains": false
+        "mountains": false,
+        "germany": false,
+        "austria": true,
+        "switzerland": false
       }
     },
     {
+      "country": "germany",
       "id": "ID_05",
       "imageResource": "vienna_berlin_google",
       "cardImageResource": "berlin_card1",
@@ -222,10 +239,14 @@
         "barrierFree": false,
         "alongTheRiver": false,
         "forest": true,
-        "mountains": false
+        "mountains": false,
+        "germany": true,
+        "austria": false,
+        "switzerland": false
       }
     },
     {
+      "country": "switzerland",
       "id": "ID_06",
       "imageResource": "vienna_zurich_visit_3_countries",
       "cardImageResource": "visit_3_countries_1",
@@ -269,7 +290,10 @@
         "barrierFree": false,
         "alongTheRiver": false,
         "forest": true,
-        "mountains": false
+        "mountains": false,
+        "germany": false,
+        "austria": false,
+        "switzerland": true
       }
     }
   ]

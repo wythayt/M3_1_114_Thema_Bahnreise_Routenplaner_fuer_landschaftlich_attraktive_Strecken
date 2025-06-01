@@ -6,6 +6,7 @@ public class RouteConfig {
     public List<Route> routes;
 
     public static class Route {
+        public String country;
         public String id;
         public String imageResource;
         public String cardImageResource;
@@ -30,6 +31,9 @@ public class RouteConfig {
     }
 
     public static class Filter {
+        public boolean germany;
+        public boolean austria;
+        public boolean switzerland;
         public boolean familyFun;
         public boolean historyHeritage;
         public boolean artCulture;

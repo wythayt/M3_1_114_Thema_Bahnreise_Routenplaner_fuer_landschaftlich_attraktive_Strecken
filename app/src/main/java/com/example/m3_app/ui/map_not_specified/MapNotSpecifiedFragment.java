@@ -125,15 +125,8 @@ public class MapNotSpecifiedFragment extends Fragment {
         });
 
         PhotoView pv = binding.imageView7;
-
         pv.setImageResource(R.drawable.large_empty_map_google);
         pv.setZoomable(false);
-
-//        pv.setMinimumScale(0.5f);
-//        pv.setMediumScale(2f);
-//        pv.setMaximumScale(6f);
-//        binding.fabZoomIn.setOnClickListener(v -> pv.setScale(pv.getScale() * .8f,  true));
-//        binding.fabZoomOut.setOnClickListener(v -> pv.setScale(pv.getScale() * 1.25f, true));
 
         String from = binding.textView2.getText().toString();
         final String originalEndText = binding.textView3.getText().toString();
@@ -156,7 +149,6 @@ public class MapNotSpecifiedFragment extends Fragment {
                 .get(MapSpecifiedViewModel.class);
 
         final String[] selectedTo = { null };
-
         List<MaterialButton> pickButtons = List.of(
                 binding.buttonZurich,
                 binding.buttonBerlin,
@@ -180,19 +172,23 @@ public class MapNotSpecifiedFragment extends Fragment {
             }
 
             Set<String> countryChips = selectedChips.stream()
-                    .filter(c -> COUNTRIES.stream().anyMatch(country -> country.equalsIgnoreCase(c)))
+                    .filter(c -> COUNTRIES.stream().anyMatch(country ->
+                            country.equalsIgnoreCase(c)))
                     .map(String::toLowerCase)
                     .collect(Collectors.toSet());
 
-            boolean showAllButtons = countryChips.isEmpty();
+            Set<String> nonCountryChips = selectedChips.stream()
+                    .filter(c -> COUNTRIES.stream().noneMatch(country ->
+                            country.equalsIgnoreCase(c)))
+                    .collect(Collectors.toSet());
 
+            boolean showAllButtons = countryChips.isEmpty();
             pickButtons.forEach(btn -> {
                 String city = String.valueOf(btn.getTag());
                 String country = cityCountry.getOrDefault(city, "").toLowerCase();
                 boolean visible = showAllButtons || countryChips.contains(country);
 
                 btn.setVisibility(visible ? View.VISIBLE : View.GONE);
-
                 if (!visible && Objects.equals(selectedTo[0], city)) {
                     selectedTo[0] = null;
                     confirmBtn.setVisibility(View.GONE);
@@ -201,13 +197,14 @@ public class MapNotSpecifiedFragment extends Fragment {
             });
 
             if (selectedTo[0] == null) {
-
                 List<RouteConfig.Route> pool = all.stream()
                         .filter(r -> r.fromDestination.equalsIgnoreCase(from))
+                        .filter(r -> countryChips.isEmpty()
+                                || countryChips.contains(r.country.toLowerCase()))
                         .toList();
 
                 List<RouteConfig.Route> matches = RouteFilterUtil
-                        .filterByChips(pool, selectedChips, from);
+                        .filterByChips(pool, nonCountryChips, from);
 
                 int mapRes;
                 if (matches.isEmpty()) {
@@ -232,17 +229,18 @@ public class MapNotSpecifiedFragment extends Fragment {
                 adapter.setData(cards);
 
                 binding.textView3.setText(originalEndText);
-
                 return;
             }
 
             List<RouteConfig.Route> pool = all.stream()
                     .filter(r -> r.fromDestination.equalsIgnoreCase(from)
                             && r.toDestination.equalsIgnoreCase(selectedTo[0]))
+                    .filter(r -> countryChips.isEmpty()
+                            || countryChips.contains(r.country.toLowerCase()))
                     .toList();
 
             List<RouteConfig.Route> matches = RouteFilterUtil
-                    .filterByChips(pool, selectedChips, from, selectedTo[0]);
+                    .filterByChips(pool, nonCountryChips, from, selectedTo[0]);
 
             int mapRes;
             if (matches.isEmpty()) {
@@ -289,27 +287,21 @@ public class MapNotSpecifiedFragment extends Fragment {
         filterVm.getSelectedChips().observe(getViewLifecycleOwner(), updateUI);
 
         final MaterialButton[] selectedBtn = {null};
-
         pickButtons.forEach(btn -> btn.setOnClickListener(v -> {
             MaterialButton tapped = (MaterialButton) v;
-
             if (tapped == selectedBtn[0]) {
                 tapped.setSelected(false);
                 selectedBtn[0] = null;
                 selectedTo[0] = null;
-
                 confirmBtn.setVisibility(View.GONE);
                 binding.textView3.setText(originalEndText);
-            }
-            else {
+            } else {
                 if (selectedBtn[0] != null) {
                     selectedBtn[0].setSelected(false);
                 }
-
                 tapped.setSelected(true);
                 selectedBtn[0] = tapped;
-                selectedTo[0]  = (String) tapped.getTag();
-
+                selectedTo[0] = (String) tapped.getTag();
                 confirmBtn.setTag(selectedTo[0]);
                 confirmBtn.setVisibility(View.VISIBLE);
                 binding.textView3.setText(selectedTo[0]);
@@ -328,6 +320,7 @@ public class MapNotSpecifiedFragment extends Fragment {
         updateUI.onChanged(null);
         showResults();
     }
+
 
 
     private void showLoading() {

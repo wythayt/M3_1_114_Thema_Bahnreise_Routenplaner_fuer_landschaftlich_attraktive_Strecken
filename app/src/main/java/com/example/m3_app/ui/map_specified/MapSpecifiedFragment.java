@@ -92,7 +92,6 @@ public class MapSpecifiedFragment extends Fragment {
                     .actionMapSpecifiedFragmentToSearchResultsFragment(finalStartLocation, finalEndLocation);
             navController.navigate(action);
         });
-
         return view;
     }
 

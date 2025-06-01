@@ -53,7 +53,8 @@
 
         <action
             android:id="@+id/action_mapSpecifiedFragment_to_searchResultsFragment"
-            app:destination="@id/searchResultsFragment" />
+            app:destination="@id/searchResultsFragment">
+        </action>
 
         <action
             android:id="@+id/action_mapSpecifiedFragment_to_routeDetailsFragment"

@@ -146,7 +146,6 @@ public class SearchFragmentTest extends Fragment {
             NavHostFragment.findNavController(this).navigate(action);
         });
 
-        // ─── RouteCard preview (unchanged) ───
         RouteConfigViewModel configVm = new ViewModelProvider(
                 requireActivity(),
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())
